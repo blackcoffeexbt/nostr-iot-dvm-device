@@ -291,10 +291,11 @@ namespace nostr
         // replace tabs with \t
         content.replace("\t", "\\t");
         String message = "[0,\"" + String(pubKeyHex) + "\"," + String(timestamp) + "," + String(kind) + "," + tags + ",\"" + content + "\"]";
+        Serial.println("NostrManager::getNote() - message is: " + message);
         _logToSerialWithTitle("message is: ", message);
 
         // sha256 of message converted to hex, assign to msghash
-        byte hash[64] = {0}; // hash
+        byte hash[32] = {0}; // hash should be 32 bytes for SHA-256
         int hashLen = 0;
 
         // Get the sha256 hash of the message
@@ -303,6 +304,7 @@ namespace nostr
         String msgHash = toHex(hash, hashLen);
         _stopTimer("get msgHash as hex");
         _logToSerialWithTitle("SHA-256: ", msgHash);
+        Serial.println("NostrManager::getNote() - msgHash is: " + msgHash);
 
         // Create the private key object
         int byteSize = 32;
@@ -525,7 +527,7 @@ namespace nostr
         String message = nostr::getSerialisedEncryptedDmArray(pubKeyHex, recipientPubKeyHex, kind, timestamp, encryptedMessageBase64);
         _stopTimer("get serialised encrypted dm array");
 
-        byte hash[64] = {0}; // hash
+        byte hash[32] = {0}; // hash should be 32 bytes for SHA-256
         int hashLen = 0;
 
         // Get the sha256 hash of the message

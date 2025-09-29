@@ -374,10 +374,9 @@ namespace NostrManager
             String providerOutput = NostriotProvider::run(method);
             Serial.println("NostrManager::handleEvent() - Provider output: " + providerOutput);
             String responseMsg = getDvmResponseMessage(eventStr, providerOutput);
-            
-
-            
-            webSocket.sendTXT(responseMsg);
+            String wrappedResponse = "[\"EVENT\", " + responseMsg + "]";
+            Serial.println("NostrManager::handleEvent() - Sending response: " + wrappedResponse);
+            webSocket.sendTXT(wrappedResponse);
             
         } else {
             Serial.println("NostrManager::handleEvent() - Method is NOT supported by provider, ignoring");
@@ -408,11 +407,12 @@ namespace NostrManager
 
         String responseTags = 
         "["
-            "[\"request\", \"" + requestEventStr + "\"],"
-            "[\"e\", \"" + eventDoc[2]["id"].as<String>() + "\"],"
-            "[\"i\", \"" + eventTags + "\"],"
-            "[\"p\", \"" + eventDoc[2]["pubkey"].as<String>() + "\"]"
+            "[\"request\",\"" + requestEventStr + "\"],"
+            "[\"e\",\"" + eventDoc[2]["id"].as<String>() + "\"],"
+            "[\"i\",\"" + eventTags + "\"],"
+            "[\"p\",\"" + eventDoc[2]["pubkey"].as<String>() + "\"]"
         "]";
+
         // now construct the response message
         String responseMsg = nostr::getNote(
             privateKeyHex.c_str(),
