@@ -2,8 +2,10 @@
 #include "settings.h"
 #include "app.h"
 #include "display.h"
-#include <Preferences.h>
 #include "config.h"
+#include "nostriot_provider.h"
+
+#include <Preferences.h>
 
 // Import Nostr library components from lib/ folder
 #include "../lib/nostr/nostr.h"
@@ -264,6 +266,7 @@ namespace NostrManager
 
         case WStype_TEXT:
             Serial.println("NostrManager::websocketEvent() - Received text message");
+            Serial.println((char *) payload);
             last_ws_message_received = millis();
             handleWebsocketMessage(nullptr, payload, length);
             break;
@@ -310,17 +313,16 @@ namespace NostrManager
 
     void handleEvent(uint8_t *data)
     {
-        String dataStr = String((char *)data);
-        Serial.println("NostrManager::handleEvent() - Processing event: " + dataStr);
+        String eventStr = String((char *)data);
+        Serial.println("NostrManager::handleEvent() - Processing event: " + eventStr);
 
         // Extract sender public key from the event using nostr library
-        String requestingPubKey = nostr::getSenderPubKeyHex(dataStr);
-        String eventContentStr = "";
+        String requestingPubKey = nostr::getSenderPubKeyHex(eventStr);
         Serial.println("NostrManager::handleEvent() - Requesting pubkey: " + requestingPubKey);
 
         // if the dataStr has the ["encrypted"] tag then it is encrypted and needs to be decrypted
         // TODO: implement decryption of i and param tags instead of content property
-        if (dataStr.indexOf("[\"encrypted\"]") >= 0)
+        if (eventStr.indexOf("[\"encrypted\"]") >= 0)
         {
             Serial.println("NostrManager::handleEvent() - Encrypted DVM requests are not supported yet");
             // Serial.println("NostrManager::handleEvent() - Event is encrypted, decrypting");
@@ -353,10 +355,10 @@ namespace NostrManager
         }
         else
         {
-            Serial.println("NostrManager::handleEvent() - Event is not encrypted" + dataStr);
+            Serial.println("NostrManager::handleEvent() - Event is not encrypted" + eventStr);
             // declare a new DynamicJsonDocument with size 2048
             DynamicJsonDocument doc(2048);
-            DeserializationError error = deserializeJson(doc, dataStr);
+            DeserializationError error = deserializeJson(doc, eventStr);
             if (error)
             {
                 Serial.println("NostrManager::handleEvent() - JSON parsing failed: " + String(error.c_str()));
@@ -364,9 +366,67 @@ namespace NostrManager
             }
                         
         }
-        String method = getRequestMethod(dataStr);
+        String method = getRequestMethod(eventStr);
         Serial.println("NostrManager::handleEvent() - Method: " + method);
+        // Does the provider support this method?
+        if(NostriotProvider::hasCapability(method)) {
+            Serial.println("NostrManager::handleEvent() - Method is supported by provider, handling");
+            String providerOutput = NostriotProvider::run(method);
+            Serial.println("NostrManager::handleEvent() - Provider output: " + providerOutput);
+            String responseMsg = getDvmResponseMessage(eventStr, providerOutput);
+            
+
+            
+            webSocket.sendTXT(responseMsg);
+            
+        } else {
+            Serial.println("NostrManager::handleEvent() - Method is NOT supported by provider, ignoring");
+        }
     }
+
+    /**
+     * @brief Get the Nostr DVM response note
+     * 
+     */
+    String getDvmResponseMessage(String &eventStr, String &responseContent) {
+        Serial.println("NostrManager::getDvmResponseMessage() - eventStr: " + eventStr);
+        DeserializationError error = deserializeJson(eventDoc, eventStr);
+        if (error)
+        {
+            Serial.println("NostrManager::getDvmResponseMessage() - JSON parsing failed: " + String(error.c_str()));
+            throw std::runtime_error("JSON parsing failed");
+        }
+
+        std::map<String, String> tags = nostr::getTags(eventStr);
+        String requestEventStr = eventDoc[2].as<String>();
+        requestEventStr.replace("\"", "\\\"");
+        // fix //" 
+        requestEventStr.replace("\\\\\"", "\\\\\\\"");
+
+        String eventTags = tags["i"];
+        eventTags.replace("\"", "\\\"");
+
+        String responseTags = 
+        "["
+            "[\"request\", \"" + requestEventStr + "\"],"
+            "[\"e\", \"" + eventDoc[2]["id"].as<String>() + "\"],"
+            "[\"i\", \"" + eventTags + "\"],"
+            "[\"p\", \"" + eventDoc[2]["pubkey"].as<String>() + "\"]"
+        "]";
+        // now construct the response message
+        String responseMsg = nostr::getNote(
+            privateKeyHex.c_str(),
+            publicKeyHex.c_str(),
+            unixTimestamp,
+            responseContent,
+            6107,
+            responseTags
+        );
+        // Serial print tags
+        Serial.println("NostrManager::getDvmResponseMessage() - Response message: " + responseMsg);
+        return responseMsg;
+    }
+
 
     /**
      * @brief Get the Request Method object from the event data's "i" tag

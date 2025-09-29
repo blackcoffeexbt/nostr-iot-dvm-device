@@ -1,7 +1,10 @@
 #pragma once
+#include <WString.h>
 
 namespace NostriotProvider {
     void init();
     void cleanup();
-    void run();
+    String* getCapabilities(int &count);
+    bool hasCapability(const String &capability);
+    String run(String &method);
 }
