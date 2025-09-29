@@ -364,7 +364,19 @@ namespace NostrManager
             }
                         
         }
-        std::map<String, String> tags = nostr::getTags(dataStr);
+        String method = getRequestMethod(dataStr);
+        Serial.println("NostrManager::handleEvent() - Method: " + method);
+    }
+
+    /**
+     * @brief Get the Request Method object from the event data's "i" tag
+     * 
+     * @param dataStr 
+     * @return String 
+     */
+    String getRequestMethod(String &eventStr) {
+
+        std::map<String, String> tags = nostr::getTags(eventStr);
 
         // Serial print tags
         Serial.println("NostrManager::handleEvent() - Event tags:");
@@ -372,6 +384,35 @@ namespace NostrManager
         {
             Serial.println("  " + tag.first + ": " + tag.second);
         }
+        // get the value of the "i" tag
+        String requestInput = tags["i"];
+        std::vector<String> requestInputParts;
+        int start = 0;
+        int end = requestInput.indexOf(',');
+        while (end != -1)
+        {
+            requestInputParts.push_back(requestInput.substring(start, end));
+            start = end + 1;
+            end = requestInput.indexOf(',', start);
+        }
+        requestInputParts.push_back(requestInput.substring(start));
+        // the first part is the JSON input
+        String requestInputJson = requestInputParts[0];
+        Serial.println("NostrManager::handleEvent() - Request input JSON: " + requestInputJson);
+        // requestInputParts will look like this [{"method": "getTemperature"}]
+        // parse the JSON input
+        DeserializationError error = deserializeJson(eventDoc, requestInputJson);
+        if (error)
+        {
+            Serial.println("NostrManager::handleEvent() - JSON parsing failed: " + String(error.c_str()));
+            throw std::runtime_error("JSON parsing failed");
+        }
+        // String method = eventDoc[0].as<String>();
+        String method = eventDoc[0]["method"].as<String>();
+        Serial.println("NostrManager::handleEvent() - Method: " + method);
+
+        return method;
+
     }
 
     void handleConnect(DynamicJsonDocument &doc, const String &requestingPubKey)
