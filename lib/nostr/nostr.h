@@ -19,6 +19,8 @@ namespace nostr
 
     String getContent(const String &serialisedJson);
 
+    JsonArray getTags(const String &serialisedJson);
+
     String getSenderPubKeyHex(const String &serialisedJson);
 
     std::pair<String, String> getPubKeyAndContent(const String &serialisedJson);

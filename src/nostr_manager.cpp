@@ -112,7 +112,7 @@ namespace NostrManager
         // relayUrl = prefs.getString("relay_url", "wss://relay.nostriot.com");
         // load from config.h for now
         relayUrl = NOSTR_RELAY_URI;
-        privateKeyHex = prefs.getString("private_key", "");
+        privateKeyHex = NOSTR_PRIVATE_KEY;
         // derive public key from private key
         if (privateKeyHex.length() == 64)
         {
@@ -245,7 +245,16 @@ namespace NostrManager
             // Subscribe to NIP-46 events for our public key
             if (publicKeyHex.length() > 0)
             {
-                String subscription = "[\"REQ\", \"signer\", {\"kinds\":[24133], \"#p\":[\"" + publicKeyHex + "\"], \"limit\":0}]";
+                String nostrIotDvmJobRequestIds = "[5107]";
+                // create a random subscription id of chars 32 characters long
+                String subscriptionId = "";
+                for (int i = 0; i < 32; i++)
+                {
+                    char c = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"[random(62)];
+                    subscriptionId += c;
+                }
+
+                String subscription = "[\"REQ\", \"" + subscriptionId + "\", {\"kinds\":" + nostrIotDvmJobRequestIds + ", \"#p\":[\"" + publicKeyHex + "\"], \"limit\":0}]";
                 webSocket.sendTXT(subscription);
                 Serial.println("NostrManager::websocketEvent() - Sent subscription: " + subscription);
             }
@@ -292,97 +301,89 @@ namespace NostrManager
     {
         String message = String((char *)data);
 
-        // Check if this is a NIP-46 signing request (EVENT with kind 24133)
-        if (message.indexOf("EVENT") != -1 && message.indexOf("24133") != -1)
+        if (message.indexOf("EVENT") != -1)
         {
             Serial.println("NostrManager::handleWebsocketMessage() - Received signing request");
-            handleSigningRequestEvent(data);
+            handleEvent(data);
         }
     }
 
-    void handleSigningRequestEvent(uint8_t *data)
+    void handleEvent(uint8_t *data)
     {
         String dataStr = String((char *)data);
-        Serial.println("NostrManager::handleSigningRequestEvent() - Processing signing request");
+        Serial.println("NostrManager::handleEvent() - Processing event: " + dataStr);
 
         // Extract sender public key from the event using nostr library
         String requestingPubKey = nostr::getSenderPubKeyHex(dataStr);
-        Serial.println("NostrManager::handleSigningRequestEvent() - Requesting pubkey: " + requestingPubKey);
+        String eventContentStr = "";
+        Serial.println("NostrManager::handleEvent() - Requesting pubkey: " + requestingPubKey);
 
-        // Determine encryption type (NIP-04 vs NIP-44) and decrypt
-        String decryptedMessage = "";
-        if (dataStr.indexOf("?iv=") != -1)
+        // if the dataStr has the ["encrypted"] tag then it is encrypted and needs to be decrypted
+        // TODO: implement decryption of i and param tags instead of content property
+        if (dataStr.indexOf("[\"encrypted\"]") >= 0)
         {
-            Serial.println("NostrManager::handleSigningRequestEvent() - Using NIP-04 decryption");
-            decryptedMessage = nostr::nip04Decrypt(privateKeyHex.c_str(), dataStr);
+            Serial.println("NostrManager::handleEvent() - Encrypted DVM requests are not supported yet");
+            // Serial.println("NostrManager::handleEvent() - Event is encrypted, decrypting");
+            // // Determine encryption type (NIP-04 vs NIP-44) and decrypt
+            // String decryptedMessage = "";
+            // if (dataStr.indexOf("?iv=") != -1)
+            // {
+            //     Serial.println("NostrManager::handleEvent() - Using NIP-04 decryption");
+            //     decryptedMessage = nostr::nip04Decrypt(privateKeyHex.c_str(), dataStr);
+            // }
+            // else
+            // {
+            //     Serial.println("NostrManager::handleEvent() - Using NIP-44 decryption");
+            //     decryptedMessage = nostr::nip44Decrypt(privateKeyHex.c_str(), dataStr);
+            // }
+
+            // if (decryptedMessage.length() == 0)
+            // {
+            //     Serial.println("NostrManager::handleEvent() - Failed to decrypt message");
+            //     return;
+            // }
+            // Serial.println("NostrManager::handleEvent() - Decrypted message: " + decryptedMessage);
+            // Parse the decrypted JSON
+            // DeserializationError error = deserializeJson(eventDoc, decryptedMessage);
+            // if (error)
+            // {
+            //     Serial.println("NostrManager::handleEvent() - JSON parsing failed: " + String(error.c_str()));
+            //     return;
+            // }
         }
         else
         {
-            Serial.println("NostrManager::handleSigningRequestEvent() - Using NIP-44 decryption");
-            decryptedMessage = nostr::nip44Decrypt(privateKeyHex.c_str(), dataStr);
+            Serial.println("NostrManager::handleEvent() - Event is not encrypted" + dataStr);
+            // declare a new DynamicJsonDocument with size 2048
+            DynamicJsonDocument doc(2048);
+            DeserializationError error = deserializeJson(doc, dataStr);
+            if (error)
+            {
+                Serial.println("NostrManager::handleEvent() - JSON parsing failed: " + String(error.c_str()));
+                return;
+            }
+                        
         }
+        JsonArray tags = nostr::getTags(dataStr);
 
-        if (decryptedMessage.length() == 0)
+        if (tags.size() > 0)
         {
-            Serial.println("NostrManager::handleSigningRequestEvent() - Failed to decrypt message");
-            return;
-        }
-
-        Serial.println("NostrManager::handleSigningRequestEvent() - Decrypted message: " + decryptedMessage);
-
-        // Parse the decrypted JSON
-        DeserializationError error = deserializeJson(eventDoc, decryptedMessage);
-        if (error)
-        {
-            Serial.println("NostrManager::handleSigningRequestEvent() - JSON parsing failed: " + String(error.c_str()));
-            return;
-        }
-
-        String method = eventDoc["method"];
-        Serial.println("NostrManager::handleSigningRequestEvent() - Method: " + method);
-
-        if (method == Methods::CONNECT)
-        {
-            handleConnect(eventDoc, requestingPubKey);
-        }
-        else if (method == Methods::SIGN_EVENT)
-        {
-            handleSignEvent(eventDoc, requestingPubKey.c_str());
-        }
-        else if (method == Methods::PING)
-        {
-            handlePing(eventDoc, requestingPubKey.c_str());
-        }
-        else if (method == Methods::GET_PUBLIC_KEY)
-        {
-            handleGetPublicKey(eventDoc, requestingPubKey.c_str());
-        }
-        else if (method == Methods::NIP04_ENCRYPT)
-        {
-            handleNip04Encrypt(eventDoc, requestingPubKey.c_str());
-        }
-        else if (method == Methods::NIP04_DECRYPT)
-        {
-            handleNip04Decrypt(eventDoc, requestingPubKey.c_str());
-        }
-        else if (method == Methods::NIP44_ENCRYPT)
-        {
-            handleNip44Encrypt(eventDoc, requestingPubKey.c_str());
-        }
-        else if (method == Methods::NIP44_DECRYPT)
-        {
-            handleNip44Decrypt(eventDoc, requestingPubKey.c_str());
-        }
-        else
-        {
-            Serial.println("NostrManager::handleSigningRequestEvent() - Unknown method: " + method);
+            // print all tags
+            Serial.println("NostrManager::handleEvent() - Event tags:");
+            for (JsonVariant tag : tags)
+            {
+                // String tagStr = tag.as<String>();
+                // Serial.println(" - " + tagStr);
+                // print tag key and values
+                if (tag.size() > 0)
+                {
+                    String tagKey = tag[0];
+            }
         }
     }
 
     void handleConnect(DynamicJsonDocument &doc, const String &requestingPubKey)
     {
-        // TODO: Implement nostr relay connection handling
-        // e.g. listen for DVM requests etc
         // String requestId = doc["id"];
         // String secret = doc["params"][1];
 
@@ -606,11 +607,6 @@ namespace NostrManager
 
     void processLoop()
     {
-        if (!signer_initialized)
-        {
-            return;
-        }
-
         // Update time
         timeClient.update();
         unixTimestamp = timeClient.getEpochTime();

@@ -34,7 +34,7 @@ namespace NostrManager {
     void resetWebsocketFragmentState();
     
     // NIP-46 protocol handlers
-    void handleSigningRequestEvent(uint8_t* data);
+    void handleEvent(uint8_t* data);
     void handleConnect(DynamicJsonDocument& doc, const String& requestingPubKey);
     void handleSignEvent(DynamicJsonDocument& doc, const char* requestingPubKey);
     void handlePing(DynamicJsonDocument& doc, const char* requestingPubKey);

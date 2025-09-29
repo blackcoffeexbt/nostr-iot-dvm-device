@@ -132,6 +132,18 @@ namespace nostr
         return nostrEventDoc[2]["content"];
     }
 
+    // get tags array from event
+    JsonArray getTags(const String &serialisedJson)
+    {
+        DeserializationError error = deserializeJson(nostrEventDoc, serialisedJson);
+        if (error)
+        {
+            Serial.print(F("deserializeJson() failed: "));
+            Serial.println(error.c_str());
+        }
+        return nostrEventDoc[2]["tags"].as<JsonArray>();
+    }
+
     String getSenderPubKeyHex(const String &serialisedJson)
     {
         DeserializationError error = deserializeJson(nostrEventDoc, serialisedJson);
