@@ -132,16 +132,37 @@ namespace nostr
         return nostrEventDoc[2]["content"];
     }
 
-    // get tags array from event
-    JsonArray getTags(const String &serialisedJson)
+    // get tags array from event and convert to key-value pairs
+    std::map<String, String> getTags(const String &serialisedJson)
     {
+        std::map<String, String> tagMap;
         DeserializationError error = deserializeJson(nostrEventDoc, serialisedJson);
         if (error)
         {
             Serial.print(F("deserializeJson() failed: "));
             Serial.println(error.c_str());
+            return tagMap;
         }
-        return nostrEventDoc[2]["tags"].as<JsonArray>();
+        
+        JsonArray tagsArray = nostrEventDoc[2]["tags"].as<JsonArray>();
+        for (JsonArray tag : tagsArray)
+        {
+            if (tag.size() >= 2)
+            {
+                String key = tag[0].as<String>();
+                String value = tag[1].as<String>();
+                
+                // For tags with more than 2 elements, concatenate remaining elements
+                for (size_t i = 2; i < tag.size(); i++)
+                {
+                    value += ",";
+                    value += tag[i].as<String>();
+                }
+                
+                tagMap[key] = value;
+            }
+        }
+        return tagMap;
     }
 
     String getSenderPubKeyHex(const String &serialisedJson)

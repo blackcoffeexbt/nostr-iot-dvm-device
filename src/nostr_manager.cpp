@@ -364,21 +364,13 @@ namespace NostrManager
             }
                         
         }
-        JsonArray tags = nostr::getTags(dataStr);
+        std::map<String, String> tags = nostr::getTags(dataStr);
 
-        if (tags.size() > 0)
+        // Serial print tags
+        Serial.println("NostrManager::handleEvent() - Event tags:");
+        for (auto const &tag : tags)
         {
-            // print all tags
-            Serial.println("NostrManager::handleEvent() - Event tags:");
-            for (JsonVariant tag : tags)
-            {
-                // String tagStr = tag.as<String>();
-                // Serial.println(" - " + tagStr);
-                // print tag key and values
-                if (tag.size() > 0)
-                {
-                    String tagKey = tag[0];
-            }
+            Serial.println("  " + tag.first + ": " + tag.second);
         }
     }
 

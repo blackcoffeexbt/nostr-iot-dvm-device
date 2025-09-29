@@ -8,6 +8,7 @@
 #include <base64.h>
 #include <aes.h>
 #include <ArduinoJson.h>
+#include <map>
 
 namespace nostr
 {
@@ -19,7 +20,7 @@ namespace nostr
 
     String getContent(const String &serialisedJson);
 
-    JsonArray getTags(const String &serialisedJson);
+    std::map<String, String> getTags(const String &serialisedJson);
 
     String getSenderPubKeyHex(const String &serialisedJson);
 
