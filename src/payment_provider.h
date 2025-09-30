@@ -15,12 +15,13 @@ namespace PaymentProvider {
         String payment_hash;         // Key for matching payments
         String original_event_str;   // Complete original event for response construction
         String method;               // Method to execute
+        String value;                // Method value parameter
         unsigned long created_at;    // Request timestamp
         unsigned long expires_at;    // Payment timeout (15 mins)
     };
 
     // Payment confirmation callback type
-    typedef std::function<void(String payment_hash, String original_event_str, String method)> payment_callback_t;
+    typedef std::function<void(String payment_hash, String original_event_str, String method, String value)> payment_callback_t;
 
     // Core payment provider functions
     void init();
@@ -34,7 +35,7 @@ namespace PaymentProvider {
     String extractBolt11FromResponse(const String& response);
 
     // Payment queue management
-    void addToPaymentQueue(const String& payment_hash, const String& original_event_str, const String& method);
+    void addToPaymentQueue(const String& payment_hash, const String& original_event_str, const String& method, const String& value);
     void cleanupExpiredPayments();
     
     // Payment monitoring

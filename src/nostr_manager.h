@@ -54,6 +54,8 @@ namespace NostrManager {
     // NIP-46 protocol handlers
     void handleEvent(uint8_t* data);
     String getRequestMethod(String &dataStr);
+    String getRequestValue(String &dataStr);
+    String getRequestInputTags(String &dataStr);
     String getResponseEvent(String &eventStr, String &responseContent);
     void handleConnect(DynamicJsonDocument& doc, const String& requestingPubKey);
     void handleSignEvent(DynamicJsonDocument& doc, const char* requestingPubKey);

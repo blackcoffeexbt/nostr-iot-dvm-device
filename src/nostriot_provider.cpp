@@ -25,8 +25,10 @@ namespace NostriotProvider
     };
 
     static const std::vector<Capability> capabilities_with_pricing = {
-        {"getTemperature", 1},
-        {"setLED", 2},
+        {"getTemperature", 0},
+        {"toggleLamp", 2},
+        {"getHumidity", 1},
+        {"setTemperature", 3}
     };
 
     void init()
@@ -123,7 +125,7 @@ namespace NostriotProvider
         // Do any necessary cleanup here
     }
 
-    String run(String &method)
+    String run(String &method, String &value)
     {
         // TODO: get real data
         if (method == "getTemperature")
@@ -132,10 +134,21 @@ namespace NostriotProvider
             float temperature = 20.0 + static_cast<float>(random(0, 500)) / 100.0;
             return String(temperature);
         }
-        else if (method == "setLED")
+        else if (method == "getHumidity")
         {
-            // pretend to set an LED
-            return "LED set";
+            // return a fake humidity for now between 30 and 70%
+            int humidity = random(30, 70);
+            return String(humidity);
+        }
+        else if (method == "toggleLamp")
+        {
+            // pretend to toggle a lamp
+            return "Lamp toggled";
+        }
+        else if (method == "setTemperature")
+        {
+            // pretend to set a temperature
+            return "Temperature set";
         }
         else
         {

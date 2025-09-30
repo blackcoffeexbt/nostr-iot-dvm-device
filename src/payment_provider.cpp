@@ -99,7 +99,7 @@ namespace PaymentProvider {
         return response.substring(bolt11Start, bolt11End);
     }
 
-    void addToPaymentQueue(const String& payment_hash, const String& original_event_str, const String& method) {
+    void addToPaymentQueue(const String& payment_hash, const String& original_event_str, const String& method, const String& value) {
         // Check queue size limit
         if (payment_queue.size() >= MAX_QUEUE_SIZE) {
             Serial.println("PaymentProvider::addToPaymentQueue() - Queue full, removing oldest entry");
@@ -118,6 +118,7 @@ namespace PaymentProvider {
         request.payment_hash = payment_hash;
         request.original_event_str = original_event_str;
         request.method = method;
+        request.value = value;
         request.created_at = millis();
         request.expires_at = millis() + PAYMENT_TIMEOUT;
         
@@ -206,7 +207,7 @@ namespace PaymentProvider {
                 
                 // Call the callback if set
                 if (payment_callback) {
-                    payment_callback(it->payment_hash, it->original_event_str, it->method);
+                    payment_callback(it->payment_hash, it->original_event_str, it->method, it->value);
                 }
                 
                 // Remove from queue

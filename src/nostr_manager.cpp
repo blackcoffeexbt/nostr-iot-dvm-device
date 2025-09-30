@@ -91,9 +91,9 @@ namespace NostrManager
 
         // Initialize payment provider
         PaymentProvider::init();
-        PaymentProvider::setPaymentCallback([](String payment_hash, String original_event_str, String method) {
+        PaymentProvider::setPaymentCallback([](String payment_hash, String original_event_str, String method, String value) {
             // Execute the action when payment is confirmed
-            String output = NostriotProvider::run(method);
+            String output = NostriotProvider::run(method, value);
             String response = getResponseEvent(original_event_str, output);
             String wrappedResponse = "[\"EVENT\", " + response + "]";
             
@@ -370,7 +370,8 @@ namespace NostrManager
                         
         }
         String method = getRequestMethod(eventStr);
-        Serial.println("NostrManager::handleEvent() - Method: " + method);
+        String value = getRequestValue(eventStr);
+        Serial.println("NostrManager::handleEvent() - Method: " + method + " with value: " + value);
         
         // Does the provider support this method?
         if(NostriotProvider::hasCapability(method)) {
@@ -388,7 +389,7 @@ namespace NostrManager
                 
                 if (payment_hash.length() > 0 && bolt11.length() > 0) {
                     // Add to payment queue
-                    PaymentProvider::addToPaymentQueue(payment_hash, eventStr, method);
+                    PaymentProvider::addToPaymentQueue(payment_hash, eventStr, method, value);
                     
                     // Send immediate response with invoice
                     String responseMsg = getPaymentRequiredEvent(eventStr, bolt11);
@@ -401,7 +402,7 @@ namespace NostrManager
             } else {
                 // No cost
                 Serial.println("NostrManager::handleEvent() - Free operation, executing immediately");
-                String providerOutput = NostriotProvider::run(method);
+                String providerOutput = NostriotProvider::run(method, value);
                 Serial.println("NostrManager::handleEvent() - Provider output: " + providerOutput);
                 String responseMsg = getResponseEvent(eventStr, providerOutput);
                 String wrappedResponse = "[\"EVENT\", " + responseMsg + "]";
@@ -507,15 +508,8 @@ namespace NostrManager
         return responseMsg;
     }
 
-    /**
-     * @brief Get the Request Method object from the event data's "i" tag
-     * 
-     * @param dataStr 
-     * @return String 
-     */
-    String getRequestMethod(String &eventStr) {
-
-        std::map<String, String> tags = nostr::getTags(eventStr);
+    String getRequestInputTags(String &eventStr) {
+       std::map<String, String> tags = nostr::getTags(eventStr);
 
         // Serial print tags
         Serial.println("NostrManager::handleEvent() - Event tags:");
@@ -525,32 +519,60 @@ namespace NostrManager
         }
         // get the value of the "i" tag
         String requestInput = tags["i"];
-        std::vector<String> requestInputParts;
-        int start = 0;
-        int end = requestInput.indexOf(',');
-        while (end != -1)
-        {
-            requestInputParts.push_back(requestInput.substring(start, end));
-            start = end + 1;
-            end = requestInput.indexOf(',', start);
-        }
-        requestInputParts.push_back(requestInput.substring(start));
-        // the first part is the JSON input
-        String requestInputJson = requestInputParts[0];
-        Serial.println("NostrManager::handleEvent() - Request input JSON: " + requestInputJson);
+        
+        Serial.println("NostrManager::handleEvent() - Request input JSON: " + requestInput);
+        return requestInput;
+    }
+
+    /**
+     * @brief Get the Request Method object from the event data's "i" tag
+     * 
+     * @param dataStr 
+     * @return String 
+     */
+    String getRequestMethod(String &eventStr) {
+        String requestInputTagsJson = getRequestInputTags(eventStr);
+        Serial.println("NostrManager::handleEvent() - Request input JSON: " + requestInputTagsJson);
         // requestInputParts will look like this [{"method": "getTemperature"}]
         // parse the JSON input
-        DeserializationError error = deserializeJson(eventDoc, requestInputJson);
+        DeserializationError error = deserializeJson(eventDoc, requestInputTagsJson);
         if (error)
         {
             Serial.println("NostrManager::handleEvent() - JSON parsing failed: " + String(error.c_str()));
             throw std::runtime_error("JSON parsing failed");
         }
-        // String method = eventDoc[0].as<String>();
         String method = eventDoc[0]["method"].as<String>();
         Serial.println("NostrManager::handleEvent() - Method: " + method);
 
         return method;
+    }
+
+    /**
+     * @brief Get the Request method Value object
+     * 
+     * @param eventStr 
+     * @return String 
+     */
+    String getRequestValue(String &eventStr) {
+        String requestInputTagsJson = getRequestInputTags(eventStr);
+        Serial.println("NostrManager::handleEvent() - Request input JSON: " + requestInputTagsJson);
+        // requestInputParts *might* look like this [{"method": "getTemperature", "value": "25"}]
+        // parse the JSON input
+        DeserializationError error = deserializeJson(eventDoc, requestInputTagsJson);
+        if (error)
+        {
+            Serial.println("NostrManager::handleEvent() - JSON parsing failed: " + String(error.c_str()));
+            throw std::runtime_error("JSON parsing failed");
+        }
+        try {
+            String value = eventDoc[0]["value"].as<String>();
+            Serial.println("NostrManager::handleEvent() - Value: " + value);
+            return value;
+        }
+        catch (...) {
+            Serial.println("NostrManager::handleEvent() - No value provided");
+            return "";
+        }
 
     }
 
