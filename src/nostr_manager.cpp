@@ -77,7 +77,7 @@ namespace NostrManager
 
     void init()
     {
-        Serial.println("NostrManager::init() - Initializing Remote Signer module");
+        Serial.println("NostrManager::init() - Initializing NostrManager module");
 
         // Initialize memory for JSON documents
         eventDoc = DynamicJsonDocument(JSON_DOC_SIZE);
@@ -102,18 +102,18 @@ namespace NostrManager
         });
 
         signer_initialized = true;
-        Serial.println("NostrManager::init() - Remote Signer module initialized");
+        Serial.println("NostrManager::init() - NostrManager module initialized");
     }
 
     void cleanup()
     {
-        Serial.println("NostrManager::cleanup() - Cleaning up Remote Signer module");
+        Serial.println("NostrManager::cleanup() - Cleaning up NostrManager module");
 
         disconnect();
         PaymentProvider::cleanup();
         signer_initialized = false;
 
-        Serial.println("NostrManager::cleanup() - Remote Signer module cleaned up");
+        Serial.println("NostrManager::cleanup() - NostrManager module cleaned up");
     }
 
     void loadConfigFromPreferences()

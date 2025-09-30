@@ -17,7 +17,7 @@ namespace App
 
     void init()
     {
-        Serial.println("=== Remote Nostr Signer Initializing ===");
+        Serial.println("=== Nostriot Device Initializing ===");
         Serial.println("Version: " + Config::VERSION);
         Serial.println("Build Date: " + Config::BUILD_DATE);
 
@@ -101,14 +101,14 @@ namespace App
             Serial.println("ERROR: WiFiManager::processLoop() threw exception");
         }
 
-        // Process Remote Signer WebSocket events (with error handling)
+        // Process WebSocket events (with error handling)
         try
         {
             NostrManager::processLoop();
         }
         catch (...)
         {
-            Serial.println("ERROR: RemoteSigner::processLoop() threw exception");
+            Serial.println("ERROR: NostrManager::processLoop() threw exception");
         }
 
         // Periodic health checks
@@ -170,7 +170,7 @@ namespace App
 
         if (connected)
         {
-            // WiFi connected - attempt Remote Signer connection
+            // WiFi connected
             if (!NostrManager::isConnected())
             {
                 Serial.println("WiFi connected, attempting relay connection...");
@@ -179,7 +179,7 @@ namespace App
         }
         else
         {
-            // WiFi disconnected - notify Remote Signer module
+            // WiFi disconnected - notify Nostr Manager module
             Serial.println("WiFi disconnected, disconnecting from relay...");
             NostrManager::disconnect();
         }

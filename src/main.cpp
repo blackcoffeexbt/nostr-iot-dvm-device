@@ -67,7 +67,7 @@ static Preferences preferences;
 void setup(void)
 {
     Serial.begin(115200);
-    Serial.println("=== Remote Nostr Signer Starting ===");
+    Serial.println("=== Nostriot Device Starting ===");
     Serial.println("Software Version: " + SOFTWARE_VERSION);
 
     // Initialize PSRAM memory space for Nostr operations to prevent heap fragmentation
