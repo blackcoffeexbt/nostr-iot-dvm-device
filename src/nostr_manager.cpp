@@ -27,6 +27,9 @@ namespace NostrManager
         const char *NIP44_DECRYPT = "nip44_decrypt";
     }
 
+    // define subscription renewal interval
+    const unsigned long SUBSCRIPTION_RENEWAL_INTERVAL = 1 * 60 * 1000;
+
     // WebSocket client
     static WebSocketsClient webSocket;
     static unsigned long last_loop_time = 0;
@@ -50,6 +53,10 @@ namespace NostrManager
     static int reconnection_attempts = 0;
     static unsigned long last_reconnect_attempt = 0;
     static bool manual_reconnect_needed = false;
+    
+    // Subscription management
+    static String current_subscription_id = "";
+    static unsigned long last_subscription_renewal = 0;
 
     // WebSocket fragment management
     static bool ws_fragment_in_progress = false;
@@ -201,6 +208,10 @@ namespace NostrManager
 
         webSocket.disconnect();
         connection_in_progress = false;
+        
+        // Reset subscription ID so a new one is created on reconnection
+        current_subscription_id = "";
+        last_subscription_renewal = 0;
 
         // Update status display immediately
         displayConnectionStatus(false);
@@ -245,21 +256,7 @@ namespace NostrManager
             displayConnectionStatus(true);
 
             // Subscribe to NIP-46 events for our public key
-            if (publicKeyHex.length() > 0)
-            {
-                String nostrIotDvmJobRequestIds = "[5107]";
-                // create a random subscription id of chars 32 characters long
-                String subscriptionId = "";
-                for (int i = 0; i < 32; i++)
-                {
-                    char c = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"[random(62)];
-                    subscriptionId += c;
-                }
-
-                String subscription = "[\"REQ\", \"" + subscriptionId + "\", {\"kinds\":" + nostrIotDvmJobRequestIds + ", \"#p\":[\"" + publicKeyHex + "\"], \"limit\":0}]";
-                webSocket.sendTXT(subscription);
-                Serial.println("NostrManager::websocketEvent() - Sent subscription: " + subscription);
-            }
+            sendSubscription();
 
             updateStatus(true, "Connected");
             break;
@@ -715,6 +712,12 @@ namespace NostrManager
             last_ws_ping = now;
         }
 
+        if (isConnected() && (now - last_subscription_renewal > SUBSCRIPTION_RENEWAL_INTERVAL))
+        {
+            Serial.println("NostrManager::processLoop() - Renewing subscription to maintain connection");
+            sendSubscription();
+        }
+
         // Periodic status updates every 5 seconds
         static unsigned long last_status_update = 0;
         if (now - last_status_update > 5000)
@@ -778,6 +781,31 @@ namespace NostrManager
                 }
             }
         }
+    }
+
+    void sendSubscription()
+    {
+        if (!isConnected() || publicKeyHex.length() == 0)
+        {
+            Serial.println("NostrManager::sendSubscription() - Cannot send subscription: not connected or no public key");
+            return;
+        }
+
+        // Create subscription ID if we don't have one
+        if (current_subscription_id.length() == 0)
+        {
+            for (int i = 0; i < 32; i++)
+            {
+                char c = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"[random(62)];
+                current_subscription_id += c;
+            }
+        }
+
+        String nostrIotDvmJobRequestIds = "[5107]";
+        String subscription = "[\"REQ\", \"" + current_subscription_id + "\", {\"kinds\":" + nostrIotDvmJobRequestIds + ", \"#p\":[\"" + publicKeyHex + "\"], \"limit\":0}]";
+        webSocket.sendTXT(subscription);
+        last_subscription_renewal = millis();
+        Serial.println("NostrManager::sendSubscription() - Sent subscription: " + subscription);
     }
 
     void sendPing()
