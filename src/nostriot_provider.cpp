@@ -15,8 +15,13 @@
 
 namespace NostriotProvider
 {
-    const static String SERVICE_NAME = "Nostriot IoT Service";
-    const static String SERVICE_DESCRIPTION = "Provides IoT device functionalities via Nostr protocol";
+    const static String SERVICE_NAME = "BC's Nostriot IoT Device";
+    const static String SERVICE_DESCRIPTION = "An example IoT device using Nostr IoT services";
+    
+    // Hardware configuration
+    const int LED_PIN = 2;
+    static bool ledState = false;
+    
     // Device capabilities and pricing
     struct Capability
     {
@@ -26,14 +31,17 @@ namespace NostriotProvider
 
     static const std::vector<Capability> capabilities_with_pricing = {
         {"getTemperature", 0},
-        {"toggleLamp", 2},
+        {"toggleLamp", 0},
         {"getHumidity", 1},
         {"setTemperature", 5}
     };
 
     void init()
     {
-        // set up the sensor or whatever is needed here
+        pinMode(LED_PIN, OUTPUT);
+        digitalWrite(LED_PIN, LOW);   // LED off
+        ledState = false;
+        Serial.println("NostriotProvider::init() - LED pin " + String(LED_PIN) + " initialized");
     }
 
     /**
@@ -167,8 +175,13 @@ namespace NostriotProvider
         }
         else if (method == "toggleLamp")
         {
-            // pretend to toggle a lamp
-            return "Lamp toggled";
+            // Toggle the LED state
+            ledState = !ledState;
+            digitalWrite(LED_PIN, ledState ? HIGH : LOW);
+            
+            String state = ledState ? "ON" : "OFF";
+            Serial.println("NostriotProvider::toggleLamp() - LED turned " + state);
+            return "Lamp turned " + state;
         }
         else if (method == "setTemperature")
         {
