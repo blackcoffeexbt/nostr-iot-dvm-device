@@ -1,6 +1,6 @@
 /**
  *
- * This is the main provider file for Nostriot IoT device operations.
+ * This is the main provider file for Nostriot device operations.
  * It is where sensors, switches etc are managed.
  *
  * @file nostriot_provider.cpp
@@ -15,32 +15,39 @@
 
 namespace NostriotProvider
 {
+    // Device capabilities and pricing
+    struct Capability
+    {
+        String name;
+        int price;
+    };
 
-    static const String capabilities[] = {"getTemperature", "setLED"};
-    static const int capabilities_count = sizeof(capabilities) / sizeof(capabilities[0]);
-
-    // price per request in sats
-    static const int price_per_request = 1;
-
-    
+    static const std::vector<Capability> capabilities_with_pricing = {
+        {"getTemperature", 1},
+        {"setLED", 2},
+    };
 
     void init()
     {
         // set up the sensor or whatever is needed here
     }
 
-
-        /**
-         * @brief Get the Capabilities object
-         *
-         * @param count
-         * @return String*
-         */
-        String *
-        getCapabilities(int &count)
+    /**
+     * @brief Get the Capabilities object
+     *
+     * @param count
+     * @return String*
+     */
+    String *
+    getCapabilities(int &count)
     {
-        count = capabilities_count;
-        return (String *)capabilities;
+        count = capabilities_with_pricing.size();
+        String *caps = new String[count];
+        for (int i = 0; i < count; i++)
+        {
+            caps[i] = capabilities_with_pricing[i].name;
+        }
+        return caps;
     }
 
     /**
@@ -61,9 +68,22 @@ namespace NostriotProvider
         return false;
     }
 
-    int getPricePerRequest()
+    /**
+     * @brief Get the Price Per Request object
+     *
+     * @param method
+     * @return int Price in sats, or 0 if free or unknown
+     */
+    int getPrice(const String &method)
     {
-        return price_per_request;
+        for (const auto &cap : capabilities_with_pricing)
+        {
+            if (cap.name == method)
+            {
+                return cap.price;
+            }
+        }
+        return 0; 
     }
 
     void cleanup()
@@ -73,7 +93,6 @@ namespace NostriotProvider
 
     String run(String &method)
     {
-        // Main loop for device operations
         // TODO: get real data
         if (method == "getTemperature")
         {

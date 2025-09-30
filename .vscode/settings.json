@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "*.embeddedhtml": "html",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "*.example": "cpp"
     }
 }

@@ -1,26 +1,26 @@
-# Nostr Remote Signer Device
+# Nostriot Device
 
-A hardware Nostr remote signer implementing NIP-46 (Nostr Connect) protocol for secure event signing
+A Nostr IoT device implementing Data Vending Machine (DVM) services with Lightning Network payment integration.
 
 ## Overview
 
-This is a hardware-based Nostr remote signer built for the Guition JC3248W535 3.5" ESP32-S3 development board with touch screen display. The device implements the NIP-46 (Nostr Connect) protocol to provide secure remote signing services for Nostr events while keeping private keys isolated on the hardware device.
+This is a hardware-based Nostr IoT device built for the ESP32-S3 Guition JC3248W535 touch screen display. The device implements the Nostr DVM (Data Vending Machine) protocol to provide IoT services like temperature readings and device control through the Nostr network, with optional Lightning Network payments for premium services.
 
 ## Features
 
-- **NIP-46 Remote Signer**: Secure implementation of Nostr Connect protocol
-- **Touch Screen Interface**: 320x480 color touchscreen for user interaction
-- **Hardware Key Storage**: Private keys stored securely on device
-- **Client Authorization**: Manual approval system for connecting applications
-- **Event Signing Confirmation**: User approval required for each signing request
-- **WiFi Connectivity**: Connect to Nostr relays via WiFi
-- **PIN Protection**: Secure access to settings and configuration
-- **Power Management**: Light sleep after a short period of inactivity and deep sleep mode after a longer period of inactivity
-- **Real-time Status**: Connection status and signing request notifications
+- **Nostr DVM Protocol**: Complete implementation of Data Vending Machine services
+- **IoT Services**: Temperature monitoring, LED control, and extensible sensor integration
+- **Lightning Payments**: LNbits integration for paid services with automatic payment processing
+- **Touch Screen Interface**: 320x480 color touchscreen for device management
+- **WiFi Connectivity**: Connect to Nostr relays and payment providers via WiFi
+- **Payment Queue**: Robust payment processing with timeout management
+- **Real-time Monitoring**: WebSocket-based payment confirmation and status updates
+- **Modular Architecture**: Clean separation of concerns for easy maintenance and extension
 
 ## Hardware Requirements
 
-- Guition JC3248W535 3.5" ESP32-S3 development board with touch screen display (320x480)
+- ESP32-S3 dev board
+- Compatible sensors (temperature, etc.)
 - Power supply (USB or battery)
 
 ## Getting Started
@@ -28,14 +28,15 @@ This is a hardware-based Nostr remote signer built for the Guition JC3248W535 3.
 ### Prerequisites
 
 - [PlatformIO](https://platformio.org/) installed
-- Guition JC3248W535 3.5" touch screen display (320x480)
+- ESP32-S3 development board
+- LNbits instance for Lightning payments
 
 ### Building and Flashing
 
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd <repository-directory>
+cd nostriot-device
 
 # Build the project
 pio run
@@ -43,8 +44,11 @@ pio run
 # Upload to device
 pio run --target upload
 
-# Monitor serial output
+# Monitor serial output with exception decoder
 pio device monitor
+
+# Build and upload with monitoring
+pio run --target upload --target monitor
 ```
 
 ### Documentation
@@ -52,71 +56,105 @@ pio device monitor
 ```bash
 # Generate documentation
 pio run -t docs
+
+# Run code quality checks
+pio check
 ```
 
 ### Initial Setup
 
-1. Power on the device
-2. Use the touch screen interface to navigate to settings
-3. Configure WiFi connection to connect to your network
-4. Generate or import a Nostr private key (nsec format)
-5. Configure relay connection settings
-6. The device will display a bunker URL that applications can use to connect
-7. When applications request to connect, approve them via the touch interface
-8. Authorize signing requests as they come in from connected applications
+1. **Configure** Wifi, Nostr, and LNbits settings in `src/config.h`
+2. **Flash** the firmware to the ESP32-S3 device using PlatformIO either using VSCode or command line
+1. **Power on the device**
 
 ### Usage
 
-**Connecting Applications:**
-1. Applications use the bunker URL to initiate NIP-46 connections
-2. Device prompts for user authorization of new connections
-3. Approved applications are stored in authorized clients list
+**IoT Service Requests:**
+1. Send DVM job requests (kind 5107) to the device's public key
+2. Free services execute immediately
+3. Paid services return payment requests with Lightning invoices
+4. Pay the invoice to receive service response
 
-**Signing Events:**
-1. Connected applications send signing requests via NIP-46
-2. Device displays event details and prompts for user confirmation
-3. User approves or rejects each signing request individually
-4. Private key never leaves the device
+**Available Services:**
+- The available services and their pricing can be configured in `src/nostriot_provider.cpp` this is where external sensors / actuators can be integrated.
+
+**Payment Integration:**
+- Automatic Lightning invoice generation via LNbits
+- Real-time payment monitoring and confirmation
+- Payment queue with timeout management
+- Support for both BOLT11 invoices and Nostr zaps
 
 ## Architecture
 
-The application uses a modular architecture with the following components:
+The application uses a clean modular architecture:
 
-- **App**: Central coordinator managing all modules
-- **Display**: LVGL-based UI with LovyanGFX driver
-- **WiFi**: Network connectivity management
-- **RemoteSigner**: NIP-46 protocol implementation and event signing
-- **Settings**: Persistent configuration storage
-- **UI**: User interface screens and interactions
+### Core Modules
+- **App**: Central coordinator managing all modules and inter-module communication
+- **NostrManager**: Nostr protocol implementation, DVM message handling, and relay communication
+- **PaymentProvider**: Lightning payment integration, invoice generation, and payment monitoring
+- **NostriotProvider**: IoT device capabilities, sensor reading, and device control
+- **WiFiManager**: Network connectivity and configuration management
+- **Display**: Touch screen interface and status display
+- **Settings**: Persistent configuration storage and management
 
-## Development
+### Key Features
+- **Payment Queue**: Handles concurrent payment requests with proper timeout management
+- **WebSocket Monitoring**: Real-time payment confirmations from LNbits
+- **Modular Payment System**: Easy to swap payment providers (LNbits → other Lightning services)
+- **DVM Protocol**: Complete implementation of Nostr Data Vending Machine specification
+- **Event-Driven Architecture**: Clean separation between protocol handling and business logic
 
-Built with:
-- PlatformIO Arduino framework
-- LVGL graphics library
-- LovyanGFX display driver
-- Custom Nostr protocol implementation (NIP-01, NIP-44, NIP-46)
-- WebSocket communication for relay connections
-- Secp256k1 cryptography for Schnorr signatures
+## Configuration
 
-### Code Quality and Analysis
+Key configuration options in `src/config.h`:
 
-#### Finding Unused Functions
+```cpp
+// Nostr Configuration
+#define NOSTR_RELAY_URI "wss://relay.example.com"
+#define NOSTR_PRIVATE_KEY "your_device_private_key_hex"
 
-To analyze the codebase for unused functions, use cppcheck:
+// LNbits Configuration  
+#define LNBITS_HOST_URL "lnbits.example.com"
+#define LNBITS_INVOICE_KEY "your_invoice_key"
+#define LNBITS_PAYMENTS_ENDPOINT "/api/v1/payments"
+
+// Device Configuration
+#define DEVICE_NAME "Nostriot Device"
+```
+
+### Adding New IoT Services
+
+1. **Add capability** to `NostriotProvider::capabilities[]`
+2. **Implement service logic** in `NostriotProvider::run()`
+3. **Set pricing** in `NostriotProvider::getPricePerRequest()`
+4. **Test with DVM requests** via Nostr clients
+
+### Code Quality
 
 ```bash
-# Install cppcheck (macOS with Homebrew)
-brew install cppcheck
+# Run code quality checks
+pio check
 
-# Run analysis to find unused functions
+# Find unused functions
 cppcheck --enable=unusedFunction src/
 
-# For more detailed analysis with all checks
+# Full analysis
 cppcheck --enable=all --inconclusive src/
 ```
 
-This will identify functions that are defined but never called, helping keep the codebase clean and reducing binary size.
+## Protocol Implementation
+
+### DVM (Data Vending Machine)
+- **Request Format**: NIP-89 compatible job requests (kind 5107)
+- **Response Format**: Job results (kind 6107) with proper tagging
+- **Payment Integration**: Payment requests (kind 9735) with Lightning invoices
+- **Error Handling**: Comprehensive error responses and status codes
+
+### Lightning Integration
+- **Invoice Generation**: Automatic BOLT11 invoice creation
+- **Payment Monitoring**: Real-time WebSocket payment confirmations
+- **Queue Management**: Concurrent payment handling with timeouts
+- **Zap Support**: Ready for future Nostr zap payment integration
 
 ## License
 

@@ -9,7 +9,7 @@
 namespace NostriotProvider {
     void init();
     void cleanup();
-    int getPricePerRequest();
+    int getPrice(const String &method);
     String* getCapabilities(int &count);
     bool hasCapability(const String &capability);
     String run(String &method);

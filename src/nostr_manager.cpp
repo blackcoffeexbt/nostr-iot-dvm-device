@@ -94,7 +94,7 @@ namespace NostrManager
         PaymentProvider::setPaymentCallback([](String payment_hash, String original_event_str, String method) {
             // Execute the action when payment is confirmed
             String output = NostriotProvider::run(method);
-            String response = getDvmResponseMessage(original_event_str, output);
+            String response = getResponseEvent(original_event_str, output);
             String wrappedResponse = "[\"EVENT\", " + response + "]";
             
             Serial.println("NostrManager::paymentCallback() - Sending response: " + wrappedResponse);
@@ -373,7 +373,7 @@ namespace NostrManager
         if(NostriotProvider::hasCapability(method)) {
             Serial.println("NostrManager::handleEvent() - Method is supported by provider, handling");
             
-            int price = NostriotProvider::getPricePerRequest();
+            int price = NostriotProvider::getPrice(method);
             if (price > 0) {
                 // PAYMENT REQUIRED FLOW
                 Serial.println("NostrManager::handleEvent() - Payment required, generating invoice");
@@ -388,7 +388,7 @@ namespace NostrManager
                     PaymentProvider::addToPaymentQueue(payment_hash, eventStr, method);
                     
                     // Send immediate response with invoice
-                    String responseMsg = getDvmPaymentRequiredMessage(eventStr, bolt11);
+                    String responseMsg = getPaymentRequiredEvent(eventStr, bolt11);
                     String wrappedResponse = "[\"EVENT\", " + responseMsg + "]";
                     Serial.println("NostrManager::handleEvent() - Sending payment required response: " + wrappedResponse);
                     webSocket.sendTXT(wrappedResponse);
@@ -396,11 +396,11 @@ namespace NostrManager
                     Serial.println("NostrManager::handleEvent() - Failed to generate invoice");
                 }
             } else {
-                // FREE OPERATION FLOW
+                // No cost
                 Serial.println("NostrManager::handleEvent() - Free operation, executing immediately");
                 String providerOutput = NostriotProvider::run(method);
                 Serial.println("NostrManager::handleEvent() - Provider output: " + providerOutput);
-                String responseMsg = getDvmResponseMessage(eventStr, providerOutput);
+                String responseMsg = getResponseEvent(eventStr, providerOutput);
                 String wrappedResponse = "[\"EVENT\", " + responseMsg + "]";
                 Serial.println("NostrManager::handleEvent() - Sending response: " + wrappedResponse);
                 webSocket.sendTXT(wrappedResponse);
@@ -414,7 +414,7 @@ namespace NostrManager
      * @brief Get the Nostr DVM payment required message
      * 
      */
-    String getDvmPaymentRequiredMessage(String &eventStr, String &bolt11) {
+    String getPaymentRequiredEvent(String &eventStr, String &bolt11) {
         Serial.println("NostrManager::getDvmPaymentRequiredMessage() - eventStr: " + eventStr);
         DeserializationError error = deserializeJson(eventDoc, eventStr);
         if (error)
@@ -432,13 +432,16 @@ namespace NostrManager
         String eventTags = tags["i"];
         eventTags.replace("\"", "\\\"");
 
-        int price = NostriotProvider::getPricePerRequest();
+        String requestEventId = eventDoc[2]["id"].as<String>();
+        String customerPubKey = eventDoc[2]["pubkey"].as<String>();
+
+        int price = NostriotProvider::getPrice(getRequestMethod(eventStr));
         String responseTags = 
         "["
             "[\"request\",\"" + requestEventStr + "\"],"
-            "[\"e\",\"" + eventDoc[2]["id"].as<String>() + "\"],"
+            "[\"e\",\"" + requestEventId + "\"],"
             "[\"i\",\"" + eventTags + "\"],"
-            "[\"p\",\"" + eventDoc[2]["pubkey"].as<String>() + "\"],"
+            "[\"p\",\"" + customerPubKey + "\"],"
             "[\"amount\",\"" + String(price) + "\",\"" + bolt11 + "\"]"
         "]";
 
@@ -461,7 +464,7 @@ namespace NostrManager
      * @brief Get the Nostr DVM response note
      * 
      */
-    String getDvmResponseMessage(String &eventStr, String &responseContent) {
+    String getResponseEvent(String &eventStr, String &responseContent) {
         Serial.println("NostrManager::getDvmResponseMessage() - eventStr: " + eventStr);
         DeserializationError error = deserializeJson(eventDoc, eventStr);
         if (error)

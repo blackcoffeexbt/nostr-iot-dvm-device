@@ -53,7 +53,7 @@ namespace NostrManager {
     // NIP-46 protocol handlers
     void handleEvent(uint8_t* data);
     String getRequestMethod(String &dataStr);
-    String getDvmResponseMessage(String &eventStr, String &responseContent);
+    String getResponseEvent(String &eventStr, String &responseContent);
     void handleConnect(DynamicJsonDocument& doc, const String& requestingPubKey);
     void handleSignEvent(DynamicJsonDocument& doc, const char* requestingPubKey);
     void handlePing(DynamicJsonDocument& doc, const char* requestingPubKey);
@@ -69,7 +69,7 @@ namespace NostrManager {
     void sendPing();
     void updateConnectionStatus();
 
-    String getDvmPaymentRequiredMessage(String& eventStr, String& bolt11);
+    String getPaymentRequiredEvent(String& eventStr, String& bolt11);
     
     // Fragment handling
     bool isFragmentInProgress();

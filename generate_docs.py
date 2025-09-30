@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """
 PlatformIO Extra Script for Documentation Generation
-Provides Doxygen integration for the Remote Nostr Signer project.
 """
 
 import os
