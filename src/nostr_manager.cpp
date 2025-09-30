@@ -377,7 +377,7 @@ namespace NostrManager
         if(NostriotProvider::hasCapability(method)) {
             Serial.println("NostrManager::handleEvent() - Method is supported by provider, handling");
             
-            int price = NostriotProvider::getPrice(method);
+            int price = NostriotProvider::getPrice(method, value);
             if (price > 0) {
                 // PAYMENT REQUIRED FLOW
                 Serial.println("NostrManager::handleEvent() - Payment required, generating invoice");
@@ -439,7 +439,7 @@ namespace NostrManager
         String requestEventId = eventDoc[2]["id"].as<String>();
         String customerPubKey = eventDoc[2]["pubkey"].as<String>();
 
-        int price = NostriotProvider::getPrice(getRequestMethod(eventStr));
+        int price = NostriotProvider::getPrice(getRequestMethod(eventStr), getRequestValue(eventStr));
         String responseTags = 
         "["
             "[\"request\",\"" + requestEventStr + "\"],"

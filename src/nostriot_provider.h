@@ -9,7 +9,9 @@
 namespace NostriotProvider {
     void init();
     void cleanup();
-    int getPrice(const String &method);
+    int getPrice(const String &method, const String &value);
+    int getSetTemperaturePrice(float targetTemp);
+    float getCurrentTemperature();
     String* getCapabilities(int &count);
     bool hasCapability(const String &capability);
     String getCapabilitiesAdvertisement();

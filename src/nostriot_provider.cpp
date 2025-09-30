@@ -78,8 +78,12 @@ namespace NostriotProvider
      * @param method
      * @return int Price in sats, or 0 if free or unknown
      */
-    int getPrice(const String &method)
+    int getPrice(const String &method, const String &value)
     {
+        if(method == "setTemperature") {
+            // variable pricing based on target temperature
+            return getSetTemperaturePrice(value.toFloat());
+        }
         for (const auto &cap : capabilities_with_pricing)
         {
             if (cap.name == method)
@@ -88,6 +92,27 @@ namespace NostriotProvider
             }
         }
         return 0; 
+    }
+
+    /**
+     * @brief This is an example of variable method pricing 
+     * 
+     * @return int 
+     */
+    int getSetTemperaturePrice(float targetTemp) {
+        // we determine the cost based on a temperature difference between current and requested temperature
+        float currentTemp = getCurrentTemperature();
+        float diff = fabs(targetTemp - currentTemp);
+        // calc based on price of 1 sat per degree C difference, rounded up
+        int price = (int)ceil(diff * 1.0);
+        Serial.println("NostriotProvider::getSetTemperaturePrice() - Current temp: " + String(currentTemp) + "C, Target temp: " + String(targetTemp) + ", Diff: " + String(diff) + "C, Price: " + String(price) + " sats");
+        return price;
+        
+    }
+
+    float getCurrentTemperature() {
+        // return a fake temperature for now between 5 and 15 degrees C
+        return random(50, 150) / 10.0;
     }
 
     /**
@@ -130,9 +155,7 @@ namespace NostriotProvider
         // TODO: get real data
         if (method == "getTemperature")
         {
-            // return a fake temperature for now between 20 and 25 degrees C
-            float temperature = 20.0 + static_cast<float>(random(0, 500)) / 100.0;
-            return String(temperature);
+            return String(getCurrentTemperature());
         }
         else if (method == "getHumidity")
         {
