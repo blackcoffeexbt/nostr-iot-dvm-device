@@ -5,6 +5,21 @@
 #include <ArduinoJson.h>
 #include <WiFiUdp.h>
 #include <NTPClient.h>
+#include <Preferences.h>
+#include <vector>
+#include <algorithm>
+
+#include "settings.h"
+#include "app.h"
+#include "display.h"
+#include "config.h"
+#include "nostriot_provider.h"
+
+// Import Nostr library components from lib/ folder
+#include "../lib/nostr/nostr.h"
+#include "../lib/nostr/nip44/nip44.h"
+#include "../lib/nostr/nip19.h"
+
 
 namespace NostrManager {
     // Initialization and cleanup
@@ -54,6 +69,15 @@ namespace NostrManager {
     void sendPing();
     void updateConnectionStatus();
 
+    // Payment monitoring functions
+    void initPaymentMonitoring();
+    void paymentWebsocketEvent(WStype_t type, uint8_t* payload, size_t length);
+    void handlePaymentNotification(uint8_t* payload, size_t length);
+    void processConfirmedPayment(String& payment_hash);
+    String extractPaymentHashFromResponse(String& invoice_response);
+    void addToPaymentQueue(String& payment_hash, String& original_event_str, String& method);
+    void cleanupExpiredPayments();
+    String getDvmPaymentRequiredMessage(String& eventStr, String& bolt11);
     
     // Fragment handling
     bool isFragmentInProgress();
