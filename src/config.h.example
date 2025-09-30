@@ -1,0 +1,22 @@
+/**
+ * @file config.h
+ * @brief System Configuration Constants and Definitions
+ * 
+ */
+
+#ifndef CONFIG_H
+#define CONFIG_H
+
+#include <stdint.h>
+
+// hardcode wifi and nostr relay URI for now
+#define WIFI_SSID       "[YOUR WIFI SSID]"
+#define WIFI_PASSWORD   "[YOUR WIFI PASSWORD]"
+#define NOSTR_RELAY_URI "wss://relay.damus.io"
+#define NOSTR_PRIVATE_KEY "[YOUR NOSTR PRIVATE KEY IN HEX FORMAT]"
+
+#define LNBITS_HOST_URL "[YOUR LNBITS HOST URL WITHOUT https://]"
+#define LNBITS_PAYMENTS_ENDPOINT "/api/v1/payments" // usually don't change this
+#define LNBITS_INVOICE_KEY "[YOUR LNBITS INVOICE KEY]"
+
+#endif // CONFIG_H 
