@@ -69,14 +69,6 @@ namespace NostrManager {
     void sendPing();
     void updateConnectionStatus();
 
-    // Payment monitoring functions
-    void initPaymentMonitoring();
-    void paymentWebsocketEvent(WStype_t type, uint8_t* payload, size_t length);
-    void handlePaymentNotification(uint8_t* payload, size_t length);
-    void processConfirmedPayment(String& payment_hash);
-    String extractPaymentHashFromResponse(String& invoice_response);
-    void addToPaymentQueue(String& payment_hash, String& original_event_str, String& method);
-    void cleanupExpiredPayments();
     String getDvmPaymentRequiredMessage(String& eventStr, String& bolt11);
     
     // Fragment handling

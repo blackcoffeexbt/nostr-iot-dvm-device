@@ -1,4 +1,5 @@
 #include "nostr_manager.h"
+#include "payment_provider.h"
 
 namespace NostrManager
 {
@@ -46,22 +47,6 @@ namespace NostrManager
     static String current_subscription_id = "";
     static unsigned long last_subscription_renewal = 0;
 
-    // Payment queue management
-    struct PendingPaymentRequest {
-        String payment_hash;         // Key for matching payments
-        String original_event_str;   // Complete original event for response construction
-        String method;               // Method to execute
-        unsigned long created_at;    // Request timestamp
-        unsigned long expires_at;    // Payment timeout (15 mins)
-    };
-    
-    static std::vector<PendingPaymentRequest> payment_queue;
-    static const int MAX_QUEUE_SIZE = 5;
-    static const unsigned long PAYMENT_TIMEOUT = 15 * 60 * 1000; // 15 minutes
-    
-    // Payment monitoring WebSocket
-    static WebSocketsClient payment_ws;
-    static bool payment_ws_connected = false;
 
     // WebSocket fragment management
     static bool ws_fragment_in_progress = false;
@@ -104,8 +89,17 @@ namespace NostrManager
         // Initialize time client
         timeClient.begin();
 
-        // Initialize payment monitoring
-        initPaymentMonitoring();
+        // Initialize payment provider
+        PaymentProvider::init();
+        PaymentProvider::setPaymentCallback([](String payment_hash, String original_event_str, String method) {
+            // Execute the action when payment is confirmed
+            String output = NostriotProvider::run(method);
+            String response = getDvmResponseMessage(original_event_str, output);
+            String wrappedResponse = "[\"EVENT\", " + response + "]";
+            
+            Serial.println("NostrManager::paymentCallback() - Sending response: " + wrappedResponse);
+            webSocket.sendTXT(wrappedResponse);
+        });
 
         signer_initialized = true;
         Serial.println("NostrManager::init() - Remote Signer module initialized");
@@ -116,6 +110,7 @@ namespace NostrManager
         Serial.println("NostrManager::cleanup() - Cleaning up Remote Signer module");
 
         disconnect();
+        PaymentProvider::cleanup();
         signer_initialized = false;
 
         Serial.println("NostrManager::cleanup() - Remote Signer module cleaned up");
@@ -384,13 +379,13 @@ namespace NostrManager
                 Serial.println("NostrManager::handleEvent() - Payment required, generating invoice");
                 
                 String memo = "IoT Device Service: " + method;
-                String invoice_response = NostriotProvider::getInvoice(price, memo);
-                String payment_hash = extractPaymentHashFromResponse(invoice_response);
-                String bolt11 = NostriotProvider::extractBolt11FromResponse(invoice_response);
+                String invoice_response = PaymentProvider::createPaymentRequest(price, memo);
+                String payment_hash = PaymentProvider::extractPaymentHashFromResponse(invoice_response);
+                String bolt11 = PaymentProvider::extractBolt11FromResponse(invoice_response);
                 
                 if (payment_hash.length() > 0 && bolt11.length() > 0) {
                     // Add to payment queue
-                    addToPaymentQueue(payment_hash, eventStr, method);
+                    PaymentProvider::addToPaymentQueue(payment_hash, eventStr, method);
                     
                     // Send immediate response with invoice
                     String responseMsg = getDvmPaymentRequiredMessage(eventStr, bolt11);
@@ -785,8 +780,8 @@ namespace NostrManager
         // Process WebSocket events
         webSocket.loop();
         
-        // Process payment WebSocket events
-        payment_ws.loop();
+        // Process payment provider
+        PaymentProvider::processLoop();
 
         // Send periodic ping
         unsigned long now = millis();
@@ -802,13 +797,6 @@ namespace NostrManager
             sendSubscription();
         }
 
-        // Clean up expired payments every 30 seconds
-        static unsigned long last_cleanup = 0;
-        if (now - last_cleanup > 30000)
-        {
-            cleanupExpiredPayments();
-            last_cleanup = now;
-        }
 
         // Periodic status updates every 5 seconds
         static unsigned long last_status_update = 0;
@@ -900,157 +888,6 @@ namespace NostrManager
         Serial.println("NostrManager::sendSubscription() - Sent subscription: " + subscription);
     }
 
-    void initPaymentMonitoring()
-    {
-        String ws_endpoint = "/api/v1/ws/" + String(LNBITS_INVOICE_KEY);
-        
-        Serial.println("NostrManager::initPaymentMonitoring() - Connecting to payment WebSocket");
-        payment_ws.beginSSL(LNBITS_HOST_URL, 443, ws_endpoint.c_str());
-        payment_ws.onEvent(paymentWebsocketEvent);
-        payment_ws.setReconnectInterval(5000);
-    }
-
-    void paymentWebsocketEvent(WStype_t type, uint8_t *payload, size_t length)
-    {
-        switch (type)
-        {
-        case WStype_DISCONNECTED:
-            Serial.println("NostrManager::paymentWebsocketEvent() - Payment WebSocket Disconnected");
-            payment_ws_connected = false;
-            break;
-
-        case WStype_CONNECTED:
-            Serial.println("NostrManager::paymentWebsocketEvent() - Payment WebSocket Connected");
-            payment_ws_connected = true;
-            break;
-
-        case WStype_TEXT:
-            Serial.println("NostrManager::paymentWebsocketEvent() - Payment notification received");
-            handlePaymentNotification(payload, length);
-            break;
-
-        case WStype_ERROR:
-            Serial.println("NostrManager::paymentWebsocketEvent() - Payment WebSocket Error");
-            payment_ws_connected = false;
-            break;
-
-        default:
-            break;
-        }
-    }
-
-    void handlePaymentNotification(uint8_t *payload, size_t length)
-    {
-        String message = String((char *)payload);
-        Serial.println("NostrManager::handlePaymentNotification() - Received: " + message);
-        
-        DynamicJsonDocument doc(2048);
-        DeserializationError error = deserializeJson(doc, message);
-        
-        if (error)
-        {
-            Serial.println("NostrManager::handlePaymentNotification() - JSON parsing failed: " + String(error.c_str()));
-            return;
-        }
-        
-        if (doc["payment"]["status"] == "success")
-        {
-            String payment_hash = doc["payment"]["payment_hash"];
-            Serial.println("NostrManager::handlePaymentNotification() - Payment confirmed: " + payment_hash);
-            processConfirmedPayment(payment_hash);
-        }
-    }
-
-    void processConfirmedPayment(String &payment_hash)
-    {
-        // Find in queue
-        for (auto it = payment_queue.begin(); it != payment_queue.end(); ++it)
-        {
-            if (it->payment_hash == payment_hash)
-            {
-                Serial.println("NostrManager::processConfirmedPayment() - Processing payment for method: " + it->method);
-                
-                // Execute the action
-                String output = NostriotProvider::run(it->method);
-                String response = getDvmResponseMessage(it->original_event_str, output);
-                String wrappedResponse = "[\"EVENT\", " + response + "]";
-                
-                Serial.println("NostrManager::processConfirmedPayment() - Sending response: " + wrappedResponse);
-                webSocket.sendTXT(wrappedResponse);
-                
-                // Remove from queue
-                payment_queue.erase(it);
-                Serial.println("NostrManager::processConfirmedPayment() - Payment processed and removed from queue");
-                return;
-            }
-        }
-        Serial.println("NostrManager::processConfirmedPayment() - Payment hash not found in queue: " + payment_hash);
-    }
-
-    String extractPaymentHashFromResponse(String &invoice_response)
-    {
-        // Parse LNbits response to extract payment_hash
-        DynamicJsonDocument doc(4096);
-        DeserializationError error = deserializeJson(doc, invoice_response);
-        
-        if (error)
-        {
-            Serial.println("NostrManager::extractPaymentHashFromResponse() - JSON parsing failed: " + String(error.c_str()));
-            return "";
-        }
-        
-        return doc["payment_hash"];
-    }
-
-    void addToPaymentQueue(String &payment_hash, String &original_event_str, String &method)
-    {
-        // Check queue size limit
-        if (payment_queue.size() >= MAX_QUEUE_SIZE)
-        {
-            Serial.println("NostrManager::addToPaymentQueue() - Queue full, removing oldest entry");
-            payment_queue.erase(payment_queue.begin());
-        }
-        
-        // Check for duplicate payment_hash
-        for (const auto &req : payment_queue)
-        {
-            if (req.payment_hash == payment_hash)
-            {
-                Serial.println("NostrManager::addToPaymentQueue() - Duplicate payment hash, ignoring");
-                return;
-            }
-        }
-        
-        PendingPaymentRequest request;
-        request.payment_hash = payment_hash;
-        request.original_event_str = original_event_str;
-        request.method = method;
-        request.created_at = millis();
-        request.expires_at = millis() + PAYMENT_TIMEOUT;
-        
-        payment_queue.push_back(request);
-        Serial.println("NostrManager::addToPaymentQueue() - Added to queue: " + payment_hash + " for method: " + method);
-    }
-
-    void cleanupExpiredPayments()
-    {
-        unsigned long now = millis();
-        size_t initial_size = payment_queue.size();
-        
-        payment_queue.erase(
-            std::remove_if(payment_queue.begin(), payment_queue.end(),
-                [now](const PendingPaymentRequest& req) {
-                    return now > req.expires_at;
-                }),
-            payment_queue.end()
-        );
-        
-        if (payment_queue.size() < initial_size)
-        {
-            Serial.println("NostrManager::cleanupExpiredPayments() - Removed " + 
-                         String(initial_size - payment_queue.size()) + " expired payments");
-        }
-    }
 
     void sendPing()
     {
