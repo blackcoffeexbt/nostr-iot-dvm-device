@@ -28,7 +28,7 @@ namespace NostriotProvider
         {"getTemperature", 0},
         {"toggleLamp", 2},
         {"getHumidity", 1},
-        {"setTemperature", 3}
+        {"setTemperature", 5}
     };
 
     void init()
@@ -148,7 +148,8 @@ namespace NostriotProvider
         else if (method == "setTemperature")
         {
             // pretend to set a temperature
-            return "Temperature set";
+            Serial.println("NostriotProvider::setTemperature() - Setting temperature to " + value + " degrees C");
+            return "Temperature set to " + value + " degrees C";
         }
         else
         {
