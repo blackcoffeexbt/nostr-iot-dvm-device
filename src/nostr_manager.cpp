@@ -261,6 +261,9 @@ namespace NostrManager
             // Subscribe to NIP-46 events for our public key
             sendSubscription();
 
+            // Broadcast device capabilities
+            broadcastCapabilities();
+
             updateStatus(true, "Connected");
             break;
 
@@ -889,6 +892,49 @@ namespace NostrManager
         webSocket.sendTXT(subscription);
         last_subscription_renewal = millis();
         Serial.println("NostrManager::sendSubscription() - Sent subscription: " + subscription);
+    }
+
+    void broadcastCapabilities()
+    {
+        if (!isConnected() || publicKeyHex.length() == 0)
+        {
+            Serial.println("NostrManager::broadcastCapabilities() - Cannot broadcast: not connected or no public key");
+            return;
+        }
+
+        Serial.println("NostrManager::broadcastCapabilities() - Broadcasting device capabilities");
+        
+        // Get the unsigned event from provider
+        String unsignedEventJson = NostriotProvider::getCapabilitiesAdvertisement();
+        
+        // Parse the JSON to extract content and tags
+        DynamicJsonDocument eventDoc(2048);
+        DeserializationError error = deserializeJson(eventDoc, unsignedEventJson);
+        if (error)
+        {
+            Serial.println("NostrManager::broadcastCapabilities() - JSON parsing failed: " + String(error.c_str()));
+            return;
+        }
+        
+        String content = eventDoc["content"].as<String>();
+        String tags = eventDoc["tags"].as<String>();
+        uint16_t kind = eventDoc["kind"];
+        
+        // Sign and create the event using nostr::getNote
+        String signedEvent = nostr::getNote(
+            privateKeyHex.c_str(),
+            publicKeyHex.c_str(),
+            unixTimestamp,
+            content,
+            kind,
+            tags
+        );
+        
+        // Wrap and send the event
+        String wrappedEvent = "[\"EVENT\", " + signedEvent + "]";
+        webSocket.sendTXT(wrappedEvent);
+        
+        Serial.println("NostrManager::broadcastCapabilities() - Sent capabilities advertisement: " + wrappedEvent);
     }
 
 

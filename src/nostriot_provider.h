@@ -12,5 +12,6 @@ namespace NostriotProvider {
     int getPrice(const String &method);
     String* getCapabilities(int &count);
     bool hasCapability(const String &capability);
+    String getCapabilitiesAdvertisement();
     String run(String &method);
 }

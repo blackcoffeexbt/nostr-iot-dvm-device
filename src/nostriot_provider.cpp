@@ -15,6 +15,8 @@
 
 namespace NostriotProvider
 {
+    const static String SERVICE_NAME = "Nostriot IoT Service";
+    const static String SERVICE_DESCRIPTION = "Provides IoT device functionalities via Nostr protocol";
     // Device capabilities and pricing
     struct Capability
     {
@@ -84,6 +86,36 @@ namespace NostriotProvider
             }
         }
         return 0; 
+    }
+
+    /**
+     * @brief Get capabilities advertisement for broadcasting to relay
+     * @return String JSON representation of unsigned event for capability advertisement
+     */
+    String getCapabilitiesAdvertisement()
+    {
+        String content = "{\\\"name\\\": \\\"" + SERVICE_NAME + "\\\", \\\"about\\\": \\\"" + SERVICE_DESCRIPTION + "\\\"}";
+        
+        String tags = "[";
+        tags += "[\"k\",\"5107\"],"; // IoT kinds
+        tags += "[\"t\"";
+        
+        // Add supported methods to tags
+        for (size_t i = 0; i < capabilities_with_pricing.size(); i++)
+        {
+            tags += ",\"" + capabilities_with_pricing[i].name + "\"";
+        }
+        tags += "]";
+        tags += "]";
+        
+        String eventJson = "{"
+            "\"kind\": 31990,"
+            "\"content\": \"" + content + "\","
+            "\"tags\": " + tags +
+        "}";
+        
+        Serial.println("NostriotProvider::getCapabilitiesAdvertisement() - Generated: " + eventJson);
+        return eventJson;
     }
 
     void cleanup()
