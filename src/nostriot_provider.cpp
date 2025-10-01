@@ -15,8 +15,8 @@
 
 namespace NostriotProvider
 {
-    const static String SERVICE_NAME = "BC's Nostriot IoT Device";
-    const static String SERVICE_DESCRIPTION = "An example IoT device using Nostr IoT services";
+    const static String SERVICE_NAME = "The Zapper";
+    const static String SERVICE_DESCRIPTION = "Pay to zap";
     
     // Hardware configuration
     const int LED_PIN = 2;
@@ -29,11 +29,20 @@ namespace NostriotProvider
         int price;
     };
 
+    // define a collection of fun responses that zapBen can return
+    const String funZapResponses[] = {
+        "Zap! Owch!",
+        "Zing! That must have hurt!",
+        "Zap! Right in the kisser!",
+        "Zowie! You really zapped him!",
+        "Boom! Direct hit!",
+        "Kablam! That was a big one!",
+        "Zap! He's seeing stars!"
+    };
+    const int numFunZapResponses = sizeof(funZapResponses) / sizeof(funZapResponses[0]);
+
     static const std::vector<Capability> capabilities_with_pricing = {
-        {"getTemperature", 0},
-        {"toggleLamp", 0},
-        {"getHumidity", 1},
-        {"setTemperature", 5}
+        {"zapBen", 10}
     };
 
     void init()
@@ -88,10 +97,6 @@ namespace NostriotProvider
      */
     int getPrice(const String &method, const String &value)
     {
-        if(method == "setTemperature") {
-            // variable pricing based on target temperature
-            return getSetTemperaturePrice(value.toFloat());
-        }
         for (const auto &cap : capabilities_with_pricing)
         {
             if (cap.name == method)
@@ -160,34 +165,25 @@ namespace NostriotProvider
         // Do any necessary cleanup here
     }
 
+    /**
+     * @brief Gets a fun response text for the zapBen method
+     * 
+     * @param getFunZapResponseText
+     * @param value 
+     * @return String 
+     */
+    String getFunZapResponseText() {
+        int index = random(0, numFunZapResponses);
+        return funZapResponses[index];
+    }
+
     String run(String &method, String &value)
     {
         // TODO: get real data
-        if (method == "getTemperature")
+        if (method == "zapBen")
         {
-            return String(getCurrentTemperature());
-        }
-        else if (method == "getHumidity")
-        {
-            // return a fake humidity for now between 30 and 70%
-            int humidity = random(30, 70);
-            return String(humidity);
-        }
-        else if (method == "toggleLamp")
-        {
-            // Toggle the LED state
-            ledState = !ledState;
-            digitalWrite(LED_PIN, ledState ? HIGH : LOW);
-            
-            String state = ledState ? "ON" : "OFF";
-            Serial.println("NostriotProvider::toggleLamp() - LED turned " + state);
-            return "Lamp turned " + state;
-        }
-        else if (method == "setTemperature")
-        {
-            // pretend to set a temperature
-            Serial.println("NostriotProvider::setTemperature() - Setting temperature to " + value + " degrees C");
-            return "Temperature set to " + value + " degrees C";
+            // TODO: Zap Ben!
+            return getFunZapResponseText();
         }
         else
         {
