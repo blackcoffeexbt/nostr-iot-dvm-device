@@ -51,8 +51,9 @@ namespace WiFiManager
                         Serial.println("Connecting to WiFi...");
                         Serial.print("SSID: ");
                         Serial.println(command.ssid);
-                        
-                        // Start connection attempt
+
+                        WiFi.setAutoReconnect(true);
+                        WiFi.persistent(true);
                         WiFi.begin(command.ssid, command.password);
                         
                         // Monitor connection status with timeout
