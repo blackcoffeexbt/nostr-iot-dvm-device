@@ -18,6 +18,8 @@ namespace NostrManager
 
     // define subscription renewal interval
     const unsigned long SUBSCRIPTION_RENEWAL_INTERVAL = 1 * 60 * 1000;
+    // service advertisment renewal interval
+    const unsigned long ADVERTISEMENT_RENEWAL_INTERVAL = 5 * 60 * 1000;
 
     // WebSocket client
     static WebSocketsClient webSocket;
@@ -46,6 +48,7 @@ namespace NostrManager
     // Subscription management
     static String current_subscription_id = "";
     static unsigned long last_subscription_renewal = 0;
+    static unsigned long last_advertisement_renewal = 0;
 
 
     // WebSocket fragment management
@@ -217,6 +220,7 @@ namespace NostrManager
         // Reset subscription ID so a new one is created on reconnection
         current_subscription_id = "";
         last_subscription_renewal = 0;
+        last_advertisement_renewal = 0;
 
         // Update status display immediately
         displayConnectionStatus(false);
@@ -264,7 +268,7 @@ namespace NostrManager
             sendSubscription();
 
             // Broadcast device capabilities
-            broadcastCapabilities();
+            broadcastCapabilitiesAdvertisement();
 
             updateStatus(true, "Connected");
             break;
@@ -821,10 +825,16 @@ namespace NostrManager
             last_ws_ping = now;
         }
 
-        if (isConnected() && (now - last_subscription_renewal > SUBSCRIPTION_RENEWAL_INTERVAL))
+        if (isConnected())
         {
-            Serial.println("NostrManager::processLoop() - Renewing subscription to maintain connection");
-            sendSubscription();
+            if((now - last_subscription_renewal > SUBSCRIPTION_RENEWAL_INTERVAL)) {
+                Serial.println("NostrManager::processLoop() - Renewing subscription to maintain connection");
+                sendSubscription();
+            }
+            if((now - last_advertisement_renewal > ADVERTISEMENT_RENEWAL_INTERVAL)) {
+                Serial.println("NostrManager::processLoop() - Renewing advertisement to maintain connection");
+                broadcastCapabilitiesAdvertisement();
+            }
         }
 
 
@@ -918,7 +928,7 @@ namespace NostrManager
         Serial.println("NostrManager::sendSubscription() - Sent subscription: " + subscription);
     }
 
-    void broadcastCapabilities()
+    void broadcastCapabilitiesAdvertisement()
     {
         if (!isConnected() || publicKeyHex.length() == 0)
         {

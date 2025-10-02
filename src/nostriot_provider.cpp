@@ -133,6 +133,8 @@ namespace NostriotProvider
             tags += ",\"" + capabilities_with_pricing[i].name + "\"";
         }
         tags += "]";
+        // d tag
+        tags += "[\"d\",\"" + String(DVM_ADVERTISEMENT_EVENT_D_TAG_VALUE) + "\"]";
         tags += "]";
         
         String eventJson = "{"

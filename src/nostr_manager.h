@@ -49,7 +49,7 @@ namespace NostrManager {
     void resetWebsocketFragmentState();
 
     void sendSubscription();
-    void broadcastCapabilities();
+    void broadcastCapabilitiesAdvertisement();
     
     // NIP-46 protocol handlers
     void handleEvent(uint8_t* data);
