@@ -18,7 +18,7 @@
 // This is the d tag value that is added to the replacable DVM advert
 #define DVM_ADVERTISEMENT_EVENT_D_TAG_VALUE "dvm-advert-1"
 
-#define LNBITS_HOST_URL "[YOUR LNBITS HOST URL WITHOUT https://]"
+#define LNBITS_HOST_URL "[YOUR LNBITS HOST URL WITHOUT https:// e.g. demo.lnbits.com]"
 #define LNBITS_PAYMENTS_ENDPOINT "/api/v1/payments" // usually don't change this
 #define LNBITS_INVOICE_KEY "[YOUR LNBITS INVOICE KEY]"
 
