@@ -147,7 +147,7 @@ namespace NostriotProvider
         }
         tags += "]";
         // d tag
-        tags += "[\"d\",\"" + String(DVM_ADVERTISEMENT_EVENT_D_TAG_VALUE) + "\"]";
+        tags += ",[\"d\",\"" + String(DVM_ADVERTISEMENT_EVENT_D_TAG_VALUE) + "\"]";
         tags += "]";
         
         String eventJson = "{"

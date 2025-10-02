@@ -822,6 +822,7 @@ namespace NostrManager
         // Wrap and send the event
         String wrappedEvent = "[\"EVENT\", " + signedEvent + "]";
         webSocket.sendTXT(wrappedEvent);
+        last_advertisement_renewal = millis();
         
         Serial.println("NostrManager::broadcastCapabilities() - Sent capabilities advertisement: " + wrappedEvent);
     }
