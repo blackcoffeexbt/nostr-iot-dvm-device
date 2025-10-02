@@ -31,7 +31,7 @@ namespace NostriotProvider
 
     static const std::vector<Capability> capabilities_with_pricing = {
         {"getTemperature", 0},
-        {"toggleLamp", 0},
+        {"toggleLamp", 5},
         {"getHumidity", 1},
         {"setTemperature", 5}
     };
