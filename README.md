@@ -112,28 +112,29 @@ The application uses a clean modular architecture:
 
 ## Configuration
 
-Key configuration options in `src/config.h`:
+Configuration options in `src/config.h`:
 
 ```cpp
-// Nostr Configuration
-#define NOSTR_RELAY_URI "wss://relay.example.com"
-#define NOSTR_PRIVATE_KEY "your_device_private_key_hex"
+// WiFi
+#define WIFI_SSID       "[YOUR WIFI SSID]"
+#define WIFI_PASSWORD   "[YOUR WIFI PASSWORD]"
 
-// LNbits Configuration  
-#define LNBITS_HOST_URL "lnbits.example.com"
-#define LNBITS_INVOICE_KEY "your_invoice_key"
-#define LNBITS_PAYMENTS_ENDPOINT "/api/v1/payments"
+// Nostr relay. relay.nostriot.com is a public relay run by the Nostriot project
+#define NOSTR_RELAY_URI "wss://relay.nostriot.com"
 
-// Device Configuration
-#define DEVICE_NAME "Nostriot Device"
+// Nostr private key in hex format (32 bytes, 64 hex characters).
+// You can use https://nostrtool.com/ to generate a new key pair
+#define NOSTR_PRIVATE_KEY "[YOUR NOSTR PRIVATE KEY IN HEX FORMAT]"
+
+// This is the d tag value that is added to the replacable DVM advert
+// You probably don't need to change this unless you run multiple devices with the same private key
+#define DVM_ADVERTISEMENT_EVENT_D_TAG_VALUE "dvm-advert-1"
+
+// LNbits configuration for Lightning payments
+#define LNBITS_HOST_URL "[YOUR LNBITS HOST URL WITHOUT https:// e.g. demo.lnbits.com]"
+#define LNBITS_INVOICE_KEY "[YOUR LNBITS INVOICE KEY]"
+#define LNBITS_PAYMENTS_ENDPOINT "/api/v1/payments" // usually don't change this
 ```
-
-### Adding New IoT Services
-
-1. **Add capability** to `NostriotProvider::capabilities[]`
-2. **Implement service logic** in `NostriotProvider::run()`
-3. **Set pricing** in `NostriotProvider::getPricePerRequest()`
-4. **Test with DVM requests** via Nostr clients
 
 ### Code Quality
 
@@ -147,20 +148,6 @@ cppcheck --enable=unusedFunction src/
 # Wider analysis
 cppcheck --enable=unusedFunction,style --inconclusive src/
 ```
-
-## Protocol Implementation
-
-### DVM (Data Vending Machine)
-- **Request Format**: NIP-89 compatible job requests (kind 5107)
-- **Response Format**: Job results (kind 6107) with proper tagging
-- **Payment Integration**: Payment requests (kind 9735) with Lightning invoices
-- **Error Handling**: Comprehensive error responses and status codes
-
-### Lightning Integration
-- **Invoice Generation**: Automatic BOLT11 invoice creation
-- **Payment Monitoring**: Real-time WebSocket payment confirmations
-- **Queue Management**: Concurrent payment handling with timeouts
-- **Zap Support**: Ready for future Nostr zap payment integration
 
 ## License
 
