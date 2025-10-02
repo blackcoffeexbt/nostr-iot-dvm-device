@@ -89,6 +89,8 @@ namespace NostrManager
         // Initialize time client
         timeClient.begin();
 
+        NostriotProvider::init();
+
         // Initialize payment provider
         PaymentProvider::init();
         PaymentProvider::setPaymentCallback([](String payment_hash, String original_event_str, String method, String value) {
