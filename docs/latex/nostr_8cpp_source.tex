@@ -136,334 +136,367 @@
 \DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacenostr_ac14cbc8a276a7d1106c23c8dba6f608c}{nostrEventDoc}}[2][\textcolor{stringliteral}{"{}content"{}}];}
 \DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00133}00133\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00134}00134\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00135}\mbox{\hyperlink{namespacenostr_abdbc8350c239ae90de2c10744a2fad6c}{00135}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_abdbc8350c239ae90de2c10744a2fad6c}{getSenderPubKeyHex}}(\textcolor{keyword}{const}\ String\ \&serialisedJson)}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00136}00136\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ DeserializationError\ error\ =\ deserializeJson(\mbox{\hyperlink{namespacenostr_ac14cbc8a276a7d1106c23c8dba6f608c}{nostrEventDoc}},\ serialisedJson);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (error)}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.print(F(\textcolor{stringliteral}{"{}deserializeJson()\ failed:\ "{}}));}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(error.c\_str());}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacenostr_ac14cbc8a276a7d1106c23c8dba6f608c}{nostrEventDoc}}[2][\textcolor{stringliteral}{"{}pubkey"{}}];}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00144}00144\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00145}00145\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00146}\mbox{\hyperlink{namespacenostr_ae9b9b8005030f72e2136a4d0bda6879d}{00146}}\ \ \ \ \ std::pair<String,\ String>\ \mbox{\hyperlink{namespacenostr_ae9b9b8005030f72e2136a4d0bda6879d}{getPubKeyAndContent}}(\textcolor{keyword}{const}\ String\ \&serialisedJson)}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00147}00147\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ DeserializationError\ error\ =\ deserializeJson(\mbox{\hyperlink{namespacenostr_ac14cbc8a276a7d1106c23c8dba6f608c}{nostrEventDoc}},\ serialisedJson);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (error)}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.print(F(\textcolor{stringliteral}{"{}deserializeJson()\ failed:\ "{}}));}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(error.c\_str());}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_pair(\textcolor{stringliteral}{"{}"{}},\ \textcolor{stringliteral}{"{}"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00155}00155\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Extract\ the\ sender\ public\ key\ and\ content\ from\ the\ document}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ String\ senderPubKeyHex\ =\ \mbox{\hyperlink{namespacenostr_ac14cbc8a276a7d1106c23c8dba6f608c}{nostrEventDoc}}[2][\textcolor{stringliteral}{"{}pubkey"{}}];}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ String\ content\ =\ \mbox{\hyperlink{namespacenostr_ac14cbc8a276a7d1106c23c8dba6f608c}{nostrEventDoc}}[2][\textcolor{stringliteral}{"{}content"{}}];}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00159}00159\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Return\ both\ values\ as\ a\ pair}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_pair(senderPubKeyHex,\ content);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00162}00162\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00163}00163\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00164}\mbox{\hyperlink{namespacenostr_a99b54ccdb024947dfabe8ea69c57214e}{00164}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_a99b54ccdb024947dfabe8ea69c57214e}{nip04Decrypt}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *privateKeyHex,\ String\ serialisedJson)}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00165}00165\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_ae7add69f32ac7f6af83399c69374cc50}{\_startTimer}}(\textcolor{stringliteral}{"{}nip04Decrypt:\ nip04Decrypt"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ \mbox{\hyperlink{namespacenostr_ae9b9b8005030f72e2136a4d0bda6879d}{getPubKeyAndContent}}(serialisedJson);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ String\ senderPubKeyHex\ =\ result.first;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ String\ content\ =\ result.second;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}nip04Decrypt:\ Got\ result\ from\ getPubKeyAndContent"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00171}00171\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ivIndex\ =\ content.indexOf(\textcolor{stringliteral}{"{}?iv="{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ivIndex\ ==\ -\/1)}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}IV\ not\ found\ in\ content"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00135}00135\ \ \ \ \ \textcolor{comment}{//\ get\ tags\ array\ from\ event\ and\ convert\ to\ key-\/value\ pairs}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00136}\mbox{\hyperlink{namespacenostr_a06e8f17b26ca73eec2e69c052975a8c7}{00136}}\ \ \ \ \ std::map<String,\ String>\ \mbox{\hyperlink{namespacenostr_a06e8f17b26ca73eec2e69c052975a8c7}{getTags}}(\textcolor{keyword}{const}\ String\ \&serialisedJson)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00137}00137\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ std::map<String,\ String>\ tagMap;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ DeserializationError\ error\ =\ deserializeJson(\mbox{\hyperlink{namespacenostr_ac14cbc8a276a7d1106c23c8dba6f608c}{nostrEventDoc}},\ serialisedJson);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (error)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.print(F(\textcolor{stringliteral}{"{}deserializeJson()\ failed:\ "{}}));}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(error.c\_str());}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tagMap;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ JsonArray\ tagsArray\ =\ \mbox{\hyperlink{namespacenostr_ac14cbc8a276a7d1106c23c8dba6f608c}{nostrEventDoc}}[2][\textcolor{stringliteral}{"{}tags"{}}].as<JsonArray>();}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (JsonArray\ tag\ :\ tagsArray)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tag.size()\ >=\ 2)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ String\ key\ =\ tag[0].as<String>();}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ String\ value\ =\ tag[1].as<String>();}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ For\ tags\ with\ more\ than\ 2\ elements,\ concatenate\ remaining\ elements}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 2;\ i\ <\ tag.size();\ i++)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value\ +=\ \textcolor{stringliteral}{"{},"{}};}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value\ +=\ tag[i].as<String>();}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tagMap[key]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tagMap;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00166}00166\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00168}\mbox{\hyperlink{namespacenostr_abdbc8350c239ae90de2c10744a2fad6c}{00168}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_abdbc8350c239ae90de2c10744a2fad6c}{getSenderPubKeyHex}}(\textcolor{keyword}{const}\ String\ \&serialisedJson)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00169}00169\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ DeserializationError\ error\ =\ deserializeJson(\mbox{\hyperlink{namespacenostr_ac14cbc8a276a7d1106c23c8dba6f608c}{nostrEventDoc}},\ serialisedJson);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (error)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.print(F(\textcolor{stringliteral}{"{}deserializeJson()\ failed:\ "{}}));}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(error.c\_str());}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacenostr_ac14cbc8a276a7d1106c23c8dba6f608c}{nostrEventDoc}}[2][\textcolor{stringliteral}{"{}pubkey"{}}];}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00177}00177\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00178}00178\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Extracting\ encryptedMessage\ directly\ from\ content\ without\ using\ String\ for\ the\ intermediate\ steps}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ encryptedMessageLength\ =\ ivIndex;\ \textcolor{comment}{//\ Length\ of\ the\ encrypted\ message\ part}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *encryptedMessage\ =\ content.c\_str();\ \textcolor{comment}{//\ Use\ the\ content\ directly}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!encryptedMessage)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00179}\mbox{\hyperlink{namespacenostr_ae9b9b8005030f72e2136a4d0bda6879d}{00179}}\ \ \ \ \ std::pair<String,\ String>\ \mbox{\hyperlink{namespacenostr_ae9b9b8005030f72e2136a4d0bda6879d}{getPubKeyAndContent}}(\textcolor{keyword}{const}\ String\ \&serialisedJson)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00180}00180\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00181}00181\ \ \ \ \ \ \ \ \ DeserializationError\ error\ =\ deserializeJson(\mbox{\hyperlink{namespacenostr_ac14cbc8a276a7d1106c23c8dba6f608c}{nostrEventDoc}},\ serialisedJson);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (error)}
 \DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Failed\ to\ allocate\ PSRAM\ for\ encryptedMessage"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00187}00187\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ encryptedMessageSize\ =\ encryptedMessageLength\ /\ 4\ *\ 3;\ \textcolor{comment}{//\ Base64\ encoded\ size\ is\ 4/3\ of\ the\ binary\ size}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00189}00189\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ fromBase64(encryptedMessage,\ \mbox{\hyperlink{namespacenostr_a7b3cf922a571a696433d63e675ecaa38}{encryptedMessageBin}},\ encryptedMessageSize);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}nip04Decrypt:\ Got\ encryptedMessageBin"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.print(F(\textcolor{stringliteral}{"{}deserializeJson()\ failed:\ "{}}));}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(error.c\_str());}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_pair(\textcolor{stringliteral}{"{}"{}},\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Extract\ the\ sender\ public\ key\ and\ content\ from\ the\ document}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ String\ senderPubKeyHex\ =\ \mbox{\hyperlink{namespacenostr_ac14cbc8a276a7d1106c23c8dba6f608c}{nostrEventDoc}}[2][\textcolor{stringliteral}{"{}pubkey"{}}];}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ String\ content\ =\ \mbox{\hyperlink{namespacenostr_ac14cbc8a276a7d1106c23c8dba6f608c}{nostrEventDoc}}[2][\textcolor{stringliteral}{"{}content"{}}];}
 \DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00192}00192\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}encryptedMessage"{}},\ encryptedMessage);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00194}00194\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ byteSize\ =\ 32;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ privateKeyBytes[byteSize];}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ fromHex(privateKeyHex,\ privateKeyBytes,\ byteSize);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ PrivateKey\ privateKey(privateKeyBytes);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}nip04Decrypt:\ Got\ privateKey"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00200}00200\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}senderPubKeyHex"{}},\ senderPubKeyHex);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ senderPublicKeyBin[64];}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ fromHex(\textcolor{stringliteral}{"{}02"{}}\ +\ String(senderPubKeyHex),\ senderPublicKeyBin,\ 64);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ PublicKey\ senderPublicKey(senderPublicKeyBin);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}nip04Decrypt:\ Got\ senderPublicKey"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}senderPublicKey.toString()\ is"{}},\ senderPublicKey.toString());}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00207}00207\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacenostr_ad76c1eacccd66757ef146e3393a1442a}{decryptNip04Ciphertext}}(content,\ privateKeyHex,\ senderPubKeyHex);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00209}00209\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00210}00210\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00211}\mbox{\hyperlink{namespacenostr_a4a0c52a59a4083625f1704bf02966af8}{00211}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_a4a0c52a59a4083625f1704bf02966af8}{nip44Decrypt}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *privateKeyHex,\ String\ serialisedJson)}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00212}00212\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_ae7add69f32ac7f6af83399c69374cc50}{\_startTimer}}(\textcolor{stringliteral}{"{}nip44Decrypt:\ nip44Decrypt"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ \mbox{\hyperlink{namespacenostr_ae9b9b8005030f72e2136a4d0bda6879d}{getPubKeyAndContent}}(serialisedJson);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}nip44Decrypt:\ result\ is:\ "{}}\ +\ result.first\ +\ \textcolor{stringliteral}{"{}\ "{}}\ +\ result.second);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ String\ senderPubKeyHex\ =\ result.first;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}nip44Decrypt:\ senderPubKeyHex\ is:\ "{}}\ +\ senderPubKeyHex);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ String\ content\ =\ result.second;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}nip44Decrypt:\ content\ is:\ "{}}\ +\ content);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}nip44Decrypt:\ Got\ result\ from\ getPubKeyAndContent"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00221}00221\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{nip44_8cpp_a131b96ad7e7f560b2fd7194ade183695}{executeDecryptMessageNip44}}(content,\ privateKeyHex,\ senderPubKeyHex);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00223}00223\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00224}00224\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00225}\mbox{\hyperlink{namespacenostr_a4848cccd6183bc9cfb6196fe18749b6c}{00225}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_a4848cccd6183bc9cfb6196fe18749b6c}{nip44Encrypt}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *privateKeyHex,\ String\ serialisedJson)}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00226}00226\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_ae7add69f32ac7f6af83399c69374cc50}{\_startTimer}}(\textcolor{stringliteral}{"{}nip44Encrypt:\ nip44Encrypt"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ \mbox{\hyperlink{namespacenostr_ae9b9b8005030f72e2136a4d0bda6879d}{getPubKeyAndContent}}(serialisedJson);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ String\ senderPubKeyHex\ =\ result.first;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ String\ content\ =\ result.second;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}nip44Encrypt:\ Got\ result\ from\ getPubKeyAndContent"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{nip44_8cpp_a9fca4f5d3adc798444724f0ef23cb0c6}{executeEncryptMessageNip44}}(content,\ privateKeyHex,\ senderPubKeyHex);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00233}00233\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00234}00234\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00246}\mbox{\hyperlink{namespacenostr_a99a4781da61520d3c58841370c2c3a10}{00246}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_a99a4781da61520d3c58841370c2c3a10}{getNote}}(\textcolor{keywordtype}{char}\ \textcolor{keyword}{const}\ *privateKeyHex,\ \textcolor{keywordtype}{char}\ \textcolor{keyword}{const}\ *pubKeyHex,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ timestamp,\ String\ \&content,\ uint16\_t\ kind,\ String\ tags)}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00247}00247\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_ae7add69f32ac7f6af83399c69374cc50}{\_startTimer}}(\textcolor{stringliteral}{"{}getNote"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ convert}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ log\ timestamp}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}timestamp\ is:\ "{}},\ String(timestamp));}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ escape\ any\ double\ quotes\ in\ content}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ content.replace(\textcolor{stringliteral}{"{}\(\backslash\)"{}"{}},\ \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)\(\backslash\)"{}"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00254}00254\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ replace\ new\ lines\ with\ \(\backslash\)n}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ content.replace(\textcolor{stringliteral}{"{}\(\backslash\)n"{}},\ \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)n"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ replace\ carriage\ returns\ with\ \(\backslash\)r}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ content.replace(\textcolor{stringliteral}{"{}\(\backslash\)r"{}},\ \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)r"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ replace\ tabs\ with\ \(\backslash\)t}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ content.replace(\textcolor{stringliteral}{"{}\(\backslash\)t"{}},\ \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)t"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ String\ message\ =\ \textcolor{stringliteral}{"{}[0,\(\backslash\)"{}"{}}\ +\ String(pubKeyHex)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{},"{}}\ +\ String(timestamp)\ +\ \textcolor{stringliteral}{"{},"{}}\ +\ String(kind)\ +\ \textcolor{stringliteral}{"{},"{}}\ +\ tags\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}"{}}\ +\ content\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}]"{}};}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}message\ is:\ "{}},\ message);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00262}00262\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sha256\ of\ message\ converted\ to\ hex,\ assign\ to\ msghash}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ hash[64]\ =\ \{0\};\ \textcolor{comment}{//\ hash}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ hashLen\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00266}00266\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ sha256\ hash\ of\ the\ message}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00268}00268\ \ \ \ \ \ \ \ \ hashLen\ =\ sha256(message,\ hash);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}get\ sha256\ hash\ of\ message"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ String\ msgHash\ =\ toHex(hash,\ hashLen);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}get\ msgHash\ as\ hex"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}SHA-\/256:\ "{}},\ msgHash);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00273}00273\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ the\ private\ key\ object}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00275}00275\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ byteSize\ =\ 32;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ privateKeyBytes[byteSize];}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ fromHex(privateKeyHex,\ privateKeyBytes,\ byteSize);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}convert\ privateKeyHex\ to\ byte\ array"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00279}00279\ \ \ \ \ \ \ \ \ PrivateKey\ privateKey(privateKeyBytes);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}create\ privateKey\ object"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00281}00281\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Generate\ the\ schnorr\ sig\ of\ the\ messageHash}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ messageBytes[byteSize];}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00284}00284\ \ \ \ \ \ \ \ \ fromHex(msgHash,\ messageBytes,\ byteSize);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}convert\ msgHash\ to\ byte\ array"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ SchnorrSignature\ signature\ =\ privateKey.schnorr\_sign(messageBytes);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}generate\ schnorr\ sig"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ String\ signatureHex\ =\ String(signature);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}Schnorr\ sig\ is:\ "{}},\ signatureHex);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00290}00290\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Device\ the\ public\ key\ and\ verify\ the\ schnorr\ sig\ is\ valid}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ PublicKey\ pub\ =\ privateKey.publicKey();}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}get\ public\ key"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00294}00294\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ (pub.schnorr\_verify(signature,\ messageBytes))}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \{}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \_logToSerialWithTitle("{}All\ good,\ signature\ is\ valid"{},\ "{}"{});}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ else}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \{}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \_logToSerialWithTitle("{}Something\ went\ wrong,\ signature\ is\ invalid"{},\ "{}"{});}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}verify\ schnorr\ sig"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00304}00304\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ String\ serialisedDataString\ =\ \textcolor{stringliteral}{"{}\{\(\backslash\)"{}id\(\backslash\)"{}:\(\backslash\)"{}"{}}\ +\ msgHash\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{},\(\backslash\)"{}pubkey\(\backslash\)"{}:\(\backslash\)"{}"{}}\ +\ String(pubKeyHex)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{},\(\backslash\)"{}created\_at\(\backslash\)"{}:"{}}\ +\ String(timestamp)\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}kind\(\backslash\)"{}:"{}}\ +\ String(kind)\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}tags\(\backslash\)"{}:"{}}\ +\ tags\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}content\(\backslash\)"{}:\(\backslash\)"{}"{}}\ +\ content\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{},\(\backslash\)"{}sig\(\backslash\)"{}:\(\backslash\)"{}"{}}\ +\ signatureHex\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}\}"{}};}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}serialisedEventDataString\ is:\ "{}},\ String(serialisedDataString));}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00307}00307\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ the\ JSON\ to\ the\ serial\ monitor}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}Event\ JSON"{}},\ serialisedDataString);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ serialisedDataString;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00311}00311\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00312}00312\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00320}\mbox{\hyperlink{namespacenostr_afca44e9f58eaddb2737fee169753ad9c}{00320}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacenostr_afca44e9f58eaddb2737fee169753ad9c}{stringToByteArray}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *input,\ \textcolor{keywordtype}{int}\ padding\_diff,\ \textcolor{keywordtype}{byte}\ *output)}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00321}00321\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ remove\ end-\/of-\/string\ char}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (input[i]\ !=\ \textcolor{charliteral}{'\(\backslash\)0'})}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ output[i]\ =\ input[i];}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ i++;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00329}00329\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ pad\ between\ 1\ and\ 16\ bytes}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ padding\_diff;\ j++)}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ output[i\ +\ j]\ =\ padding\_diff;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00334}00334\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00335}00335\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00336}00336\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00345}\mbox{\hyperlink{namespacenostr_a52ad606d41ff89c69df00732ee8e348d}{00345}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_a52ad606d41ff89c69df00732ee8e348d}{encryptData}}(\textcolor{keywordtype}{byte}\ key[32],\ \textcolor{keywordtype}{byte}\ iv[16],\ String\ \&msg)}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00346}00346\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00347}00347\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ message\ has\ to\ be\ padded\ at\ the\ end\ so\ it\ is\ a\ multiple\ of\ 16}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00348}00348\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ padding\_diff\ =\ msg.length()\ \%\ 16\ ==\ 0\ ?\ 16\ :\ 16\ -\/\ (msg.length()\ \%\ 16);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00349}00349\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00350}00350\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ byteSize\ =\ msg.length()\ +\ padding\_diff;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00351}00351\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ *messageBin\ =\ (\textcolor{keywordtype}{byte}\ *)malloc(byteSize);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00352}00352\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00353}00353\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (messageBin\ ==\ \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00354}00354\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Failed\ to\ allocate\ PSRAM"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00357}00357\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00358}00358\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00359}00359\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_afca44e9f58eaddb2737fee169753ad9c}{stringToByteArray}}(msg.c\_str(),\ padding\_diff,\ messageBin);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00360}00360\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00361}00361\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_a_e_s__ctx}{AES\_ctx}}\ ctx;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00362}00362\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{aes_8cpp_a99d17d22ed909bd155007cdece29263a}{AES\_init\_ctx\_iv}}(\&ctx,\ key,\ iv);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00363}00363\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00364}00364\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{aes_8cpp_a296bd30323044b07d69e0e3b5f676281}{AES\_CBC\_encrypt\_buffer}}(\&ctx,\ messageBin,\ byteSize);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00365}00365\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00366}00366\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ toHex(messageBin,\ byteSize);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00367}00367\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00368}00368\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00377}\mbox{\hyperlink{namespacenostr_a2fa2b10644805a1cd2b329875134fdbd}{00377}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_a2fa2b10644805a1cd2b329875134fdbd}{getCipherText}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *privateKeyHex,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *recipientPubKeyHex,\ String\ \&content)}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00378}00378\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00379}00379\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_ae7add69f32ac7f6af83399c69374cc50}{\_startTimer}}(\textcolor{stringliteral}{"{}getCipherText"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00380}00380\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ shared\ point}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ the\ private\ key\ object}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00382}00382\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ byteSize\ =\ 32;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00383}00383\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ privateKeyBytes[byteSize];}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00384}00384\ \ \ \ \ \ \ \ \ fromHex(privateKeyHex,\ privateKeyBytes,\ byteSize);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00385}00385\ \ \ \ \ \ \ \ \ PrivateKey\ privateKey(privateKeyBytes);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00386}00386\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}getCipherText:\ create\ privateKey\ object"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00387}00387\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00388}00388\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ publicKeyBin[64];}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00389}00389\ \ \ \ \ \ \ \ \ fromHex(\textcolor{stringliteral}{"{}02"{}}\ +\ String(recipientPubKeyHex),\ publicKeyBin,\ 64);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00390}00390\ \ \ \ \ \ \ \ \ PublicKey\ otherDhPublicKey(publicKeyBin);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00391}00391\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}otherDhPublicKey.toString()\ is"{}},\ otherDhPublicKey.toString());}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00392}00392\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}getCipherText:\ create\ otherDhPublicKey\ object"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Return\ both\ values\ as\ a\ pair}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_pair(senderPubKeyHex,\ content);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00195}00195\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00197}\mbox{\hyperlink{namespacenostr_a99b54ccdb024947dfabe8ea69c57214e}{00197}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_a99b54ccdb024947dfabe8ea69c57214e}{nip04Decrypt}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *privateKeyHex,\ String\ serialisedJson)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00198}00198\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_ae7add69f32ac7f6af83399c69374cc50}{\_startTimer}}(\textcolor{stringliteral}{"{}nip04Decrypt:\ nip04Decrypt"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ \mbox{\hyperlink{namespacenostr_ae9b9b8005030f72e2136a4d0bda6879d}{getPubKeyAndContent}}(serialisedJson);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ String\ senderPubKeyHex\ =\ result.first;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ String\ content\ =\ result.second;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}nip04Decrypt:\ Got\ result\ from\ getPubKeyAndContent"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ivIndex\ =\ content.indexOf(\textcolor{stringliteral}{"{}?iv="{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ivIndex\ ==\ -\/1)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}IV\ not\ found\ in\ content"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Extracting\ encryptedMessage\ directly\ from\ content\ without\ using\ String\ for\ the\ intermediate\ steps}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ encryptedMessageLength\ =\ ivIndex;\ \textcolor{comment}{//\ Length\ of\ the\ encrypted\ message\ part}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *encryptedMessage\ =\ content.c\_str();\ \textcolor{comment}{//\ Use\ the\ content\ directly}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!encryptedMessage)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Failed\ to\ allocate\ PSRAM\ for\ encryptedMessage"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ encryptedMessageSize\ =\ encryptedMessageLength\ /\ 4\ *\ 3;\ \textcolor{comment}{//\ Base64\ encoded\ size\ is\ 4/3\ of\ the\ binary\ size}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ fromBase64(encryptedMessage,\ \mbox{\hyperlink{namespacenostr_a7b3cf922a571a696433d63e675ecaa38}{encryptedMessageBin}},\ encryptedMessageSize);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}nip04Decrypt:\ Got\ encryptedMessageBin"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}encryptedMessage"{}},\ encryptedMessage);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ byteSize\ =\ 32;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ privateKeyBytes[byteSize];}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ fromHex(privateKeyHex,\ privateKeyBytes,\ byteSize);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ PrivateKey\ privateKey(privateKeyBytes);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}nip04Decrypt:\ Got\ privateKey"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}senderPubKeyHex"{}},\ senderPubKeyHex);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ senderPublicKeyBin[64];}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ fromHex(\textcolor{stringliteral}{"{}02"{}}\ +\ String(senderPubKeyHex),\ senderPublicKeyBin,\ 64);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ PublicKey\ senderPublicKey(senderPublicKeyBin);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}nip04Decrypt:\ Got\ senderPublicKey"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}senderPublicKey.toString()\ is"{}},\ senderPublicKey.toString());}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00240}00240\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespacenostr_ad76c1eacccd66757ef146e3393a1442a}{decryptNip04Ciphertext}}(content,\ privateKeyHex,\ senderPubKeyHex);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00242}00242\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00244}\mbox{\hyperlink{namespacenostr_a4a0c52a59a4083625f1704bf02966af8}{00244}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_a4a0c52a59a4083625f1704bf02966af8}{nip44Decrypt}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *privateKeyHex,\ String\ serialisedJson)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00245}00245\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00246}00246\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_ae7add69f32ac7f6af83399c69374cc50}{\_startTimer}}(\textcolor{stringliteral}{"{}nip44Decrypt:\ nip44Decrypt"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00247}00247\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ \mbox{\hyperlink{namespacenostr_ae9b9b8005030f72e2136a4d0bda6879d}{getPubKeyAndContent}}(serialisedJson);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00248}00248\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}nip44Decrypt:\ result\ is:\ "{}}\ +\ result.first\ +\ \textcolor{stringliteral}{"{}\ "{}}\ +\ result.second);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ String\ senderPubKeyHex\ =\ result.first;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}nip44Decrypt:\ senderPubKeyHex\ is:\ "{}}\ +\ senderPubKeyHex);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ String\ content\ =\ result.second;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}nip44Decrypt:\ content\ is:\ "{}}\ +\ content);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}nip44Decrypt:\ Got\ result\ from\ getPubKeyAndContent"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{nip44_8cpp_a131b96ad7e7f560b2fd7194ade183695}{executeDecryptMessageNip44}}(content,\ privateKeyHex,\ senderPubKeyHex);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00256}00256\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00258}\mbox{\hyperlink{namespacenostr_a4848cccd6183bc9cfb6196fe18749b6c}{00258}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_a4848cccd6183bc9cfb6196fe18749b6c}{nip44Encrypt}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *privateKeyHex,\ String\ serialisedJson)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00259}00259\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_ae7add69f32ac7f6af83399c69374cc50}{\_startTimer}}(\textcolor{stringliteral}{"{}nip44Encrypt:\ nip44Encrypt"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ result\ =\ \mbox{\hyperlink{namespacenostr_ae9b9b8005030f72e2136a4d0bda6879d}{getPubKeyAndContent}}(serialisedJson);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ String\ senderPubKeyHex\ =\ result.first;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ String\ content\ =\ result.second;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}nip44Encrypt:\ Got\ result\ from\ getPubKeyAndContent"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{nip44_8cpp_a9fca4f5d3adc798444724f0ef23cb0c6}{executeEncryptMessageNip44}}(content,\ privateKeyHex,\ senderPubKeyHex);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00266}00266\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00279}\mbox{\hyperlink{namespacenostr_a99a4781da61520d3c58841370c2c3a10}{00279}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_a99a4781da61520d3c58841370c2c3a10}{getNote}}(\textcolor{keywordtype}{char}\ \textcolor{keyword}{const}\ *privateKeyHex,\ \textcolor{keywordtype}{char}\ \textcolor{keyword}{const}\ *pubKeyHex,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ timestamp,\ String\ \&content,\ uint16\_t\ kind,\ String\ tags)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00280}00280\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00281}00281\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_ae7add69f32ac7f6af83399c69374cc50}{\_startTimer}}(\textcolor{stringliteral}{"{}getNote"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ convert}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ log\ timestamp}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00284}00284\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}timestamp\ is:\ "{}},\ String(timestamp));}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ escape\ any\ double\ quotes\ in\ content}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ content.replace(\textcolor{stringliteral}{"{}\(\backslash\)"{}"{}},\ \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)\(\backslash\)"{}"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ replace\ new\ lines\ with\ \(\backslash\)n}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ content.replace(\textcolor{stringliteral}{"{}\(\backslash\)n"{}},\ \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ replace\ carriage\ returns\ with\ \(\backslash\)r}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ content.replace(\textcolor{stringliteral}{"{}\(\backslash\)r"{}},\ \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)r"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ replace\ tabs\ with\ \(\backslash\)t}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ content.replace(\textcolor{stringliteral}{"{}\(\backslash\)t"{}},\ \textcolor{stringliteral}{"{}\(\backslash\)\(\backslash\)t"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ String\ message\ =\ \textcolor{stringliteral}{"{}[0,\(\backslash\)"{}"{}}\ +\ String(pubKeyHex)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{},"{}}\ +\ String(timestamp)\ +\ \textcolor{stringliteral}{"{},"{}}\ +\ String(kind)\ +\ \textcolor{stringliteral}{"{},"{}}\ +\ tags\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}"{}}\ +\ content\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}]"{}};}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}message\ is:\ "{}},\ message);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ sha256\ of\ message\ converted\ to\ hex,\ assign\ to\ msghash}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ hash[32]\ =\ \{0\};\ \textcolor{comment}{//\ hash\ should\ be\ 32\ bytes\ for\ SHA-\/256}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ hashLen\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ sha256\ hash\ of\ the\ message}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ hashLen\ =\ sha256(message,\ hash);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}get\ sha256\ hash\ of\ message"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ String\ msgHash\ =\ toHex(hash,\ hashLen);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}get\ msgHash\ as\ hex"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}SHA-\/256:\ "{}},\ msgHash);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00306}00306\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ the\ private\ key\ object}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ byteSize\ =\ 32;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ privateKeyBytes[byteSize];}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ fromHex(privateKeyHex,\ privateKeyBytes,\ byteSize);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}convert\ privateKeyHex\ to\ byte\ array"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ PrivateKey\ privateKey(privateKeyBytes);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}create\ privateKey\ object"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Generate\ the\ schnorr\ sig\ of\ the\ messageHash}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ messageBytes[byteSize];}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00317}00317\ \ \ \ \ \ \ \ \ fromHex(msgHash,\ messageBytes,\ byteSize);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}convert\ msgHash\ to\ byte\ array"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ SchnorrSignature\ signature\ =\ privateKey.schnorr\_sign(messageBytes);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}generate\ schnorr\ sig"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ String\ signatureHex\ =\ String(signature);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}Schnorr\ sig\ is:\ "{}},\ signatureHex);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Device\ the\ public\ key\ and\ verify\ the\ schnorr\ sig\ is\ valid}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ PublicKey\ pub\ =\ privateKey.publicKey();}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}get\ public\ key"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00327}00327\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ (pub.schnorr\_verify(signature,\ messageBytes))}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00329}00329\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \_logToSerialWithTitle("{}All\ good,\ signature\ is\ valid"{},\ "{}"{});}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ else}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \{}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00334}00334\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \_logToSerialWithTitle("{}Something\ went\ wrong,\ signature\ is\ invalid"{},\ "{}"{});}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00335}00335\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00336}00336\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}verify\ schnorr\ sig"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00337}00337\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ String\ serialisedDataString\ =\ \textcolor{stringliteral}{"{}\{\(\backslash\)"{}id\(\backslash\)"{}:\(\backslash\)"{}"{}}\ +\ msgHash\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{},\(\backslash\)"{}pubkey\(\backslash\)"{}:\(\backslash\)"{}"{}}\ +\ String(pubKeyHex)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{},\(\backslash\)"{}created\_at\(\backslash\)"{}:"{}}\ +\ String(timestamp)\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}kind\(\backslash\)"{}:"{}}\ +\ String(kind)\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}tags\(\backslash\)"{}:"{}}\ +\ tags\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}content\(\backslash\)"{}:\(\backslash\)"{}"{}}\ +\ content\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{},\(\backslash\)"{}sig\(\backslash\)"{}:\(\backslash\)"{}"{}}\ +\ signatureHex\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}\}"{}};}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}serialisedEventDataString\ is:\ "{}},\ String(serialisedDataString));}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Print\ the\ JSON\ to\ the\ serial\ monitor}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}Event\ JSON"{}},\ serialisedDataString);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ serialisedDataString;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00344}00344\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00345}00345\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00353}\mbox{\hyperlink{namespacenostr_afca44e9f58eaddb2737fee169753ad9c}{00353}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespacenostr_afca44e9f58eaddb2737fee169753ad9c}{stringToByteArray}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *input,\ \textcolor{keywordtype}{int}\ padding\_diff,\ \textcolor{keywordtype}{byte}\ *output)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00354}00354\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00355}00355\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00356}00356\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ remove\ end-\/of-\/string\ char}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00357}00357\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (input[i]\ !=\ \textcolor{charliteral}{'\(\backslash\)0'})}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00358}00358\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ output[i]\ =\ input[i];}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ i++;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00361}00361\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00362}00362\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00363}00363\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ pad\ between\ 1\ and\ 16\ bytes}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00364}00364\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ padding\_diff;\ j++)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00365}00365\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ output[i\ +\ j]\ =\ padding\_diff;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00367}00367\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00368}00368\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00369}00369\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00378}\mbox{\hyperlink{namespacenostr_a52ad606d41ff89c69df00732ee8e348d}{00378}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_a52ad606d41ff89c69df00732ee8e348d}{encryptData}}(\textcolor{keywordtype}{byte}\ key[32],\ \textcolor{keywordtype}{byte}\ iv[16],\ String\ \&msg)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00379}00379\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00380}00380\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ message\ has\ to\ be\ padded\ at\ the\ end\ so\ it\ is\ a\ multiple\ of\ 16}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ padding\_diff\ =\ msg.length()\ \%\ 16\ ==\ 0\ ?\ 16\ :\ 16\ -\/\ (msg.length()\ \%\ 16);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00382}00382\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00383}00383\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ byteSize\ =\ msg.length()\ +\ padding\_diff;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00384}00384\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ *messageBin\ =\ (\textcolor{keywordtype}{byte}\ *)malloc(byteSize);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00385}00385\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00386}00386\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (messageBin\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00387}00387\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Failed\ to\ allocate\ PSRAM"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00390}00390\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00391}00391\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00392}00392\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_afca44e9f58eaddb2737fee169753ad9c}{stringToByteArray}}(msg.c\_str(),\ padding\_diff,\ messageBin);}
 \DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00393}00393\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00394}00394\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ sharedPointX[32];}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00395}00395\ \ \ \ \ \ \ \ \ privateKey.ecdh(otherDhPublicKey,\ sharedPointX,\ \textcolor{keyword}{false});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00396}00396\ \ \ \ \ \ \ \ \ String\ sharedPointXHex\ =\ toHex(sharedPointX,\ \textcolor{keyword}{sizeof}(sharedPointX));}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00397}00397\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}sharedPointXHex\ is"{}},\ sharedPointXHex);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00398}00398\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}getCipherText:\ get\ sharedPointX"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00399}00399\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00400}00400\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ the\ initialization\ vector}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00401}00401\ \ \ \ \ \ \ \ \ uint8\_t\ iv[16];}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00402}00402\ \ \ \ \ \ \ \ \ esp\_random()\ \%\ 256;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00403}00403\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \textcolor{keyword}{sizeof}(iv);\ i++)}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00404}00404\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00405}00405\ \ \ \ \ \ \ \ \ \ \ \ \ iv[i]\ =\ esp\_random()\ \%\ 256;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00406}00406\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00407}00407\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}getCipherText:\ create\ iv"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00408}00408\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00409}00409\ \ \ \ \ \ \ \ \ String\ ivHex\ =\ toHex(iv,\ 16);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00410}00410\ \ \ \ \ \ \ \ \ String\ ivBase64\ =\ hexToBase64(ivHex);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00411}00411\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}getCipherText:\ get\ ivBase64"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00412}00412\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00413}00413\ \ \ \ \ \ \ \ \ String\ encryptedMessageHex\ =\ \mbox{\hyperlink{namespacenostr_a52ad606d41ff89c69df00732ee8e348d}{encryptData}}(sharedPointX,\ iv,\ content);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00414}00414\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}getCipherText:\ get\ encryptedMessageHex"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00415}00415\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00416}00416\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ divide\ the\ length\ of\ the\ hex\ string\ 2\ to\ get\ the\ size\ of\ the\ byte\ array,\ since\ each\ byte\ consists\ of\ 2\ hexadecimal\ characters.}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00417}00417\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ encryptedMessageSize\ =\ encryptedMessageHex.length()\ /\ 2;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00418}00418\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Allocate\ memory\ for\ the\ encrypted\ message\ array}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00419}00419\ \ \ \ \ \ \ \ \ uint8\_t\ *encryptedMessage\ =\ (uint8\_t\ *)malloc(encryptedMessageSize);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00420}00420\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (encryptedMessage\ ==\ \textcolor{keyword}{nullptr})}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00421}00421\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00422}00422\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Failed\ to\ allocate\ PSRAM\ for\ encryptedMessage"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00423}00423\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00424}00424\ \ \ \ \ \ \ \ \ fromHex(encryptedMessageHex,\ encryptedMessage,\ encryptedMessageSize);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00425}00425\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}getCipherText:\ get\ encryptedMessage\ fromHex"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00394}00394\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_a_e_s__ctx}{AES\_ctx}}\ ctx;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00395}00395\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{aes_8cpp_a99d17d22ed909bd155007cdece29263a}{AES\_init\_ctx\_iv}}(\&ctx,\ key,\ iv);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00396}00396\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00397}00397\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{aes_8cpp_a296bd30323044b07d69e0e3b5f676281}{AES\_CBC\_encrypt\_buffer}}(\&ctx,\ messageBin,\ byteSize);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00398}00398\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00399}00399\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ toHex(messageBin,\ byteSize);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00400}00400\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00401}00401\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00410}\mbox{\hyperlink{namespacenostr_a2fa2b10644805a1cd2b329875134fdbd}{00410}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_a2fa2b10644805a1cd2b329875134fdbd}{getCipherText}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *privateKeyHex,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *recipientPubKeyHex,\ String\ \&content)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00411}00411\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00412}00412\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_ae7add69f32ac7f6af83399c69374cc50}{\_startTimer}}(\textcolor{stringliteral}{"{}getCipherText"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00413}00413\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ shared\ point}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00414}00414\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ the\ private\ key\ object}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00415}00415\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ byteSize\ =\ 32;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00416}00416\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ privateKeyBytes[byteSize];}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00417}00417\ \ \ \ \ \ \ \ \ fromHex(privateKeyHex,\ privateKeyBytes,\ byteSize);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00418}00418\ \ \ \ \ \ \ \ \ PrivateKey\ privateKey(privateKeyBytes);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00419}00419\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}getCipherText:\ create\ privateKey\ object"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00420}00420\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00421}00421\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ publicKeyBin[64];}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00422}00422\ \ \ \ \ \ \ \ \ fromHex(\textcolor{stringliteral}{"{}02"{}}\ +\ String(recipientPubKeyHex),\ publicKeyBin,\ 64);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00423}00423\ \ \ \ \ \ \ \ \ PublicKey\ otherDhPublicKey(publicKeyBin);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00424}00424\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}otherDhPublicKey.toString()\ is"{}},\ otherDhPublicKey.toString());}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00425}00425\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}getCipherText:\ create\ otherDhPublicKey\ object"{}});}
 \DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00426}00426\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00427}00427\ \ \ \ \ \ \ \ \ String\ encryptedMessageBase64\ =\ hexToBase64(encryptedMessageHex);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00428}00428\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}getCipherText:\ get\ encryptedMessageBase64"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00429}00429\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00430}00430\ \ \ \ \ \ \ \ \ encryptedMessageBase64\ +=\ \textcolor{stringliteral}{"{}?iv="{}}\ +\ ivBase64;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00431}00431\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ encryptedMessageBase64;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00432}00432\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00433}00433\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00446}\mbox{\hyperlink{namespacenostr_a6153fcc43ae15291045b9c2a2bd89291}{00446}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_a6153fcc43ae15291045b9c2a2bd89291}{getSerialisedEncryptedDmObject}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *pubKeyHex,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *recipientPubKeyHex,\ uint16\_t\ kind,\ String\ \&msgHash,\ \textcolor{keywordtype}{int}\ timestamp,\ String\ \&encryptedMessageWithIv,\ String\ \&schnorrSig)}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00447}00447\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00448}00448\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ parse\ a\ JSON\ array}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00449}00449\ \ \ \ \ \ \ \ \ String\ serialisedTagsArray\ =\ \textcolor{stringliteral}{"{}[[\(\backslash\)"{}p\(\backslash\)"{},\(\backslash\)"{}"{}}\ +\ String(recipientPubKeyHex)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}]]"{}};}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00450}00450\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \_logToSerialWithTitle("{}serialisedTagsArray\ is:\ "{},\ serialisedTagsArray);}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00451}00451\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00452}00452\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ the\ serialised\ fullEvent\ string\ using\ sprintf\ instead\ of\ the\ Arduino\ JSON\ library}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00453}00453\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}[\(\backslash\)"{}EVENT\(\backslash\)"{},\{\(\backslash\)"{}id\(\backslash\)"{}:\(\backslash\)"{}"{}}\ +\ msgHash\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{},\(\backslash\)"{}pubkey\(\backslash\)"{}:\(\backslash\)"{}"{}}\ +\ pubKeyHex\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{},\(\backslash\)"{}created\_at\(\backslash\)"{}:"{}}\ +\ String(timestamp)\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}kind\(\backslash\)"{}:"{}}\ +\ String(kind)\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}tags\(\backslash\)"{}:"{}}\ +\ serialisedTagsArray\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}content\(\backslash\)"{}:\(\backslash\)"{}"{}}\ +\ encryptedMessageWithIv\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{},\(\backslash\)"{}sig\(\backslash\)"{}:\(\backslash\)"{}"{}}\ +\ schnorrSig\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}\}]"{}};}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00454}00454\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00455}00455\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00456}\mbox{\hyperlink{namespacenostr_a754ce1cc38ea76f4a89fb5c26c264156}{00456}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_a754ce1cc38ea76f4a89fb5c26c264156}{getSerialisedEncryptedDmArray}}(\textcolor{keywordtype}{char}\ \textcolor{keyword}{const}\ *pubKeyHex,\ \textcolor{keywordtype}{char}\ \textcolor{keyword}{const}\ *recipientPubKeyHex,\ uint16\_t\ kind,\ \textcolor{keywordtype}{int}\ timestamp,\ String\ \&encryptedMessageWithIv)}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00457}00457\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00458}00458\ \ \ \ \ \ \ \ \ String\ serialisedTagsArray\ =\ \textcolor{stringliteral}{"{}[[\(\backslash\)"{}p\(\backslash\)"{},\(\backslash\)"{}"{}}\ +\ String(recipientPubKeyHex)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}]]"{}};}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00459}00459\ \ \ \ \ \ \ \ \ String\ message\ =\ \textcolor{stringliteral}{"{}[0,\(\backslash\)"{}"{}}\ +\ String(pubKeyHex)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{},"{}}\ +\ String(timestamp)\ +\ \textcolor{stringliteral}{"{},"{}}\ +\ String(kind)\ +\ \textcolor{stringliteral}{"{},"{}}\ +\ serialisedTagsArray\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}"{}}\ +\ encryptedMessageWithIv\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}]"{}};}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00460}00460\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00461}00461\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \_logToSerialWithTitle("{}message\ is:\ "{},\ message);}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00427}00427\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ sharedPointX[32];}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00428}00428\ \ \ \ \ \ \ \ \ privateKey.ecdh(otherDhPublicKey,\ sharedPointX,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00429}00429\ \ \ \ \ \ \ \ \ String\ sharedPointXHex\ =\ toHex(sharedPointX,\ \textcolor{keyword}{sizeof}(sharedPointX));}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00430}00430\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}sharedPointXHex\ is"{}},\ sharedPointXHex);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00431}00431\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}getCipherText:\ get\ sharedPointX"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00432}00432\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00433}00433\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ the\ initialization\ vector}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00434}00434\ \ \ \ \ \ \ \ \ uint8\_t\ iv[16];}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00435}00435\ \ \ \ \ \ \ \ \ esp\_random()\ \%\ 256;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00436}00436\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \textcolor{keyword}{sizeof}(iv);\ i++)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00437}00437\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00438}00438\ \ \ \ \ \ \ \ \ \ \ \ \ iv[i]\ =\ esp\_random()\ \%\ 256;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00439}00439\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00440}00440\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}getCipherText:\ create\ iv"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00441}00441\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00442}00442\ \ \ \ \ \ \ \ \ String\ ivHex\ =\ toHex(iv,\ 16);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00443}00443\ \ \ \ \ \ \ \ \ String\ ivBase64\ =\ hexToBase64(ivHex);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00444}00444\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}getCipherText:\ get\ ivBase64"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00445}00445\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00446}00446\ \ \ \ \ \ \ \ \ String\ encryptedMessageHex\ =\ \mbox{\hyperlink{namespacenostr_a52ad606d41ff89c69df00732ee8e348d}{encryptData}}(sharedPointX,\ iv,\ content);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00447}00447\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}getCipherText:\ get\ encryptedMessageHex"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00448}00448\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00449}00449\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ divide\ the\ length\ of\ the\ hex\ string\ 2\ to\ get\ the\ size\ of\ the\ byte\ array,\ since\ each\ byte\ consists\ of\ 2\ hexadecimal\ characters.}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00450}00450\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ encryptedMessageSize\ =\ encryptedMessageHex.length()\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00451}00451\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Allocate\ memory\ for\ the\ encrypted\ message\ array}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00452}00452\ \ \ \ \ \ \ \ \ uint8\_t\ *encryptedMessage\ =\ (uint8\_t\ *)malloc(encryptedMessageSize);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00453}00453\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (encryptedMessage\ ==\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00454}00454\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00455}00455\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Failed\ to\ allocate\ PSRAM\ for\ encryptedMessage"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00456}00456\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00457}00457\ \ \ \ \ \ \ \ \ fromHex(encryptedMessageHex,\ encryptedMessage,\ encryptedMessageSize);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00458}00458\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}getCipherText:\ get\ encryptedMessage\ fromHex"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00459}00459\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00460}00460\ \ \ \ \ \ \ \ \ String\ encryptedMessageBase64\ =\ hexToBase64(encryptedMessageHex);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00461}00461\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}getCipherText:\ get\ encryptedMessageBase64"{}});}
 \DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00462}00462\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00463}00463\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ message;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00464}00464\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00465}00465\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00478}\mbox{\hyperlink{namespacenostr_a8b5b9ccf35b878cc481ed6523f568a49}{00478}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_a8b5b9ccf35b878cc481ed6523f568a49}{getEncryptedDm}}(\textcolor{keywordtype}{char}\ \textcolor{keyword}{const}\ *privateKeyHex,\ \textcolor{keywordtype}{char}\ \textcolor{keyword}{const}\ *pubKeyHex,\ \textcolor{keywordtype}{char}\ \textcolor{keyword}{const}\ *recipientPubKeyHex,\ uint16\_t\ kind,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ timestamp,\ String\ content,\ String\ type)}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00479}00479\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00480}00480\ \ \ \ \ \ \ \ \ String\ encryptedMessageBase64\ =\ \textcolor{stringliteral}{"{}"{}};}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00481}00481\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}nip44"{}})\ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00482}00482\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_ae7add69f32ac7f6af83399c69374cc50}{\_startTimer}}(\textcolor{stringliteral}{"{}getEncrypted\ NIP44\ Dm"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00483}00483\ \ \ \ \ \ \ \ \ \ \ \ \ encryptedMessageBase64\ =\ \mbox{\hyperlink{nip44_8cpp_a9fca4f5d3adc798444724f0ef23cb0c6}{executeEncryptMessageNip44}}(content,\ privateKeyHex,\ recipientPubKeyHex);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}NIP44\ encrypted\ message:\ "{}}\ +\ encryptedMessageBase64);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00485}00485\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}executeEncryptMessageNip44"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00486}00486\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00487}00487\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_ae7add69f32ac7f6af83399c69374cc50}{\_startTimer}}(\textcolor{stringliteral}{"{}getEncrypted\ NIP44\ Dm"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00488}00488\ \ \ \ \ \ \ \ \ \ \ \ \ encryptedMessageBase64\ =\ \mbox{\hyperlink{namespacenostr_a2fa2b10644805a1cd2b329875134fdbd}{getCipherText}}(privateKeyHex,\ recipientPubKeyHex,\ content);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00489}00489\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}getCipherText"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00490}00490\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00491}00491\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00492}00492\ \ \ \ \ \ \ \ \ String\ message\ =\ \mbox{\hyperlink{namespacenostr_a754ce1cc38ea76f4a89fb5c26c264156}{nostr::getSerialisedEncryptedDmArray}}(pubKeyHex,\ recipientPubKeyHex,\ kind,\ timestamp,\ encryptedMessageBase64);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00493}00493\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}get\ serialised\ encrypted\ dm\ array"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00494}00494\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00495}00495\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ hash[64]\ =\ \{0\};\ \textcolor{comment}{//\ hash}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00496}00496\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ hashLen\ =\ 0;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00497}00497\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00498}00498\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ sha256\ hash\ of\ the\ message}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00499}00499\ \ \ \ \ \ \ \ \ hashLen\ =\ sha256(message,\ hash);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00500}00500\ \ \ \ \ \ \ \ \ String\ msgHash\ =\ toHex(hash,\ hashLen);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00501}00501\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}SHA-\/256:"{}},\ msgHash);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00502}00502\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}get\ sha256\ hash\ of\ message"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00503}00503\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00504}00504\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ byteSize\ =\ 32;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00505}00505\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ privateKeyBytes[byteSize];}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00506}00506\ \ \ \ \ \ \ \ \ fromHex(privateKeyHex,\ privateKeyBytes,\ byteSize);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00507}00507\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}get\ privateKeyBytes\ from\ hex"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00508}00508\ \ \ \ \ \ \ \ \ PrivateKey\ privateKey(privateKeyBytes);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00509}00509\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}create\ privateKey\ object"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00510}00510\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Generate\ the\ schnorr\ sig\ of\ the\ messageHash}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00511}00511\ \ \ \ \ \ \ \ \ SchnorrSignature\ signature\ =\ privateKey.schnorr\_sign(hash);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00512}00512\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}generate\ schnorr\ sig"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00513}00513\ \ \ \ \ \ \ \ \ String\ signatureHex\ =\ String(signature);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00514}00514\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}Schnorr\ sig\ is:\ "{}},\ signatureHex);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00515}00515\ }
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00516}00516\ \ \ \ \ \ \ \ \ String\ serialisedEventData\ =\ \mbox{\hyperlink{namespacenostr_a6153fcc43ae15291045b9c2a2bd89291}{nostr::getSerialisedEncryptedDmObject}}(pubKeyHex,\ recipientPubKeyHex,\ kind,\ msgHash,\ timestamp,\ encryptedMessageBase64,\ signatureHex);}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00517}00517\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}get\ serialised\ encrypted\ dm\ object"{}});}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00518}00518\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \_logToSerialWithTitle("{}serialisedEventData\ is"{},\ serialisedEventData);}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00519}00519\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ serialisedEventData;}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00520}00520\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00521}00521\ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00463}00463\ \ \ \ \ \ \ \ \ encryptedMessageBase64\ +=\ \textcolor{stringliteral}{"{}?iv="{}}\ +\ ivBase64;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00464}00464\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ encryptedMessageBase64;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00465}00465\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00466}00466\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00479}\mbox{\hyperlink{namespacenostr_a6153fcc43ae15291045b9c2a2bd89291}{00479}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_a6153fcc43ae15291045b9c2a2bd89291}{getSerialisedEncryptedDmObject}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *pubKeyHex,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *recipientPubKeyHex,\ uint16\_t\ kind,\ String\ \&msgHash,\ \textcolor{keywordtype}{int}\ timestamp,\ String\ \&encryptedMessageWithIv,\ String\ \&schnorrSig)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00480}00480\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00481}00481\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ parse\ a\ JSON\ array}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00482}00482\ \ \ \ \ \ \ \ \ String\ serialisedTagsArray\ =\ \textcolor{stringliteral}{"{}[[\(\backslash\)"{}p\(\backslash\)"{},\(\backslash\)"{}"{}}\ +\ String(recipientPubKeyHex)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}]]"{}};}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00483}00483\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \_logToSerialWithTitle("{}serialisedTagsArray\ is:\ "{},\ serialisedTagsArray);}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00484}00484\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00485}00485\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ the\ serialised\ fullEvent\ string\ using\ sprintf\ instead\ of\ the\ Arduino\ JSON\ library}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00486}00486\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}[\(\backslash\)"{}EVENT\(\backslash\)"{},\{\(\backslash\)"{}id\(\backslash\)"{}:\(\backslash\)"{}"{}}\ +\ msgHash\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{},\(\backslash\)"{}pubkey\(\backslash\)"{}:\(\backslash\)"{}"{}}\ +\ pubKeyHex\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{},\(\backslash\)"{}created\_at\(\backslash\)"{}:"{}}\ +\ String(timestamp)\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}kind\(\backslash\)"{}:"{}}\ +\ String(kind)\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}tags\(\backslash\)"{}:"{}}\ +\ serialisedTagsArray\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}content\(\backslash\)"{}:\(\backslash\)"{}"{}}\ +\ encryptedMessageWithIv\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{},\(\backslash\)"{}sig\(\backslash\)"{}:\(\backslash\)"{}"{}}\ +\ schnorrSig\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}\}]"{}};}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00487}00487\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00488}00488\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00489}\mbox{\hyperlink{namespacenostr_a754ce1cc38ea76f4a89fb5c26c264156}{00489}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_a754ce1cc38ea76f4a89fb5c26c264156}{getSerialisedEncryptedDmArray}}(\textcolor{keywordtype}{char}\ \textcolor{keyword}{const}\ *pubKeyHex,\ \textcolor{keywordtype}{char}\ \textcolor{keyword}{const}\ *recipientPubKeyHex,\ uint16\_t\ kind,\ \textcolor{keywordtype}{int}\ timestamp,\ String\ \&encryptedMessageWithIv)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00490}00490\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00491}00491\ \ \ \ \ \ \ \ \ String\ serialisedTagsArray\ =\ \textcolor{stringliteral}{"{}[[\(\backslash\)"{}p\(\backslash\)"{},\(\backslash\)"{}"{}}\ +\ String(recipientPubKeyHex)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}]]"{}};}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00492}00492\ \ \ \ \ \ \ \ \ String\ message\ =\ \textcolor{stringliteral}{"{}[0,\(\backslash\)"{}"{}}\ +\ String(pubKeyHex)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{},"{}}\ +\ String(timestamp)\ +\ \textcolor{stringliteral}{"{},"{}}\ +\ String(kind)\ +\ \textcolor{stringliteral}{"{},"{}}\ +\ serialisedTagsArray\ +\ \textcolor{stringliteral}{"{},\(\backslash\)"{}"{}}\ +\ encryptedMessageWithIv\ +\ \textcolor{stringliteral}{"{}\(\backslash\)"{}]"{}};}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00493}00493\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00494}00494\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \_logToSerialWithTitle("{}message\ is:\ "{},\ message);}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00495}00495\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00496}00496\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ message;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00497}00497\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00498}00498\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00511}\mbox{\hyperlink{namespacenostr_a8b5b9ccf35b878cc481ed6523f568a49}{00511}}\ \ \ \ \ String\ \mbox{\hyperlink{namespacenostr_a8b5b9ccf35b878cc481ed6523f568a49}{getEncryptedDm}}(\textcolor{keywordtype}{char}\ \textcolor{keyword}{const}\ *privateKeyHex,\ \textcolor{keywordtype}{char}\ \textcolor{keyword}{const}\ *pubKeyHex,\ \textcolor{keywordtype}{char}\ \textcolor{keyword}{const}\ *recipientPubKeyHex,\ uint16\_t\ kind,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ timestamp,\ String\ content,\ String\ type)}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00512}00512\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00513}00513\ \ \ \ \ \ \ \ \ String\ encryptedMessageBase64\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00514}00514\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (type\ ==\ \textcolor{stringliteral}{"{}nip44"{}})\ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00515}00515\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_ae7add69f32ac7f6af83399c69374cc50}{\_startTimer}}(\textcolor{stringliteral}{"{}getEncrypted\ NIP44\ Dm"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00516}00516\ \ \ \ \ \ \ \ \ \ \ \ \ encryptedMessageBase64\ =\ \mbox{\hyperlink{nip44_8cpp_a9fca4f5d3adc798444724f0ef23cb0c6}{executeEncryptMessageNip44}}(content,\ privateKeyHex,\ recipientPubKeyHex);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00517}00517\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}NIP44\ encrypted\ message:\ "{}}\ +\ encryptedMessageBase64);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00518}00518\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}executeEncryptMessageNip44"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00519}00519\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00520}00520\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_ae7add69f32ac7f6af83399c69374cc50}{\_startTimer}}(\textcolor{stringliteral}{"{}getEncrypted\ NIP44\ Dm"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00521}00521\ \ \ \ \ \ \ \ \ \ \ \ \ encryptedMessageBase64\ =\ \mbox{\hyperlink{namespacenostr_a2fa2b10644805a1cd2b329875134fdbd}{getCipherText}}(privateKeyHex,\ recipientPubKeyHex,\ content);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00522}00522\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}getCipherText"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00523}00523\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00524}00524\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00525}00525\ \ \ \ \ \ \ \ \ String\ message\ =\ \mbox{\hyperlink{namespacenostr_a754ce1cc38ea76f4a89fb5c26c264156}{nostr::getSerialisedEncryptedDmArray}}(pubKeyHex,\ recipientPubKeyHex,\ kind,\ timestamp,\ encryptedMessageBase64);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00526}00526\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}get\ serialised\ encrypted\ dm\ array"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00527}00527\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00528}00528\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ hash[32]\ =\ \{0\};\ \textcolor{comment}{//\ hash\ should\ be\ 32\ bytes\ for\ SHA-\/256}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00529}00529\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ hashLen\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00530}00530\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00531}00531\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ sha256\ hash\ of\ the\ message}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00532}00532\ \ \ \ \ \ \ \ \ hashLen\ =\ sha256(message,\ hash);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00533}00533\ \ \ \ \ \ \ \ \ String\ msgHash\ =\ toHex(hash,\ hashLen);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00534}00534\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}SHA-\/256:"{}},\ msgHash);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00535}00535\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}get\ sha256\ hash\ of\ message"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00536}00536\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00537}00537\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ byteSize\ =\ 32;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00538}00538\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}\ privateKeyBytes[byteSize];}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00539}00539\ \ \ \ \ \ \ \ \ fromHex(privateKeyHex,\ privateKeyBytes,\ byteSize);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00540}00540\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}get\ privateKeyBytes\ from\ hex"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00541}00541\ \ \ \ \ \ \ \ \ PrivateKey\ privateKey(privateKeyBytes);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00542}00542\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}create\ privateKey\ object"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00543}00543\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Generate\ the\ schnorr\ sig\ of\ the\ messageHash}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00544}00544\ \ \ \ \ \ \ \ \ SchnorrSignature\ signature\ =\ privateKey.schnorr\_sign(hash);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00545}00545\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}generate\ schnorr\ sig"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00546}00546\ \ \ \ \ \ \ \ \ String\ signatureHex\ =\ String(signature);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00547}00547\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{\_logToSerialWithTitle}}(\textcolor{stringliteral}{"{}Schnorr\ sig\ is:\ "{}},\ signatureHex);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00548}00548\ }
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00549}00549\ \ \ \ \ \ \ \ \ String\ serialisedEventData\ =\ \mbox{\hyperlink{namespacenostr_a6153fcc43ae15291045b9c2a2bd89291}{nostr::getSerialisedEncryptedDmObject}}(pubKeyHex,\ recipientPubKeyHex,\ kind,\ msgHash,\ timestamp,\ encryptedMessageBase64,\ signatureHex);}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00550}00550\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacenostr_a9b4c329f738edf5cebd6f9eacb0facbe}{\_stopTimer}}(\textcolor{stringliteral}{"{}get\ serialised\ encrypted\ dm\ object"{}});}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00551}00551\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \_logToSerialWithTitle("{}serialisedEventData\ is"{},\ serialisedEventData);}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00552}00552\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ serialisedEventData;}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00553}00553\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{nostr_8cpp_source_l00554}00554\ \}}
 
 \end{DoxyCode}

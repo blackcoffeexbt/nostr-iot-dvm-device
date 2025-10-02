@@ -10,7 +10,4 @@ namespace Settings {
         
     // Persistence
     void loadFromPreferences();
-    void saveToPreferences();
-    
-
 }

@@ -1,15 +1,15 @@
 var searchData=
 [
-  ['readdata_0',['readData',['../class_a_x_s15231_b___touch.html#a986f12df1baa1ade792189af93c08086',1,'AXS15231B_Touch']]],
-  ['rebootdeviceeventhandler_1',['rebootDeviceEventHandler',['../namespace_u_i.html#a8fdc8946d85d7e8cbe4d339e1e268f5d',1,'UI']]],
-  ['reconstructpublickey_2',['reconstructPublicKey',['../helpers_8cpp.html#ab2ba8df35647b04ee987e759a580a660',1,'reconstructPublicKey(const String &amp;xHex):&#160;helpers.cpp'],['../helpers_8h.html#ab2ba8df35647b04ee987e759a580a660',1,'reconstructPublicKey(const String &amp;xHex):&#160;helpers.cpp']]],
-  ['refreshsecretkey_3',['refreshSecretKey',['../namespace_remote_signer.html#a274b55d4777ae202a4cf5f08aeafde0a',1,'RemoteSigner']]],
-  ['removenetwork_4',['removeNetwork',['../namespace_wi_fi_manager.html#acda899003fb96827cf623a31729fa276',1,'WiFiManager']]],
-  ['reportmodulestatus_5',['reportModuleStatus',['../namespace_app.html#a683e7e9d5f87752ba306ae8d4b3043c8',1,'App']]],
-  ['resetactivitytimer_6',['resetActivityTimer',['../namespace_app.html#adfe353584321cab94c6491c32470d046',1,'App']]],
-  ['resetbacklighttimeout_7',['resetBacklightTimeout',['../namespace_display.html#a694dddf11915e58ecf50e9d9f0e9307f',1,'Display']]],
-  ['resettodefaults_8',['resetToDefaults',['../namespace_app.html#aad3d214ab3bb9320fbfada4d1a34b202',1,'App::resetToDefaults()'],['../namespace_settings.html#aa26da663d96a908585fb90c6444f975b',1,'Settings::resetToDefaults()']]],
-  ['resetwebsocketfragmentstate_9',['resetWebsocketFragmentState',['../namespace_remote_signer.html#afefdfa0549d3aa2d4c19286036651475',1,'RemoteSigner']]],
-  ['run_10',['run',['../namespace_app.html#ae09dc71078b64c56c673b1ad1d25b5d1',1,'App']]],
-  ['rundiagnostics_11',['runDiagnostics',['../namespace_app.html#a70e0965d86f6b58c39348c8802e27591',1,'App']]]
+  ['saveconfigtopreferences_0',['saveConfigToPreferences',['../namespace_nostr_manager.html#a5d8579a93f00888032984ae21d77f9e1',1,'NostrManager']]],
+  ['savetopreferences_1',['saveToPreferences',['../namespace_settings.html#af6a6f662bd9c9624532ac98521fdfd97',1,'Settings']]],
+  ['sendping_2',['sendPing',['../namespace_nostr_manager.html#af6eca70371e1aede19d02aa472c4c482',1,'NostrManager']]],
+  ['sendsubscription_3',['sendSubscription',['../namespace_nostr_manager.html#a751180292741686c399a4c6d36fc6346',1,'NostrManager']]],
+  ['setpaymentcallback_4',['setPaymentCallback',['../namespace_payment_provider.html#a4fd708aaaf9493e54b73ac43adf4b905',1,'PaymentProvider']]],
+  ['setprivatekey_5',['setPrivateKey',['../namespace_nostr_manager.html#a5768baa7721894842630f525acddaf09',1,'NostrManager']]],
+  ['setrelayurl_6',['setRelayUrl',['../namespace_nostr_manager.html#afb001fb338ba8497291bbff439c8385d',1,'NostrManager']]],
+  ['setstate_7',['setState',['../namespace_app.html#ac12729d606c8030bbeb7e32b51810f1a',1,'App']]],
+  ['setstatuscallback_8',['setStatusCallback',['../namespace_nostr_manager.html#a7137faa6f3bc86c8181072b7423e6d34',1,'NostrManager::setStatusCallback()'],['../namespace_wi_fi_manager.html#afbd1520be38dcf8df79b62059bc70113',1,'WiFiManager::setStatusCallback()']]],
+  ['setup_9',['setup',['../main_8cpp.html#a7dfd9b79bc5a37d7df40207afbc5431f',1,'main.cpp']]],
+  ['startconnection_10',['startConnection',['../namespace_wi_fi_manager.html#aecf543cfe5d796167b7d92714ba27bee',1,'WiFiManager']]],
+  ['stringtobytearray_11',['stringToByteArray',['../namespacenostr.html#afca44e9f58eaddb2737fee169753ad9c',1,'nostr']]]
 ];

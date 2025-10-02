@@ -56,13 +56,6 @@ namespace PaymentProvider {
         }
     }
 
-    bool isPaymentRequired(const String& method) {
-        // This will be implemented by checking pricing configuration
-        // For now, assume all methods require payment if price > 0
-        // This logic should eventually move to a pricing configuration system
-        return true; // Placeholder - implement pricing logic
-    }
-
     String createPaymentRequest(int amount_sats, const String& memo) {
         Serial.println("PaymentProvider::createPaymentRequest() - Creating invoice for " + String(amount_sats) + " sats");
         

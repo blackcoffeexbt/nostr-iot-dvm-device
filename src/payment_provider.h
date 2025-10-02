@@ -29,7 +29,6 @@ namespace PaymentProvider {
     void processLoop();
 
     // Payment request creation
-    bool isPaymentRequired(const String& method);
     String createPaymentRequest(int amount_sats, const String& memo);
     String extractPaymentHashFromResponse(const String& invoice_response);
     String extractBolt11FromResponse(const String& response);

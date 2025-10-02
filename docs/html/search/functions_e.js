@@ -1,20 +1,8 @@
 var searchData=
 [
-  ['padmessage_0',['padMessage',['../nip44_8cpp.html#ac24379517e65e887cbbdc17891ab8e9a',1,'padMessage(const String &amp;plaintext):&#160;nip44.cpp'],['../nip44_8h.html#ac24379517e65e887cbbdc17891ab8e9a',1,'padMessage(const String &amp;plaintext):&#160;nip44.cpp']]],
-  ['passwordbackeventhandler_1',['passwordBackEventHandler',['../namespace_wi_fi_manager.html#af89611ddc9efbc6714f4cc1796968314',1,'WiFiManager']]],
-  ['passwordkbeventhandler_2',['passwordKBEventHandler',['../namespace_wi_fi_manager.html#ab0a62322259c53ddf5142935b2d373ce',1,'WiFiManager']]],
-  ['performupdate_3',['performUpdate',['../namespace_app.html#a1fe12b467c84861a1b948df26eb74ca7',1,'App']]],
-  ['pincanceleventhandler_4',['pinCancelEventHandler',['../namespace_settings.html#ade418e65a12ef8473317caaef2bbb27e',1,'Settings']]],
-  ['pincurrentkbeventhandler_5',['pinCurrentKBEventHandler',['../namespace_settings.html#a44b484c2a7865919950ac1d3134ef9e0',1,'Settings']]],
-  ['pinnewkbeventhandler_6',['pinNewKBEventHandler',['../namespace_settings.html#aa2fe811907640d635ff03d68e882ddeb',1,'Settings']]],
-  ['pinsaveeventhandler_7',['pinSaveEventHandler',['../namespace_settings.html#ab49e6329f290a6e7ccf48a4803bf4926',1,'Settings']]],
-  ['pinverificationcanceleventhandler_8',['pinVerificationCancelEventHandler',['../namespace_settings.html#acfc431be8212b2356532043211127d86',1,'Settings']]],
-  ['pinverificationkbeventhandler_9',['pinVerificationKBEventHandler',['../namespace_settings.html#a4b29986b7a9d3c24a455126f4516aecb',1,'Settings']]],
-  ['pinverificationqrcanceleventhandler_10',['pinVerificationQRCancelEventHandler',['../namespace_settings.html#a7342e198e17dd5770e74177d2a9ff50a',1,'Settings']]],
-  ['pinverificationqrkbeventhandler_11',['pinVerificationQRKBEventHandler',['../namespace_settings.html#ab794216f73eb993b3d075c5a45f6b884',1,'Settings']]],
-  ['pinverifykbeventhandler_12',['pinVerifyKBEventHandler',['../namespace_settings.html#a9bdbe65c3c274b9cda185d818cd13d59',1,'Settings']]],
-  ['printsysteminfo_13',['printSystemInfo',['../namespace_app.html#a8eff98ed4b5bce3fbe05f44c6be52c73',1,'App']]],
-  ['processloop_14',['processLoop',['../namespace_remote_signer.html#ae5f7ceb9142bbed66ee40e8159e9ce6c',1,'RemoteSigner::processLoop()'],['../namespace_wi_fi_manager.html#a4600374afc464e50c6516ed52df26b81',1,'WiFiManager::processLoop()']]],
-  ['processscanresults_15',['processScanResults',['../namespace_wi_fi_manager.html#acce9115c77844a236e1e722ca26b2d30',1,'WiFiManager']]],
-  ['promptuserforauthorization_16',['promptUserForAuthorization',['../namespace_remote_signer.html#aad1b84ca520f09b30870f064180254e2',1,'RemoteSigner']]]
+  ['reconstructpublickey_0',['reconstructPublicKey',['../helpers_8cpp.html#ab2ba8df35647b04ee987e759a580a660',1,'reconstructPublicKey(const String &amp;xHex):&#160;helpers.cpp'],['../helpers_8h.html#ab2ba8df35647b04ee987e759a580a660',1,'reconstructPublicKey(const String &amp;xHex):&#160;helpers.cpp']]],
+  ['reportmodulestatus_1',['reportModuleStatus',['../namespace_app.html#a683e7e9d5f87752ba306ae8d4b3043c8',1,'App']]],
+  ['resetwebsocketfragmentstate_2',['resetWebsocketFragmentState',['../namespace_nostr_manager.html#a82bc11946dffbba09f4bb05e12cc1657',1,'NostrManager']]],
+  ['rm67162_5finit_3',['rm67162_init',['../rm67162_8cpp.html#a56b6afab80fbd5d06103cb8b3cdcf75d',1,'rm67162_init(void):&#160;rm67162.cpp'],['../rm67162_8h.html#a56b6afab80fbd5d06103cb8b3cdcf75d',1,'rm67162_init(void):&#160;rm67162.cpp']]],
+  ['run_4',['run',['../namespace_app.html#ae09dc71078b64c56c673b1ad1d25b5d1',1,'App::run()'],['../namespace_nostriot_provider.html#ad39f1348c9806f82b067fd5e6aa9b893',1,'NostriotProvider::run()']]]
 ];

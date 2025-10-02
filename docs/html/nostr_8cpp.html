@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Nostr Remote Signer: lib/nostr/nostr.cpp File Reference</title>
+<title>Nostr IoT DVM Device: lib/nostr/nostr.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Nostr Remote Signer<span id="projectnumber">&#160;v1.0.0</span>
+   <div id="projectname">Nostr IoT DVM Device<span id="projectnumber">&#160;v1.0.0</span>
    </div>
-   <div id="projectbrief">A NIP46 remote signer for Nostr running on the Guition 3.5inch touch display board.</div>
+   <div id="projectbrief">An ESP32 based IoT device with Nostr DVM protocol support</div>
   </td>
  </tr>
  </tbody>
@@ -106,9 +106,9 @@ $(document).ready(function(){initNavTree('nostr_8cpp.html',''); initResizable();
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="nostr_8cpp__incl.png" border="0" usemap="#alib_2nostr_2nostr_8cpp" alt=""/></div>
 <map name="alib_2nostr_2nostr_8cpp" id="alib_2nostr_2nostr_8cpp">
-<area shape="rect" title=" " alt="" coords="450,5,574,31"/>
-<area shape="rect" href="nostr_8h.html" title=" " alt="" coords="330,79,390,105"/>
-<area shape="rect" href="nip44_8h.html" title=" " alt="" coords="664,79,763,105"/>
+<area shape="rect" title=" " alt="" coords="534,5,658,31"/>
+<area shape="rect" href="nostr_8h.html" title=" " alt="" coords="378,79,438,105"/>
+<area shape="rect" href="nip44_8h.html" title=" " alt="" coords="735,79,833,105"/>
 <area shape="rect" title=" " alt="" coords="5,153,78,178"/>
 <area shape="rect" title=" " alt="" coords="102,153,165,178"/>
 <area shape="rect" title=" " alt="" coords="190,153,251,178"/>
@@ -116,10 +116,11 @@ $(document).ready(function(){initNavTree('nostr_8cpp.html',''); initResizable();
 <area shape="rect" title=" " alt="" coords="371,153,445,178"/>
 <area shape="rect" href="aes_8h.html" title=" " alt="" coords="470,153,523,178"/>
 <area shape="rect" title=" " alt="" coords="547,153,651,178"/>
+<area shape="rect" title=" " alt="" coords="676,153,722,178"/>
 <area shape="rect" title=" " alt="" coords="419,226,483,252"/>
 <area shape="rect" title=" " alt="" coords="507,226,576,252"/>
-<area shape="rect" title=" " alt="" coords="675,153,752,178"/>
-<area shape="rect" title=" " alt="" coords="776,153,833,178"/>
+<area shape="rect" title=" " alt="" coords="746,153,822,178"/>
+<area shape="rect" title=" " alt="" coords="846,153,904,178"/>
 </map>
 </div>
 </div>
@@ -150,6 +151,8 @@ Functions</h2></td></tr>
 <tr class="separator:ad76c1eacccd66757ef146e3393a1442a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48b8b6f350edb9c7ef6667458376e74e"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenostr.html#a48b8b6f350edb9c7ef6667458376e74e">nostr::getContent</a> (const String &amp;serialisedJson)</td></tr>
 <tr class="separator:a48b8b6f350edb9c7ef6667458376e74e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06e8f17b26ca73eec2e69c052975a8c7"><td class="memItemLeft" align="right" valign="top">std::map&lt; String, String &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenostr.html#a06e8f17b26ca73eec2e69c052975a8c7">nostr::getTags</a> (const String &amp;serialisedJson)</td></tr>
+<tr class="separator:a06e8f17b26ca73eec2e69c052975a8c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdbc8350c239ae90de2c10744a2fad6c"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenostr.html#abdbc8350c239ae90de2c10744a2fad6c">nostr::getSenderPubKeyHex</a> (const String &amp;serialisedJson)</td></tr>
 <tr class="separator:abdbc8350c239ae90de2c10744a2fad6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9b9b8005030f72e2136a4d0bda6879d"><td class="memItemLeft" align="right" valign="top">std::pair&lt; String, String &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenostr.html#ae9b9b8005030f72e2136a4d0bda6879d">nostr::getPubKeyAndContent</a> (const String &amp;serialisedJson)</td></tr>

@@ -1,15 +1,16 @@
 var annotated_dup =
 [
-    [ "UI", "namespace_u_i.html", [
-      [ "SignedEvent", "struct_u_i_1_1_signed_event.html", "struct_u_i_1_1_signed_event" ]
+    [ "NostriotProvider", "namespace_nostriot_provider.html", [
+      [ "Capability", "struct_nostriot_provider_1_1_capability.html", "struct_nostriot_provider_1_1_capability" ]
+    ] ],
+    [ "PaymentProvider", "namespace_payment_provider.html", [
+      [ "PendingPaymentRequest", "struct_payment_provider_1_1_pending_payment_request.html", "struct_payment_provider_1_1_pending_payment_request" ]
     ] ],
     [ "WiFiManager", "namespace_wi_fi_manager.html", [
-      [ "wifi_command_t", "struct_wi_fi_manager_1_1wifi__command__t.html", "struct_wi_fi_manager_1_1wifi__command__t" ],
-      [ "wifi_scan_result_t", "struct_wi_fi_manager_1_1wifi__scan__result__t.html", "struct_wi_fi_manager_1_1wifi__scan__result__t" ]
+      [ "wifi_command_t", "struct_wi_fi_manager_1_1wifi__command__t.html", "struct_wi_fi_manager_1_1wifi__command__t" ]
     ] ],
     [ "AES_ctx", "struct_a_e_s__ctx.html", "struct_a_e_s__ctx" ],
-    [ "AXS15231B_Touch", "class_a_x_s15231_b___touch.html", "class_a_x_s15231_b___touch" ],
     [ "chacha20_ctx", "structchacha20__ctx.html", "structchacha20__ctx" ],
-    [ "wifi_command_t", "structwifi__command__t.html", "structwifi__command__t" ],
-    [ "wifi_scan_result_t", "structwifi__scan__result__t.html", "structwifi__scan__result__t" ]
+    [ "lcd_cmd_t", "structlcd__cmd__t.html", "structlcd__cmd__t" ],
+    [ "wifi_command_t", "structwifi__command__t.html", "structwifi__command__t" ]
 ];

@@ -15,6 +15,7 @@ var nostr_8cpp =
     [ "getSenderPubKeyHex", "nostr_8cpp.html#abdbc8350c239ae90de2c10744a2fad6c", null ],
     [ "getSerialisedEncryptedDmArray", "nostr_8cpp.html#a754ce1cc38ea76f4a89fb5c26c264156", null ],
     [ "getSerialisedEncryptedDmObject", "nostr_8cpp.html#a6153fcc43ae15291045b9c2a2bd89291", null ],
+    [ "getTags", "nostr_8cpp.html#a06e8f17b26ca73eec2e69c052975a8c7", null ],
     [ "initMemorySpace", "nostr_8cpp.html#ad38d4b13131e9c51ec482ccfcbc32841", null ],
     [ "nip04Decrypt", "nostr_8cpp.html#a99b54ccdb024947dfabe8ea69c57214e", null ],
     [ "nip44Decrypt", "nostr_8cpp.html#a4a0c52a59a4083625f1704bf02966af8", null ],

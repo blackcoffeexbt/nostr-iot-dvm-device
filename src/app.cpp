@@ -202,11 +202,6 @@ namespace App
         fireEvent("device_status", connected ? "connected" : "disconnected");
     }
 
-    String getVersion()
-    {
-        return Config::VERSION;
-    }
-
     bool checkModuleHealth()
     {
         bool health_ok = true;

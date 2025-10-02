@@ -25,10 +25,12 @@ digraph "lib/nostr/nostr.cpp"
   Node10 [label="stddef.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node2 -> Node11 [color="steelblue1",style="solid"];
   Node11 [label="ArduinoJson.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
-  Node1 -> Node12 [color="steelblue1",style="solid"];
-  Node12 [label="nip44/nip44.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$nip44_8h.html",tooltip=" "];
-  Node12 -> Node13 [color="steelblue1",style="solid"];
-  Node13 [label="Arduino.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
-  Node12 -> Node14 [color="steelblue1",style="solid"];
-  Node14 [label="vector",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node2 -> Node12 [color="steelblue1",style="solid"];
+  Node12 [label="map",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node1 -> Node13 [color="steelblue1",style="solid"];
+  Node13 [label="nip44/nip44.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$nip44_8h.html",tooltip=" "];
+  Node13 -> Node14 [color="steelblue1",style="solid"];
+  Node14 [label="Arduino.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node13 -> Node15 [color="steelblue1",style="solid"];
+  Node15 [label="vector",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
 }

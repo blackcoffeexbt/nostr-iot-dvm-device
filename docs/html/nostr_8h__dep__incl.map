@@ -1,7 +1,11 @@
 <map id="lib/nostr/nostr.h" name="lib/nostr/nostr.h">
-<area shape="rect" id="node1" title=" " alt="" coords="220,5,331,31"/>
+<area shape="rect" id="node1" title=" " alt="" coords="166,5,276,31"/>
 <area shape="rect" id="node2" href="$nostr_8cpp.html" title=" " alt="" coords="5,79,130,105"/>
-<area shape="rect" id="node3" href="$main_8cpp.html" title="NWC Powered Point of Sale Device &#45; Main Entry Point." alt="" coords="154,79,250,105"/>
-<area shape="rect" id="node4" href="$remote__signer_8cpp.html" title=" " alt="" coords="274,79,424,105"/>
-<area shape="rect" id="node5" href="$wifi__manager_8cpp.html" title=" " alt="" coords="447,79,592,105"/>
+<area shape="rect" id="node3" href="$main_8cpp.html" title="Main application entry point Nostriot device." alt="" coords="93,226,189,252"/>
+<area shape="rect" id="node4" href="$nostr__manager_8h.html" title=" " alt="" coords="204,79,344,105"/>
+<area shape="rect" id="node8" href="$wifi__manager_8cpp.html" title=" " alt="" coords="465,226,609,252"/>
+<area shape="rect" id="node5" href="$app_8h.html" title=" " alt="" coords="220,153,296,178"/>
+<area shape="rect" id="node9" href="$nostr__manager_8cpp.html" title=" " alt="" coords="371,153,524,178"/>
+<area shape="rect" id="node6" href="$app_8cpp.html" title=" " alt="" coords="214,226,303,252"/>
+<area shape="rect" id="node7" href="$settings_8cpp.html" title=" " alt="" coords="326,226,441,252"/>
 </map>

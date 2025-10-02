@@ -45,11 +45,6 @@ namespace App {
     void notifyDeviceStatusChanged(bool connected);
     
     /**
-     * System Information
-     */
-    String getVersion();
-    
-    /**
      * Module Health Monitoring
      */
     bool checkModuleHealth();

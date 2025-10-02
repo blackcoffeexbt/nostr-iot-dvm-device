@@ -1,5 +1,11 @@
 <map id="lib/nostr/nip19.h" name="lib/nostr/nip19.h">
-<area shape="rect" id="node1" title=" " alt="" coords="94,5,207,31"/>
-<area shape="rect" id="node2" href="$nip19_8cpp.html" title=" " alt="" coords="5,79,133,105"/>
-<area shape="rect" id="node3" href="$remote__signer_8cpp.html" title=" " alt="" coords="157,79,306,105"/>
+<area shape="rect" id="node1" title=" " alt="" coords="199,5,312,31"/>
+<area shape="rect" id="node2" href="$nip19_8cpp.html" title=" " alt="" coords="113,79,240,105"/>
+<area shape="rect" id="node3" href="$nostr__manager_8h.html" title=" " alt="" coords="264,79,404,105"/>
+<area shape="rect" id="node4" href="$app_8h.html" title=" " alt="" coords="259,153,334,178"/>
+<area shape="rect" id="node8" href="$wifi__manager_8cpp.html" title=" " alt="" coords="378,226,522,252"/>
+<area shape="rect" id="node9" href="$nostr__manager_8cpp.html" title=" " alt="" coords="409,153,563,178"/>
+<area shape="rect" id="node5" href="$app_8cpp.html" title=" " alt="" coords="5,226,95,252"/>
+<area shape="rect" id="node6" href="$main_8cpp.html" title="Main application entry point Nostriot device." alt="" coords="119,226,216,252"/>
+<area shape="rect" id="node7" href="$settings_8cpp.html" title=" " alt="" coords="240,226,354,252"/>
 </map>

@@ -7,6 +7,7 @@
 {\ttfamily \#include $<$base64.\+h$>$}\newline
 {\ttfamily \#include $<$aes.\+h$>$}\newline
 {\ttfamily \#include $<$Arduino\+Json.\+h$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
 Include dependency graph for nostr.\+h\+:
 % FIG 0
 This graph shows which files directly or indirectly include this file\+:
@@ -26,6 +27,8 @@ void \mbox{\hyperlink{namespacenostr_a5006a25d7135fb5bc420095e4773df9c}{nostr\+:
 void \mbox{\hyperlink{namespacenostr_afca44e9f58eaddb2737fee169753ad9c}{nostr\+::string\+To\+Byte\+Array}} (const char $\ast$input, int padding\+\_\+diff, byte $\ast$output)
 \begin{DoxyCompactList}\small\item\em Convert a string to a byte array. \end{DoxyCompactList}\item 
 String \mbox{\hyperlink{namespacenostr_a48b8b6f350edb9c7ef6667458376e74e}{nostr\+::get\+Content}} (const String \&serialised\+Json)
+\item 
+std\+::map$<$ String, String $>$ \mbox{\hyperlink{namespacenostr_a06e8f17b26ca73eec2e69c052975a8c7}{nostr\+::get\+Tags}} (const String \&serialised\+Json)
 \item 
 String \mbox{\hyperlink{namespacenostr_abdbc8350c239ae90de2c10744a2fad6c}{nostr\+::get\+Sender\+Pub\+Key\+Hex}} (const String \&serialised\+Json)
 \item 

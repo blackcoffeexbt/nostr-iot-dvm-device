@@ -65,7 +65,7 @@ namespace NostrManager
 
     // Memory allocation for JSON documents
     static const size_t JSON_DOC_SIZE = 100000;
-    static DynamicJsonDocument eventDoc(0);
+    static DynamicJsonDocument eventDoc(2048);
     static DynamicJsonDocument eventParamsDoc(0);
 
     void updateStatus(bool connected, const char *status)
@@ -157,21 +157,6 @@ namespace NostrManager
         Serial.println("NostrManager::loadConfigFromPreferences() - Configuration loaded");
         Serial.println("Relay URL: " + relayUrl);
         Serial.println("Has private key: " + String(privateKeyHex.length() > 0 ? "Yes" : "No"));
-    }
-
-    void saveConfigToPreferences()
-    {
-        Preferences prefs;
-        prefs.begin("signer", false); // Read-write
-
-        // prefs.putString("relay_url", relayUrl);
-        // prefs.putString("private_key", privateKeyHex);
-        // prefs.putString("public_key", publicKeyHex);
-        // prefs.putString("auth_clients", authorizedClients);
-
-        prefs.end();
-
-        Serial.println("NostrManager::saveConfigToPreferences() - Configuration saved");
     }
 
     void connectToRelay()
@@ -582,135 +567,6 @@ namespace NostrManager
 
     }
 
-    void handleConnect(DynamicJsonDocument &doc, const String &requestingPubKey)
-    {
-        // String requestId = doc["id"];
-        // String secret = doc["params"][1];
-
-        // Serial.println("NostrManager::handleConnect() - Connect request from: " + requestingPubKey);
-
-        // if (!checkClientIsAuthorized(requestingPubKey.c_str(), secret.c_str())) {
-        //     Serial.println("NostrManager::handleConnect() - Client not authorized");
-        //     return;
-        // }
-
-        // // Send acknowledgment
-        // String responseMsg = secret.length() > 0 ?
-        //     "{\"id\":\"" + requestId + "\",\"result\":\"" + secret + "\"}" :
-        //     "{\"id\":\"" + requestId + "\",\"result\":\"ack\"}";
-
-        // Serial.println("NostrManager::handleConnect() - Sending connect response: " + responseMsg);
-
-        // // Encrypt and send response using NIP-44
-        // String encryptedResponse = nostr::getEncryptedDm(
-        //     privateKeyHex.c_str(),
-        //     publicKeyHex.c_str(),
-        //     requestingPubKey.c_str(),
-        //     24133,
-        //     unixTimestamp,
-        //     responseMsg,
-        //     "nip44"
-        // );
-
-        // webSocket.sendTXT(encryptedResponse);
-        Serial.println("NostrManager::handleConnect() - Response sent");
-    }
-
-    void handleSignEvent(DynamicJsonDocument &doc, const char *requestingPubKey)
-    {
-        String requestId = doc["id"];
-
-        Serial.println("NostrManager::handleSignEvent() - Sign event request from: " + String(requestingPubKey));
-
-        // Parse event parameters - first parameter contains the event to sign
-        String eventParams = doc["params"][0].as<String>();
-
-        // Parse the event data from the first parameter
-        DeserializationError parseError = deserializeJson(eventParamsDoc, eventParams);
-        if (parseError)
-        {
-            Serial.println("NostrManager::handleSignEvent() - Failed to parse event params: " + String(parseError.c_str()));
-            return;
-        }
-
-        // Extract event details
-        uint16_t kind = eventParamsDoc["kind"];
-        String content = eventParamsDoc["content"].as<String>();
-        String tags = eventParamsDoc["tags"].as<String>();
-        unsigned long timestamp = eventParamsDoc["created_at"];
-
-        Serial.println("NostrManager::handleSignEvent() - Event kind: " + String(kind));
-        Serial.println("NostrManager::handleSignEvent() - Content: " + content.substring(0, 50) + "...");
-
-        // For now, auto-approve (TODO: Add UI confirmation)
-        // Sign the event using nostr library
-        String signedEvent = nostr::getNote(
-            privateKeyHex.c_str(),
-            publicKeyHex.c_str(),
-            timestamp,
-            content,
-            kind,
-            tags);
-
-        // Escape quotes in the signed event for JSON response
-        signedEvent.replace("\\", "\\\\");
-        signedEvent.replace("\"", "\\\"");
-
-        // Create response
-        String responseMsg = "{\"id\":\"" + requestId + "\",\"result\":\"" + signedEvent + "\"}";
-
-        // Encrypt and send response
-        String encryptedResponse = nostr::getEncryptedDm(
-            privateKeyHex.c_str(),
-            publicKeyHex.c_str(),
-            requestingPubKey,
-            24133,
-            unixTimestamp,
-            responseMsg,
-            "nip44");
-
-        webSocket.sendTXT(encryptedResponse);
-        Serial.println("NostrManager::handleSignEvent() - Event signed and response sent");
-    }
-
-    void handlePing(DynamicJsonDocument &doc, const char *requestingPubKey)
-    {
-        String requestId = doc["id"];
-
-        String responseMsg = "{\"id\":\"" + requestId + "\",\"result\":\"pong\"}";
-
-        String encryptedResponse = nostr::getEncryptedDm(
-            privateKeyHex.c_str(),
-            publicKeyHex.c_str(),
-            requestingPubKey,
-            24133,
-            unixTimestamp,
-            responseMsg,
-            "nip44");
-
-        webSocket.sendTXT(encryptedResponse);
-        Serial.println("NostrManager::handlePing() - Pong sent to: " + String(requestingPubKey));
-    }
-
-    void handleGetPublicKey(DynamicJsonDocument &doc, const char *requestingPubKey)
-    {
-        String requestId = doc["id"];
-
-        String responseMsg = "{\"id\":\"" + requestId + "\",\"result\":\"" + publicKeyHex + "\"}";
-
-        String encryptedResponse = nostr::getEncryptedDm(
-            privateKeyHex.c_str(),
-            publicKeyHex.c_str(),
-            requestingPubKey,
-            24133,
-            unixTimestamp,
-            responseMsg,
-            "nip44");
-
-        webSocket.sendTXT(encryptedResponse);
-        Serial.println("NostrManager::handleGetPublicKey() - Public key sent to: " + String(requestingPubKey));
-    }
-
     void handleNip04Encrypt(DynamicJsonDocument &doc, const char *requestingPubKey)
     {
 
@@ -942,7 +798,6 @@ namespace NostrManager
         String unsignedEventJson = NostriotProvider::getCapabilitiesAdvertisement();
         
         // Parse the JSON to extract content and tags
-        DynamicJsonDocument eventDoc(2048);
         DeserializationError error = deserializeJson(eventDoc, unsignedEventJson);
         if (error)
         {
@@ -1002,33 +857,6 @@ namespace NostrManager
 
     // Getters
     String getRelayUrl() { return relayUrl; }
-    void setRelayUrl(const String &url) { relayUrl = url; }
-    String getPrivateKey() { return privateKeyHex; }
-    void setPrivateKey(const String &privKeyHex)
-    {
-        privateKeyHex = privKeyHex;
-        // Derive public key automatically
-        if (privKeyHex.length() == 64)
-        {
-            try
-            {
-                int byteSize = 32;
-                byte privateKeyBytes[byteSize];
-                fromHex(privKeyHex, privateKeyBytes, byteSize);
-                PrivateKey privKey(privateKeyBytes);
-                PublicKey pub = privKey.publicKey();
-                publicKeyHex = pub.toString();
-                // remove leading 2 bytes from public key
-                publicKeyHex = publicKeyHex.substring(2);
-                Serial.println("NostrManager: Derived public key: " + publicKeyHex);
-            }
-            catch (...)
-            {
-                Serial.println("NostrManager: ERROR - Failed to derive public key");
-            }
-        }
-    }
-    String getPublicKey() { return publicKeyHex; }
 
     void setStatusCallback(signer_status_callback_t callback)
     {

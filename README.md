@@ -4,13 +4,14 @@ A Nostr IoT device implementing Data Vending Machine (DVM) services with Lightni
 
 ## Overview
 
-This is a hardware-based Nostr IoT device built for the ESP32-S3. The device implements the Nostr DVM (Data Vending Machine) protocol to provide IoT services through the Nostr network, with optional Lightning Network payments for paid services.
+This is a hardware-based Nostr IoT device built for the ESP32-S3 Guition JC3248W535 touch screen display. The device implements the Nostr DVM (Data Vending Machine) protocol to provide IoT services like temperature readings and device control through the Nostr network, with optional Lightning Network payments for premium services.
 
 ## Features
 
 - **Nostr DVM Protocol**: Complete implementation of Data Vending Machine services
-- **IoT Services**: Temperature monitoring, LED control, and extensible sensor integration via nostriot_provider.cpp
+- **IoT Services**: Temperature monitoring, LED control, and extensible sensor integration
 - **Lightning Payments**: LNbits integration for paid services with automatic payment processing
+- **Touch Screen Interface**: 320x480 color touchscreen for device management
 - **WiFi Connectivity**: Connect to Nostr relays and payment providers via WiFi
 - **Payment Queue**: Robust payment processing with timeout management
 - **Real-time Monitoring**: WebSocket-based payment confirmation and status updates
@@ -18,15 +19,16 @@ This is a hardware-based Nostr IoT device built for the ESP32-S3. The device imp
 
 ## Hardware Requirements
 
-- ESP32-S3 dev board - I like the LilyGo T-Display S3
-- Something connected to the GPIOs (e.g., LED, sensor, screen, rude things etc.)
+- ESP32-S3 dev board
+- Compatible sensors (temperature, etc.)
+- Power supply (USB or battery)
 
 ## Getting Started
 
 ### Prerequisites
 
 - [PlatformIO](https://platformio.org/) installed
-- ESP32-S3 development board as described above
+- ESP32-S3 development board
 - LNbits instance for Lightning payments
 
 ### Building and Flashing
@@ -61,17 +63,15 @@ pio check
 
 ### Initial Setup
 
-1. **Configure** Copy `src/config.h.example` to `src/config.h` and update Wifi, Nostr, and LNbits settings
-2. **Flash** the firmware to the ESP32-S3 device using PlatformIO either using VSCode or pio command line
+1. **Configure** Wifi, Nostr, and LNbits settings in `src/config.h`
+2. **Flash** the firmware to the ESP32-S3 device using PlatformIO either using VSCode or command line
 1. **Power on the device**
 
 ### Usage
 
-You can use the [LNbits Nostr IoT Dashboard](https://github.com/blackcoffeexbt/nostriotdashboard)or another Nostr client that supports DVM requests to interact with IoT Devices on Nostr.
-
 **IoT Service Requests:**
 1. Send DVM job requests (kind 5107) to the device's public key
-2. Free services execute immediately and return results as kind 6107
+2. Free services execute immediately
 3. Paid services return payment requests with Lightning invoices
 4. Pay the invoice to receive service response
 
@@ -138,8 +138,8 @@ pio check
 # Find unused functions
 cppcheck --enable=unusedFunction src/
 
-# Full analysis
-cppcheck --enable=all --inconclusive src/
+# Wider analysis
+cppcheck --enable=unusedFunction,style --inconclusive src/
 ```
 
 ## Protocol Implementation

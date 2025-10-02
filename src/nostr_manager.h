@@ -34,12 +34,7 @@ namespace NostrManager {
     
     // Configuration management
     void loadConfigFromPreferences();
-    void saveConfigToPreferences();
     String getRelayUrl();
-    void setRelayUrl(const String& url);
-    String getPrivateKey();
-    void setPrivateKey(const String& privKeyHex);
-    String getPublicKey();
 
     void displayConnectionStatus(bool connected);
     
@@ -51,16 +46,12 @@ namespace NostrManager {
     void sendSubscription();
     void broadcastCapabilitiesAdvertisement();
     
-    // NIP-46 protocol handlers
+    // handlers
     void handleEvent(uint8_t* data);
     String getRequestMethod(String &dataStr);
     String getRequestValue(String &dataStr);
     String getRequestInputTags(String &dataStr);
     String getResponseEvent(String &eventStr, String &responseContent);
-    void handleConnect(DynamicJsonDocument& doc, const String& requestingPubKey);
-    void handleSignEvent(DynamicJsonDocument& doc, const char* requestingPubKey);
-    void handlePing(DynamicJsonDocument& doc, const char* requestingPubKey);
-    void handleGetPublicKey(DynamicJsonDocument& doc, const char* requestingPubKey);
     void handleNip04Encrypt(DynamicJsonDocument& doc, const char* requestingPubKey);
     void handleNip04Decrypt(DynamicJsonDocument& doc, const char* requestingPubKey);
     void handleNip44Encrypt(DynamicJsonDocument& doc, const char* requestingPubKey);

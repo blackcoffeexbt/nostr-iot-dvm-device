@@ -32,12 +32,4 @@ namespace Settings
         Serial.println("Loaded preferences");
     }
 
-    void saveToPreferences()
-    {
-        preferences.begin("config", false);
-        // preferences.putString("wifi_password", wifi_password);
-        preferences.end();
-        Serial.println("Saved settings");
-    }
-
 }

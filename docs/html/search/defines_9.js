@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rotl32_0',['ROTL32',['../chacha20_8cpp.html#a453d6c05303385256d9893904b125483',1,'chacha20.cpp']]]
+  ['quarterround_0',['QUARTERROUND',['../chacha20_8cpp.html#aae524f06f43cef9dde57fb1cecc75d4a',1,'chacha20.cpp']]]
 ];

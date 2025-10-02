@@ -8,42 +8,116 @@ System Configuration Constants and Definitions.
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
 Include dependency graph for config.\+h\+:
 % FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{group___display_config_gaf1316af7f6e1dc59f4efc2cfcc5e261a}{LGFX\+\_\+\+AUTODETECT}}
+\#define \mbox{\hyperlink{config_8h_a586542b79d00e4db7e1d5a667ae83a2b}{WIFI\+\_\+\+SSID}}~\char`\"{}Pixel\+\_\+9355\char`\"{}
 \item 
-\#define \mbox{\hyperlink{group___display_config_ga8971619bda1a23f66d5a31f72adef7cc}{LGFX\+\_\+\+USE\+\_\+\+V1}}
+\#define \mbox{\hyperlink{config_8h_a8685d8aff7e570048090a3a51afceb07}{WIFI\+\_\+\+PASSWORD}}~\char`\"{}nivarmmm\char`\"{}
 \item 
-\#define \mbox{\hyperlink{group___wi_fi_config_gaa35fe6214675371a92764fd32ea4cf95}{WIFI\+\_\+\+PREFERENCES\+\_\+\+NAMESPACE}}~\char`\"{}wifi-\/creds\char`\"{}
-\begin{DoxyCompactList}\small\item\em Preferences namespace for Wi\+Fi credentials. \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{group___wi_fi_config_ga6ffa13160b37e4dc2079bef4f8dc6097}{WIFI\+\_\+\+SSID\+\_\+\+KEY}}~\char`\"{}ssid\char`\"{}
-\begin{DoxyCompactList}\small\item\em Preferences key for Wi\+Fi SSID. \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{group___wi_fi_config_gad1e169b75330531bca68d7dda210a046}{WIFI\+\_\+\+PASSWORD\+\_\+\+KEY}}~\char`\"{}password\char`\"{}
-\begin{DoxyCompactList}\small\item\em Preferences key for Wi\+Fi password. \end{DoxyCompactList}\item 
-\#define \mbox{\hyperlink{group___wi_fi_config_ga9e764176799ab1864f4e70ecb4f65639}{WIFI\+\_\+\+CONNECTION\+\_\+\+TIMEOUT}}~30
-\begin{DoxyCompactList}\small\item\em Wi\+Fi connection timeout in attempts (each 500ms) \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Enumerations}
-\begin{DoxyCompactItemize}
+\#define \mbox{\hyperlink{config_8h_a9f3e81dce299d3eb5ff743c95de5b1dd}{NOSTR\+\_\+\+RELAY\+\_\+\+URI}}~\char`\"{}wss\+://relay.\+nostriot.\+com\char`\"{}
 \item 
-enum \mbox{\hyperlink{group___screen_states_gac99fecebca9e3a20e926681fe9e5beb9}{screen\+\_\+state\+\_\+t}} \{ \mbox{\hyperlink{group___screen_states_ggac99fecebca9e3a20e926681fe9e5beb9ae8d89f634ab11edcbc6c096ecf24b2eb}{SCREEN\+\_\+\+KEYPAD}}
-, \mbox{\hyperlink{group___screen_states_ggac99fecebca9e3a20e926681fe9e5beb9a6fcb85d9f038bd440753c164469342dc}{SCREEN\+\_\+\+SETTINGS}}
-, \mbox{\hyperlink{group___screen_states_ggac99fecebca9e3a20e926681fe9e5beb9a083d3d7ecdfde519d158bc403d674246}{SCREEN\+\_\+\+WIFI}}
-, \mbox{\hyperlink{group___screen_states_ggac99fecebca9e3a20e926681fe9e5beb9a3a06b4f52c2ee6478012c7e1677609ee}{SCREEN\+\_\+\+WIFI\+\_\+\+PASSWORD}}
- \}
-\begin{DoxyCompactList}\small\item\em Screen state enumeration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\#define \mbox{\hyperlink{config_8h_a7769521db3e8d0ff8c74cc17792d628e}{NOSTR\+\_\+\+PRIVATE\+\_\+\+KEY}}~\char`\"{}9834afeb28e8a1eb820106e029517a07cc37308cf9eacf4de86f4133111d5c02\char`\"{}
+\item 
+\#define \mbox{\hyperlink{config_8h_aadb16ed6fe31679ea6ba7336e9ea48cf}{DVM\+\_\+\+ADVERTISEMENT\+\_\+\+EVENT\+\_\+\+D\+\_\+\+TAG\+\_\+\+VALUE}}~\char`\"{}dvm-\/advert-\/1\char`\"{}
+\item 
+\#define \mbox{\hyperlink{config_8h_a906a15b2c71a375b6ae8612ae22e8fab}{LNBITS\+\_\+\+HOST\+\_\+\+URL}}~\char`\"{}sats.\+pw\char`\"{}
+\item 
+\#define \mbox{\hyperlink{config_8h_a2fe867fceef9adb33fa1b5fcc98e4b35}{LNBITS\+\_\+\+PAYMENTS\+\_\+\+ENDPOINT}}~\char`\"{}/api/v1/payments\char`\"{}
+\item 
+\#define \mbox{\hyperlink{config_8h_a40d25672d35975997f70a20277f0d424}{LNBITS\+\_\+\+INVOICE\+\_\+\+KEY}}~\char`\"{}68891f4d346a4136ba24a443f4ba8d12\char`\"{}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 System Configuration Constants and Definitions. 
 
-Contains all system-\/wide configuration constants, including\+:
-\begin{DoxyItemize}
-\item \mbox{\hyperlink{namespace_display}{Display}} and graphics settings for WT32-\/\+SC01
-\item Wi\+Fi connection parameters and timeouts
-\item LVGL buffer configurations
-\item Screen state definitions 
-\end{DoxyItemize}
+
 
 Definition in file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{config_8h_aadb16ed6fe31679ea6ba7336e9ea48cf}\label{config_8h_aadb16ed6fe31679ea6ba7336e9ea48cf}} 
+\index{config.h@{config.h}!DVM\_ADVERTISEMENT\_EVENT\_D\_TAG\_VALUE@{DVM\_ADVERTISEMENT\_EVENT\_D\_TAG\_VALUE}}
+\index{DVM\_ADVERTISEMENT\_EVENT\_D\_TAG\_VALUE@{DVM\_ADVERTISEMENT\_EVENT\_D\_TAG\_VALUE}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{DVM\_ADVERTISEMENT\_EVENT\_D\_TAG\_VALUE}{DVM\_ADVERTISEMENT\_EVENT\_D\_TAG\_VALUE}}
+{\footnotesize\ttfamily \#define DVM\+\_\+\+ADVERTISEMENT\+\_\+\+EVENT\+\_\+\+D\+\_\+\+TAG\+\_\+\+VALUE~\char`\"{}dvm-\/advert-\/1\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00022}{22}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a906a15b2c71a375b6ae8612ae22e8fab}\label{config_8h_a906a15b2c71a375b6ae8612ae22e8fab}} 
+\index{config.h@{config.h}!LNBITS\_HOST\_URL@{LNBITS\_HOST\_URL}}
+\index{LNBITS\_HOST\_URL@{LNBITS\_HOST\_URL}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{LNBITS\_HOST\_URL}{LNBITS\_HOST\_URL}}
+{\footnotesize\ttfamily \#define LNBITS\+\_\+\+HOST\+\_\+\+URL~\char`\"{}sats.\+pw\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00024}{24}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a40d25672d35975997f70a20277f0d424}\label{config_8h_a40d25672d35975997f70a20277f0d424}} 
+\index{config.h@{config.h}!LNBITS\_INVOICE\_KEY@{LNBITS\_INVOICE\_KEY}}
+\index{LNBITS\_INVOICE\_KEY@{LNBITS\_INVOICE\_KEY}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{LNBITS\_INVOICE\_KEY}{LNBITS\_INVOICE\_KEY}}
+{\footnotesize\ttfamily \#define LNBITS\+\_\+\+INVOICE\+\_\+\+KEY~\char`\"{}68891f4d346a4136ba24a443f4ba8d12\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00026}{26}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a2fe867fceef9adb33fa1b5fcc98e4b35}\label{config_8h_a2fe867fceef9adb33fa1b5fcc98e4b35}} 
+\index{config.h@{config.h}!LNBITS\_PAYMENTS\_ENDPOINT@{LNBITS\_PAYMENTS\_ENDPOINT}}
+\index{LNBITS\_PAYMENTS\_ENDPOINT@{LNBITS\_PAYMENTS\_ENDPOINT}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{LNBITS\_PAYMENTS\_ENDPOINT}{LNBITS\_PAYMENTS\_ENDPOINT}}
+{\footnotesize\ttfamily \#define LNBITS\+\_\+\+PAYMENTS\+\_\+\+ENDPOINT~\char`\"{}/api/v1/payments\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00025}{25}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a7769521db3e8d0ff8c74cc17792d628e}\label{config_8h_a7769521db3e8d0ff8c74cc17792d628e}} 
+\index{config.h@{config.h}!NOSTR\_PRIVATE\_KEY@{NOSTR\_PRIVATE\_KEY}}
+\index{NOSTR\_PRIVATE\_KEY@{NOSTR\_PRIVATE\_KEY}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{NOSTR\_PRIVATE\_KEY}{NOSTR\_PRIVATE\_KEY}}
+{\footnotesize\ttfamily \#define NOSTR\+\_\+\+PRIVATE\+\_\+\+KEY~\char`\"{}9834afeb28e8a1eb820106e029517a07cc37308cf9eacf4de86f4133111d5c02\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00019}{19}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a9f3e81dce299d3eb5ff743c95de5b1dd}\label{config_8h_a9f3e81dce299d3eb5ff743c95de5b1dd}} 
+\index{config.h@{config.h}!NOSTR\_RELAY\_URI@{NOSTR\_RELAY\_URI}}
+\index{NOSTR\_RELAY\_URI@{NOSTR\_RELAY\_URI}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{NOSTR\_RELAY\_URI}{NOSTR\_RELAY\_URI}}
+{\footnotesize\ttfamily \#define NOSTR\+\_\+\+RELAY\+\_\+\+URI~\char`\"{}wss\+://relay.\+nostriot.\+com\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00015}{15}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a8685d8aff7e570048090a3a51afceb07}\label{config_8h_a8685d8aff7e570048090a3a51afceb07}} 
+\index{config.h@{config.h}!WIFI\_PASSWORD@{WIFI\_PASSWORD}}
+\index{WIFI\_PASSWORD@{WIFI\_PASSWORD}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{WIFI\_PASSWORD}{WIFI\_PASSWORD}}
+{\footnotesize\ttfamily \#define WIFI\+\_\+\+PASSWORD~\char`\"{}nivarmmm\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00014}{14}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
+
+\mbox{\Hypertarget{config_8h_a586542b79d00e4db7e1d5a667ae83a2b}\label{config_8h_a586542b79d00e4db7e1d5a667ae83a2b}} 
+\index{config.h@{config.h}!WIFI\_SSID@{WIFI\_SSID}}
+\index{WIFI\_SSID@{WIFI\_SSID}!config.h@{config.h}}
+\doxysubsubsection{\texorpdfstring{WIFI\_SSID}{WIFI\_SSID}}
+{\footnotesize\ttfamily \#define WIFI\+\_\+\+SSID~\char`\"{}Pixel\+\_\+9355\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{config_8h_source_l00013}{13}} of file \mbox{\hyperlink{config_8h_source}{config.\+h}}.
 

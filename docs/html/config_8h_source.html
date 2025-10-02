@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Nostr Remote Signer: src/config.h Source File</title>
+<title>Nostr IoT DVM Device: src/config.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Nostr Remote Signer<span id="projectnumber">&#160;v1.0.0</span>
+   <div id="projectname">Nostr IoT DVM Device<span id="projectnumber">&#160;v1.0.0</span>
    </div>
-   <div id="projectbrief">A NIP46 remote signer for Nostr running on the Guition 3.5inch touch display board.</div>
+   <div id="projectbrief">An ESP32 based IoT device with Nostr DVM protocol support</div>
   </td>
  </tr>
  </tbody>
@@ -94,38 +94,29 @@ $(document).ready(function(){initNavTree('config_8h_source.html',''); initResiza
 </div><!--header-->
 <div class="contents">
 <a href="config_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef CONFIG_H</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define CONFIG_H</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="group___display_config.html#gaf1316af7f6e1dc59f4efc2cfcc5e261a">   22</a></span><span class="preprocessor">#define LGFX_AUTODETECT </span><span class="comment">// Autodetect board</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="group___display_config.html#ga8971619bda1a23f66d5a31f72adef7cc">   23</a></span><span class="preprocessor">#define LGFX_USE_V1     </span><span class="comment">// set to use new version of library</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">static</span> <span class="keyword">const</span> uint16_t SCREEN_WIDTH = 320;   </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#ifndef CONFIG_H</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define CONFIG_H</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">// hardcode wifi, nostr relay URI and lnbits stuff for now.</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// TODO: Move this to a web configurator interface</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="config_8h.html#a586542b79d00e4db7e1d5a667ae83a2b">   13</a></span><span class="preprocessor">#define WIFI_SSID       &quot;Pixel_9355&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="config_8h.html#a8685d8aff7e570048090a3a51afceb07">   14</a></span><span class="preprocessor">#define WIFI_PASSWORD   &quot;nivarmmm&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="config_8h.html#a9f3e81dce299d3eb5ff743c95de5b1dd">   15</a></span><span class="preprocessor">#define NOSTR_RELAY_URI &quot;wss://relay.nostriot.com&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// nostriot key</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">// #define NOSTR_PRIVATE_KEY  &quot;aaf7aa50a8bcf160140268edbbb02e6280ddcd94270f74d44d69f7b97ef7edcd&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">// ben zapper key</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="config_8h.html#a7769521db3e8d0ff8c74cc17792d628e">   19</a></span><span class="preprocessor">#define NOSTR_PRIVATE_KEY &quot;9834afeb28e8a1eb820106e029517a07cc37308cf9eacf4de86f4133111d5c02&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">// This is the d tag value that is added to the replacable DVM advert</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="config_8h.html#aadb16ed6fe31679ea6ba7336e9ea48cf">   22</a></span><span class="preprocessor">#define DVM_ADVERTISEMENT_EVENT_D_TAG_VALUE &quot;dvm-advert-1&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="config_8h.html#a906a15b2c71a375b6ae8612ae22e8fab">   24</a></span><span class="preprocessor">#define LNBITS_HOST_URL &quot;sats.pw&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="config_8h.html#a2fe867fceef9adb33fa1b5fcc98e4b35">   25</a></span><span class="preprocessor">#define LNBITS_PAYMENTS_ENDPOINT &quot;/api/v1/payments&quot;</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="config_8h.html#a40d25672d35975997f70a20277f0d424">   26</a></span><span class="preprocessor">#define LNBITS_INVOICE_KEY &quot;68891f4d346a4136ba24a443f4ba8d12&quot;</span></div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">static</span> <span class="keyword">const</span> uint16_t SCREEN_HEIGHT = 480;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">static</span> <span class="keyword">const</span> uint16_t BUFFER_SIZE = SCREEN_WIDTH * 30;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="group___wi_fi_config.html#gaa35fe6214675371a92764fd32ea4cf95">   41</a></span><span class="preprocessor">#define WIFI_PREFERENCES_NAMESPACE &quot;wifi-creds&quot;</span></div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="group___wi_fi_config.html#ga6ffa13160b37e4dc2079bef4f8dc6097">   44</a></span><span class="preprocessor">#define WIFI_SSID_KEY &quot;ssid&quot;</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="group___wi_fi_config.html#gad1e169b75330531bca68d7dda210a046">   47</a></span><span class="preprocessor">#define WIFI_PASSWORD_KEY &quot;password&quot;</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="group___wi_fi_config.html#ga9e764176799ab1864f4e70ecb4f65639">   50</a></span><span class="preprocessor">#define WIFI_CONNECTION_TIMEOUT 30</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="group___screen_states.html#gac99fecebca9e3a20e926681fe9e5beb9">   64</a></span><span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="group___screen_states.html#ggac99fecebca9e3a20e926681fe9e5beb9ae8d89f634ab11edcbc6c096ecf24b2eb">   65</a></span>  <a class="code hl_enumvalue" href="group___screen_states.html#ggac99fecebca9e3a20e926681fe9e5beb9ae8d89f634ab11edcbc6c096ecf24b2eb">SCREEN_KEYPAD</a>,        </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="group___screen_states.html#ggac99fecebca9e3a20e926681fe9e5beb9a6fcb85d9f038bd440753c164469342dc">   66</a></span>  <a class="code hl_enumvalue" href="group___screen_states.html#ggac99fecebca9e3a20e926681fe9e5beb9a6fcb85d9f038bd440753c164469342dc">SCREEN_SETTINGS</a>,      </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="group___screen_states.html#ggac99fecebca9e3a20e926681fe9e5beb9a083d3d7ecdfde519d158bc403d674246">   67</a></span>  <a class="code hl_enumvalue" href="group___screen_states.html#ggac99fecebca9e3a20e926681fe9e5beb9a083d3d7ecdfde519d158bc403d674246">SCREEN_WIFI</a>,          </div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  <a class="code hl_enumvalue" href="group___screen_states.html#ggac99fecebca9e3a20e926681fe9e5beb9a3a06b4f52c2ee6478012c7e1677609ee">SCREEN_WIFI_PASSWORD</a>  </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="group___screen_states.html#ggac99fecebca9e3a20e926681fe9e5beb9a3a06b4f52c2ee6478012c7e1677609ee">   69</a></span>} <a class="code hl_enumeration" href="group___screen_states.html#gac99fecebca9e3a20e926681fe9e5beb9">screen_state_t</a>;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">#endif </span><span class="comment">// CONFIG_H </span></div>
-<div class="ttc" id="agroup___screen_states_html_gac99fecebca9e3a20e926681fe9e5beb9"><div class="ttname"><a href="group___screen_states.html#gac99fecebca9e3a20e926681fe9e5beb9">screen_state_t</a></div><div class="ttdeci">screen_state_t</div><div class="ttdoc">Screen state enumeration.</div><div class="ttdef"><b>Definition:</b> <a href="config_8h_source.html#l00064">config.h:64</a></div></div>
-<div class="ttc" id="agroup___screen_states_html_ggac99fecebca9e3a20e926681fe9e5beb9a083d3d7ecdfde519d158bc403d674246"><div class="ttname"><a href="group___screen_states.html#ggac99fecebca9e3a20e926681fe9e5beb9a083d3d7ecdfde519d158bc403d674246">SCREEN_WIFI</a></div><div class="ttdeci">@ SCREEN_WIFI</div><div class="ttdef"><b>Definition:</b> <a href="config_8h_source.html#l00067">config.h:67</a></div></div>
-<div class="ttc" id="agroup___screen_states_html_ggac99fecebca9e3a20e926681fe9e5beb9a3a06b4f52c2ee6478012c7e1677609ee"><div class="ttname"><a href="group___screen_states.html#ggac99fecebca9e3a20e926681fe9e5beb9a3a06b4f52c2ee6478012c7e1677609ee">SCREEN_WIFI_PASSWORD</a></div><div class="ttdeci">@ SCREEN_WIFI_PASSWORD</div><div class="ttdef"><b>Definition:</b> <a href="config_8h_source.html#l00069">config.h:68</a></div></div>
-<div class="ttc" id="agroup___screen_states_html_ggac99fecebca9e3a20e926681fe9e5beb9a6fcb85d9f038bd440753c164469342dc"><div class="ttname"><a href="group___screen_states.html#ggac99fecebca9e3a20e926681fe9e5beb9a6fcb85d9f038bd440753c164469342dc">SCREEN_SETTINGS</a></div><div class="ttdeci">@ SCREEN_SETTINGS</div><div class="ttdef"><b>Definition:</b> <a href="config_8h_source.html#l00066">config.h:66</a></div></div>
-<div class="ttc" id="agroup___screen_states_html_ggac99fecebca9e3a20e926681fe9e5beb9ae8d89f634ab11edcbc6c096ecf24b2eb"><div class="ttname"><a href="group___screen_states.html#ggac99fecebca9e3a20e926681fe9e5beb9ae8d89f634ab11edcbc6c096ecf24b2eb">SCREEN_KEYPAD</a></div><div class="ttdeci">@ SCREEN_KEYPAD</div><div class="ttdef"><b>Definition:</b> <a href="config_8h_source.html#l00065">config.h:65</a></div></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif </span><span class="comment">// CONFIG_H </span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

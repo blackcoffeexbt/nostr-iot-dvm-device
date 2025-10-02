@@ -14,9 +14,21 @@ digraph "lib/aes/aes.h"
   Node4 -> Node5 [dir="back",color="steelblue1",style="solid"];
   Node5 [label="lib/nostr/nostr.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$nostr_8cpp.html",tooltip=" "];
   Node4 -> Node6 [dir="back",color="steelblue1",style="solid"];
-  Node6 [label="src/main.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html",tooltip="NWC Powered Point of Sale Device - Main Entry Point."];
+  Node6 [label="src/main.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$main_8cpp.html",tooltip="Main application entry point Nostriot device."];
   Node4 -> Node7 [dir="back",color="steelblue1",style="solid"];
-  Node7 [label="src/remote_signer.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$remote__signer_8cpp.html",tooltip=" "];
-  Node4 -> Node8 [dir="back",color="steelblue1",style="solid"];
-  Node8 [label="src/wifi_manager.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$wifi__manager_8cpp.html",tooltip=" "];
+  Node7 [label="src/nostr_manager.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$nostr__manager_8h.html",tooltip=" "];
+  Node7 -> Node8 [dir="back",color="steelblue1",style="solid"];
+  Node8 [label="src/app.h",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app_8h.html",tooltip=" "];
+  Node8 -> Node9 [dir="back",color="steelblue1",style="solid"];
+  Node9 [label="src/app.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$app_8cpp.html",tooltip=" "];
+  Node8 -> Node6 [dir="back",color="steelblue1",style="solid"];
+  Node8 -> Node7 [dir="back",color="steelblue1",style="solid"];
+  Node8 -> Node10 [dir="back",color="steelblue1",style="solid"];
+  Node10 [label="src/settings.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$settings_8cpp.html",tooltip=" "];
+  Node8 -> Node11 [dir="back",color="steelblue1",style="solid"];
+  Node11 [label="src/wifi_manager.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$wifi__manager_8cpp.html",tooltip=" "];
+  Node7 -> Node12 [dir="back",color="steelblue1",style="solid"];
+  Node12 [label="src/nostr_manager.cpp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$nostr__manager_8cpp.html",tooltip=" "];
+  Node7 -> Node11 [dir="back",color="steelblue1",style="solid"];
+  Node4 -> Node11 [dir="back",color="steelblue1",style="solid"];
 }

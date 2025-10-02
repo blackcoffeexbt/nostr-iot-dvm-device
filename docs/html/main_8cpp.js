@@ -1,7 +1,6 @@
 var main_8cpp =
 [
     [ "wifi_command_t", "structwifi__command__t.html", "structwifi__command__t" ],
-    [ "wifi_scan_result_t", "structwifi__scan__result__t.html", "structwifi__scan__result__t" ],
     [ "ENCRYPTED_MESSAGE_BIN_SIZE", "main_8cpp.html#a8ea9ad716a8cc63afacef39f4534c56a", null ],
     [ "EVENT_NOTE_SIZE", "main_8cpp.html#ab8338d33d592df45a77857c81340ed51", null ],
     [ "wifi_command_type_t", "main_8cpp.html#a39e9cd7b432e4f3e6b935985bddf2a0c", [

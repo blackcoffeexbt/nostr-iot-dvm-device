@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.6"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Nostr Remote Signer: lib/nostr/nostr.h File Reference</title>
+<title>Nostr IoT DVM Device: lib/nostr/nostr.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -25,9 +25,9 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Nostr Remote Signer<span id="projectnumber">&#160;v1.0.0</span>
+   <div id="projectname">Nostr IoT DVM Device<span id="projectnumber">&#160;v1.0.0</span>
    </div>
-   <div id="projectbrief">A NIP46 remote signer for Nostr running on the Guition 3.5inch touch display board.</div>
+   <div id="projectbrief">An ESP32 based IoT device with Nostr DVM protocol support</div>
   </td>
  </tr>
  </tbody>
@@ -103,6 +103,7 @@ $(document).ready(function(){initNavTree('nostr_8h.html',''); initResizable(); }
 <code>#include &lt;base64.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="aes_8h_source.html">aes.h</a>&gt;</code><br />
 <code>#include &lt;ArduinoJson.h&gt;</code><br />
+<code>#include &lt;map&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for nostr.h:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -110,7 +111,7 @@ $(document).ready(function(){initNavTree('nostr_8h.html',''); initResizable(); }
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="nostr_8h__incl.png" border="0" usemap="#alib_2nostr_2nostr_8h" alt=""/></div>
 <map name="alib_2nostr_2nostr_8h" id="alib_2nostr_2nostr_8h">
-<area shape="rect" title=" " alt="" coords="256,5,366,31"/>
+<area shape="rect" title=" " alt="" coords="304,5,414,31"/>
 <area shape="rect" title=" " alt="" coords="5,79,78,105"/>
 <area shape="rect" title=" " alt="" coords="102,79,165,105"/>
 <area shape="rect" title=" " alt="" coords="190,79,251,105"/>
@@ -118,6 +119,7 @@ $(document).ready(function(){initNavTree('nostr_8h.html',''); initResizable(); }
 <area shape="rect" title=" " alt="" coords="371,79,445,105"/>
 <area shape="rect" href="aes_8h.html" title=" " alt="" coords="470,79,523,105"/>
 <area shape="rect" title=" " alt="" coords="547,79,651,105"/>
+<area shape="rect" title=" " alt="" coords="676,79,722,105"/>
 <area shape="rect" title=" " alt="" coords="419,153,483,178"/>
 <area shape="rect" title=" " alt="" coords="507,153,576,178"/>
 </map>
@@ -129,11 +131,15 @@ $(document).ready(function(){initNavTree('nostr_8h.html',''); initResizable(); }
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="nostr_8h__dep__incl.png" border="0" usemap="#alib_2nostr_2nostr_8hdep" alt=""/></div>
 <map name="alib_2nostr_2nostr_8hdep" id="alib_2nostr_2nostr_8hdep">
-<area shape="rect" title=" " alt="" coords="220,5,331,31"/>
+<area shape="rect" title=" " alt="" coords="166,5,276,31"/>
 <area shape="rect" href="nostr_8cpp.html" title=" " alt="" coords="5,79,130,105"/>
-<area shape="rect" href="main_8cpp.html" title="NWC Powered Point of Sale Device &#45; Main Entry Point." alt="" coords="154,79,250,105"/>
-<area shape="rect" href="remote__signer_8cpp.html" title=" " alt="" coords="274,79,424,105"/>
-<area shape="rect" href="wifi__manager_8cpp.html" title=" " alt="" coords="447,79,592,105"/>
+<area shape="rect" href="main_8cpp.html" title="Main application entry point Nostriot device." alt="" coords="93,226,189,252"/>
+<area shape="rect" href="nostr__manager_8h.html" title=" " alt="" coords="204,79,344,105"/>
+<area shape="rect" href="wifi__manager_8cpp.html" title=" " alt="" coords="465,226,609,252"/>
+<area shape="rect" href="app_8h.html" title=" " alt="" coords="220,153,296,178"/>
+<area shape="rect" href="nostr__manager_8cpp.html" title=" " alt="" coords="371,153,524,178"/>
+<area shape="rect" href="app_8cpp.html" title=" " alt="" coords="214,226,303,252"/>
+<area shape="rect" href="settings_8cpp.html" title=" " alt="" coords="326,226,441,252"/>
 </map>
 </div>
 </div>
@@ -155,6 +161,8 @@ Functions</h2></td></tr>
 <tr class="separator:afca44e9f58eaddb2737fee169753ad9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48b8b6f350edb9c7ef6667458376e74e"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenostr.html#a48b8b6f350edb9c7ef6667458376e74e">nostr::getContent</a> (const String &amp;serialisedJson)</td></tr>
 <tr class="separator:a48b8b6f350edb9c7ef6667458376e74e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a06e8f17b26ca73eec2e69c052975a8c7"><td class="memItemLeft" align="right" valign="top">std::map&lt; String, String &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenostr.html#a06e8f17b26ca73eec2e69c052975a8c7">nostr::getTags</a> (const String &amp;serialisedJson)</td></tr>
+<tr class="separator:a06e8f17b26ca73eec2e69c052975a8c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abdbc8350c239ae90de2c10744a2fad6c"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenostr.html#abdbc8350c239ae90de2c10744a2fad6c">nostr::getSenderPubKeyHex</a> (const String &amp;serialisedJson)</td></tr>
 <tr class="separator:abdbc8350c239ae90de2c10744a2fad6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9b9b8005030f72e2136a4d0bda6879d"><td class="memItemLeft" align="right" valign="top">std::pair&lt; String, String &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacenostr.html#ae9b9b8005030f72e2136a4d0bda6879d">nostr::getPubKeyAndContent</a> (const String &amp;serialisedJson)</td></tr>

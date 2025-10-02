@@ -22,11 +22,9 @@ digraph "src/wifi_manager.h"
   Node1 -> Node9 [color="steelblue1",style="solid"];
   Node9 [label="vector",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node1 -> Node10 [color="steelblue1",style="solid"];
-  Node10 [label="lvgl.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node10 [label="freertos/FreeRTOS.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node1 -> Node11 [color="steelblue1",style="solid"];
-  Node11 [label="freertos/FreeRTOS.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node11 [label="freertos/task.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node1 -> Node12 [color="steelblue1",style="solid"];
-  Node12 [label="freertos/task.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
-  Node1 -> Node13 [color="steelblue1",style="solid"];
-  Node13 [label="freertos/queue.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node12 [label="freertos/queue.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
 }
