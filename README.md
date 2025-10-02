@@ -31,6 +31,12 @@ This is a hardware-based Nostr IoT device built for the ESP32-S3 Guition JC3248W
 - ESP32-S3 development board
 - LNbits instance for Lightning payments
 
+### Customising the IoT device for your hardware
+
+The `src/nostriot_provider.cpp` module lets you customise your Nostr IoT device to match your own hardware and pricing model. In `src/nostriot_provider.cpp` you define what the device can do (capabilities), and how much each action costs (in sats). The example includes an number of example methods with different pricing. This demonstrates how to set up free and variable paid services.
+
+To adapt it, change the hardware configuration for your pins and sensors in the `init()` function, then add or edit entries in capabilities_with_pricing. Each capability’s behaviour is defined in the `run()` function, where you decide what happens when it’s called.
+
 ### Building and Flashing
 
 ```bash
