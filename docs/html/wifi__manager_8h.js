@@ -1,25 +1,25 @@
 var wifi__manager_8h =
 [
-    [ "WiFiManager::wifi_command_t", "struct_wi_fi_manager_1_1wifi__command__t.html", "struct_wi_fi_manager_1_1wifi__command__t" ],
-    [ "wifi_status_callback_t", "wifi__manager_8h.html#a839fecd4b9065c1e1e4b79953d5f2c63", null ],
-    [ "wifi_command_type_t", "wifi__manager_8h.html#a13aca7b0f742cd4e341fd9f564554c1e", [
-      [ "WIFI_SCAN", "wifi__manager_8h.html#a13aca7b0f742cd4e341fd9f564554c1ea2a49dc40ced1f1c8878d9af409ab7dfc", null ],
-      [ "WIFI_CONNECT", "wifi__manager_8h.html#a13aca7b0f742cd4e341fd9f564554c1eaeb72173a3739edb98cc2214d65dcda40", null ],
-      [ "WIFI_DISCONNECT", "wifi__manager_8h.html#a13aca7b0f742cd4e341fd9f564554c1ea986429df4b2cff5795ed0cd17bb13c58", null ],
-      [ "WIFI_STOP_SCAN", "wifi__manager_8h.html#a13aca7b0f742cd4e341fd9f564554c1eadb99ea8f650c95db02a6722a91a21873", null ]
+    [ "NiotWiFiManager::wifi_command_t", "struct_niot_wi_fi_manager_1_1wifi__command__t.html", "struct_niot_wi_fi_manager_1_1wifi__command__t" ],
+    [ "wifi_status_callback_t", "wifi__manager_8h.html#aabfa00eb794a5a82e6673b3626170871", null ],
+    [ "wifi_command_type_t", "wifi__manager_8h.html#abe0c5562708e9303b8cfbe5fd80db69d", [
+      [ "WIFI_SCAN", "wifi__manager_8h.html#abe0c5562708e9303b8cfbe5fd80db69dacdee393893942be624a5e82dcea4ab9e", null ],
+      [ "WIFI_CONNECT", "wifi__manager_8h.html#abe0c5562708e9303b8cfbe5fd80db69da71d6198c9d278bc03c400ef8e522d4c5", null ],
+      [ "WIFI_DISCONNECT", "wifi__manager_8h.html#abe0c5562708e9303b8cfbe5fd80db69da4af90e8fe4a82828b2970ac7f0befbe0", null ],
+      [ "WIFI_STOP_SCAN", "wifi__manager_8h.html#abe0c5562708e9303b8cfbe5fd80db69da03fc402277e0978cb0943ead91d0b4e8", null ]
     ] ],
-    [ "cleanup", "wifi__manager_8h.html#a65dac49e1bcceabd910231b2755d254d", null ],
-    [ "createStatusTimer", "wifi__manager_8h.html#a02c69502601dcd050a76851836617b10", null ],
-    [ "createTask", "wifi__manager_8h.html#a5c15b5f5715e0601b9233cf5c4e5e1ac", null ],
-    [ "deleteStatusTimer", "wifi__manager_8h.html#ab1c0505310d5aef0bd32d45a0b350a54", null ],
-    [ "deleteTask", "wifi__manager_8h.html#a88be8f7c113aef1ec1fbf348bec0515d", null ],
-    [ "disconnect", "wifi__manager_8h.html#a390036853ea37ba2d30a0aaa5c37fe25", null ],
-    [ "getLocalIP", "wifi__manager_8h.html#a87f19df53f67ea0a4cb59ef57c184524", null ],
-    [ "getSSID", "wifi__manager_8h.html#a0d7909fe5946dfd8e7024a61b0a9e048", null ],
-    [ "getStatus", "wifi__manager_8h.html#a1afb041d5ffe5293106eb38c9eb37690", null ],
-    [ "init", "wifi__manager_8h.html#a307a74b2278e5f1c3ac148944034ca75", null ],
-    [ "isConnected", "wifi__manager_8h.html#aa6406a18b4523ef158247b902e770052", null ],
-    [ "processLoop", "wifi__manager_8h.html#a4600374afc464e50c6516ed52df26b81", null ],
-    [ "setStatusCallback", "wifi__manager_8h.html#afbd1520be38dcf8df79b62059bc70113", null ],
-    [ "startConnection", "wifi__manager_8h.html#aecf543cfe5d796167b7d92714ba27bee", null ]
+    [ "cleanup", "wifi__manager_8h.html#a2c8178e28b845f8b705a61767b751741", null ],
+    [ "createStatusTimer", "wifi__manager_8h.html#acb73382eee8fca01829ad52fb877d24e", null ],
+    [ "createTask", "wifi__manager_8h.html#a5c0035333bf3358e2d26fc29de958021", null ],
+    [ "deleteStatusTimer", "wifi__manager_8h.html#a469bbebb83309118c6859a7d9f873d25", null ],
+    [ "deleteTask", "wifi__manager_8h.html#a58620b5b72c8aa63747166351c62cd09", null ],
+    [ "disconnect", "wifi__manager_8h.html#a917285d3047f5631a82fe9f9be55dc10", null ],
+    [ "getLocalIP", "wifi__manager_8h.html#a4954bf84a94fb31ee51c6b44e8466a5b", null ],
+    [ "getSSID", "wifi__manager_8h.html#ab9539ce2e0a98a4a2f1f88155162b628", null ],
+    [ "getStatus", "wifi__manager_8h.html#a6bc9002aa19a16ca6e08641ffc4a3b00", null ],
+    [ "init", "wifi__manager_8h.html#a9ac6a8751745653215218765f1dd233a", null ],
+    [ "isConnected", "wifi__manager_8h.html#a55d923f23185cb93bdf9ba3a87af3c77", null ],
+    [ "processLoop", "wifi__manager_8h.html#a75d2c095cab9e733f9bdd64722438f21", null ],
+    [ "setStatusCallback", "wifi__manager_8h.html#a2ba31973d9dcd26197a1ed41814b1422", null ],
+    [ "startConnection", "wifi__manager_8h.html#a04a67518b734986aa47e1c5678e1d4c5", null ]
 ];

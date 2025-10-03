@@ -63,9 +63,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "aes_8cpp.html",
-"namespace_nostr_manager_1_1_config.html#a5cbeb630653be78009788828c4b490d4",
-"nostr__manager_8cpp.html#afb001fb338ba8497291bbff439c8385d",
-"wifi__manager_8cpp_source.html"
+"namespace_nostr_manager.html#adb47b0435f23de89ffe234bbb8832990",
+"nostr__manager_8h.html#a85982319fbf5f20544ec7ccd3f83642e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

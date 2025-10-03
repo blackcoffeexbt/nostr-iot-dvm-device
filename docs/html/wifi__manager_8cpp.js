@@ -1,15 +1,15 @@
 var wifi__manager_8cpp =
 [
-    [ "cleanup", "wifi__manager_8cpp.html#a65dac49e1bcceabd910231b2755d254d", null ],
-    [ "createTask", "wifi__manager_8cpp.html#a5c15b5f5715e0601b9233cf5c4e5e1ac", null ],
-    [ "deleteTask", "wifi__manager_8cpp.html#a88be8f7c113aef1ec1fbf348bec0515d", null ],
-    [ "disconnect", "wifi__manager_8cpp.html#a390036853ea37ba2d30a0aaa5c37fe25", null ],
-    [ "getLocalIP", "wifi__manager_8cpp.html#a87f19df53f67ea0a4cb59ef57c184524", null ],
-    [ "getSSID", "wifi__manager_8cpp.html#a0d7909fe5946dfd8e7024a61b0a9e048", null ],
-    [ "getStatus", "wifi__manager_8cpp.html#a1afb041d5ffe5293106eb38c9eb37690", null ],
-    [ "init", "wifi__manager_8cpp.html#a307a74b2278e5f1c3ac148944034ca75", null ],
-    [ "isConnected", "wifi__manager_8cpp.html#aa6406a18b4523ef158247b902e770052", null ],
-    [ "processLoop", "wifi__manager_8cpp.html#a4600374afc464e50c6516ed52df26b81", null ],
-    [ "setStatusCallback", "wifi__manager_8cpp.html#afbd1520be38dcf8df79b62059bc70113", null ],
-    [ "startConnection", "wifi__manager_8cpp.html#aecf543cfe5d796167b7d92714ba27bee", null ]
+    [ "cleanup", "wifi__manager_8cpp.html#a2c8178e28b845f8b705a61767b751741", null ],
+    [ "createTask", "wifi__manager_8cpp.html#a5c0035333bf3358e2d26fc29de958021", null ],
+    [ "deleteTask", "wifi__manager_8cpp.html#a58620b5b72c8aa63747166351c62cd09", null ],
+    [ "disconnect", "wifi__manager_8cpp.html#a917285d3047f5631a82fe9f9be55dc10", null ],
+    [ "getLocalIP", "wifi__manager_8cpp.html#a4954bf84a94fb31ee51c6b44e8466a5b", null ],
+    [ "getSSID", "wifi__manager_8cpp.html#ab9539ce2e0a98a4a2f1f88155162b628", null ],
+    [ "getStatus", "wifi__manager_8cpp.html#a6bc9002aa19a16ca6e08641ffc4a3b00", null ],
+    [ "init", "wifi__manager_8cpp.html#a9ac6a8751745653215218765f1dd233a", null ],
+    [ "isConnected", "wifi__manager_8cpp.html#a55d923f23185cb93bdf9ba3a87af3c77", null ],
+    [ "processLoop", "wifi__manager_8cpp.html#a75d2c095cab9e733f9bdd64722438f21", null ],
+    [ "setStatusCallback", "wifi__manager_8cpp.html#a2ba31973d9dcd26197a1ed41814b1422", null ],
+    [ "startConnection", "wifi__manager_8cpp.html#a04a67518b734986aa47e1c5678e1d4c5", null ]
 ];

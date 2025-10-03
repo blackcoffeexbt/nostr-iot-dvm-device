@@ -1,12 +1,13 @@
 \label{index_md_README}%
 \Hypertarget{index_md_README}%
  A Nostr IoT device implementing Data Vending Machine (DVM) services with Lightning Network payment integration.\hypertarget{index_autotoc_md1}{}\doxysection{Overview}\label{index_autotoc_md1}
-This is a hardware-\/based Nostr IoT device built for the ESP32-\/\+S3. The device implements the Nostr DVM (Data Vending Machine) protocol to provide IoT services through the Nostr network, with optional Lightning Network payments for paid services.\hypertarget{index_autotoc_md2}{}\doxysection{Features}\label{index_autotoc_md2}
+This is a hardware-\/based Nostr IoT device built for the ESP32-\/\+S3 Guition JC3248\+W535 touch screen display. The device implements the Nostr DVM (Data Vending Machine) protocol to provide IoT services like temperature readings and device control through the Nostr network, with optional Lightning Network payments for premium services.\hypertarget{index_autotoc_md2}{}\doxysection{Features}\label{index_autotoc_md2}
 
 \begin{DoxyItemize}
 \item {\bfseries{Nostr DVM Protocol}}\+: Complete implementation of Data Vending Machine services
-\item {\bfseries{IoT Services}}\+: Temperature monitoring, LED control, and extensible sensor integration via \mbox{\hyperlink{nostriot__provider_8cpp}{nostriot\+\_\+provider.\+cpp}}
+\item {\bfseries{IoT Services}}\+: Temperature monitoring, LED control, and extensible sensor integration
 \item {\bfseries{Lightning Payments}}\+: LNbits integration for paid services with automatic payment processing
+\item {\bfseries{Touch Screen Interface}}\+: 320x480 color touchscreen for device management
 \item {\bfseries{Wi\+Fi Connectivity}}\+: Connect to Nostr relays and payment providers via Wi\+Fi
 \item {\bfseries{Payment Queue}}\+: Robust payment processing with timeout management
 \item {\bfseries{Real-\/time Monitoring}}\+: Web\+Socket-\/based payment confirmation and status updates
@@ -14,16 +15,20 @@ This is a hardware-\/based Nostr IoT device built for the ESP32-\/\+S3. The devi
 \end{DoxyItemize}\hypertarget{index_autotoc_md3}{}\doxysection{Hardware Requirements}\label{index_autotoc_md3}
 
 \begin{DoxyItemize}
-\item ESP32-\/\+S3 dev board -\/ I like the Lily\+Go T-\/\+Display S3
-\item Something connected to the GPIOs (e.\+g., LED, sensor, screen, rude things etc.)
+\item ESP32-\/\+S3 dev board
+\item Compatible sensors (temperature, etc.)
+\item Power supply (USB or battery)
 \end{DoxyItemize}\hypertarget{index_autotoc_md4}{}\doxysection{Getting Started}\label{index_autotoc_md4}
 \hypertarget{index_autotoc_md5}{}\doxysubsection{Prerequisites}\label{index_autotoc_md5}
 
 \begin{DoxyItemize}
 \item \href{https://platformio.org/}{\texttt{ Platform\+IO}} installed
-\item ESP32-\/\+S3 development board as described above
+\item ESP32-\/\+S3 development board
 \item LNbits instance for Lightning payments
-\end{DoxyItemize}\hypertarget{index_autotoc_md6}{}\doxysubsection{Building and Flashing}\label{index_autotoc_md6}
+\end{DoxyItemize}\hypertarget{index_autotoc_md6}{}\doxysubsection{Customising the Io\+T device for your hardware}\label{index_autotoc_md6}
+The {\ttfamily \mbox{\hyperlink{nostriot__provider_8cpp}{src/nostriot\+\_\+provider.\+cpp}}} module lets you customise your Nostr IoT device to match your own hardware and pricing model. In {\ttfamily \mbox{\hyperlink{nostriot__provider_8cpp}{src/nostriot\+\_\+provider.\+cpp}}} you define what the device can do (capabilities), and how much each action costs (in sats). The example includes an number of example methods with different pricing. This demonstrates how to set up free and variable paid services.
+
+To adapt it, change the hardware configuration for your pins and sensors in the {\ttfamily init()} function, then add or edit entries in capabilities\+\_\+with\+\_\+pricing. Each capability’s behaviour is defined in the {\ttfamily run()} function, where you decide what happens when it’s called.\hypertarget{index_autotoc_md7}{}\doxysubsection{Building and Flashing}\label{index_autotoc_md7}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\#\ Clone\ the\ repository}
@@ -43,7 +48,7 @@ This is a hardware-\/based Nostr IoT device built for the ESP32-\/\+S3. The devi
 \DoxyCodeLine{pio\ run\ -\/-\/target\ upload\ -\/-\/target\ monitor}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md7}{}\doxysubsection{Documentation}\label{index_autotoc_md7}
+\hypertarget{index_autotoc_md8}{}\doxysubsection{Documentation}\label{index_autotoc_md8}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\#\ Generate\ documentation}
@@ -53,21 +58,19 @@ This is a hardware-\/based Nostr IoT device built for the ESP32-\/\+S3. The devi
 \DoxyCodeLine{pio\ check}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md8}{}\doxysubsection{Initial Setup}\label{index_autotoc_md8}
+\hypertarget{index_autotoc_md9}{}\doxysubsection{Initial Setup}\label{index_autotoc_md9}
 
 \begin{DoxyEnumerate}
-\item {\bfseries{Configure}} Copy {\ttfamily src/config.\+h.\+example} to {\ttfamily \mbox{\hyperlink{config_8h}{src/config.\+h}}} and update Wifi, Nostr, and LNbits settings
-\item {\bfseries{Flash}} the firmware to the ESP32-\/\+S3 device using Platform\+IO either using VSCode or pio command line
+\item {\bfseries{Configure}} Wifi, Nostr, and LNbits settings in {\ttfamily \mbox{\hyperlink{config_8h}{src/config.\+h}}}
+\item {\bfseries{Flash}} the firmware to the ESP32-\/\+S3 device using Platform\+IO either using VSCode or command line
 \end{DoxyEnumerate}
 \begin{DoxyEnumerate}
 \item {\bfseries{Power on the device}}
-\end{DoxyEnumerate}\hypertarget{index_autotoc_md9}{}\doxysubsection{Usage}\label{index_autotoc_md9}
-You can use the \href{https://github.com/blackcoffeexbt/nostriotdashboard}{\texttt{ LNbits Nostr IoT Dashboard}}or another Nostr client that supports DVM requests to interact with IoT Devices on Nostr.
-
+\end{DoxyEnumerate}\hypertarget{index_autotoc_md10}{}\doxysubsection{Usage}\label{index_autotoc_md10}
 {\bfseries{IoT Service Requests\+:}}
 \begin{DoxyEnumerate}
 \item Send DVM job requests (kind 5107) to the device\textquotesingle{}s public key
-\item Free services execute immediately and return results as kind 6107
+\item Free services execute immediately
 \item Paid services return payment requests with Lightning invoices
 \item Pay the invoice to receive service response
 \end{DoxyEnumerate}
@@ -83,18 +86,18 @@ You can use the \href{https://github.com/blackcoffeexbt/nostriotdashboard}{\text
 \item Real-\/time payment monitoring and confirmation
 \item Payment queue with timeout management
 \item Support for both BOLT11 invoices and Nostr zaps
-\end{DoxyItemize}\hypertarget{index_autotoc_md10}{}\doxysection{Architecture}\label{index_autotoc_md10}
-The application uses a clean modular architecture\+:\hypertarget{index_autotoc_md11}{}\doxysubsection{Core Modules}\label{index_autotoc_md11}
+\end{DoxyItemize}\hypertarget{index_autotoc_md11}{}\doxysection{Architecture}\label{index_autotoc_md11}
+The application uses a clean modular architecture\+:\hypertarget{index_autotoc_md12}{}\doxysubsection{Core Modules}\label{index_autotoc_md12}
 
 \begin{DoxyItemize}
 \item {\bfseries{\mbox{\hyperlink{namespace_app}{App}}}}\+: Central coordinator managing all modules and inter-\/module communication
 \item {\bfseries{\mbox{\hyperlink{namespace_nostr_manager}{Nostr\+Manager}}}}\+: Nostr protocol implementation, DVM message handling, and relay communication
 \item {\bfseries{\mbox{\hyperlink{namespace_payment_provider}{Payment\+Provider}}}}\+: Lightning payment integration, invoice generation, and payment monitoring
 \item {\bfseries{\mbox{\hyperlink{namespace_nostriot_provider}{Nostriot\+Provider}}}}\+: IoT device capabilities, sensor reading, and device control
-\item {\bfseries{\mbox{\hyperlink{namespace_wi_fi_manager}{Wi\+Fi\+Manager}}}}\+: Network connectivity and configuration management
+\item {\bfseries{Wi\+Fi\+Manager}}\+: Network connectivity and configuration management
 \item {\bfseries{\mbox{\hyperlink{namespace_display}{Display}}}}\+: Touch screen interface and status display
 \item {\bfseries{\mbox{\hyperlink{namespace_settings}{Settings}}}}\+: Persistent configuration storage and management
-\end{DoxyItemize}\hypertarget{index_autotoc_md12}{}\doxysubsection{Key Features}\label{index_autotoc_md12}
+\end{DoxyItemize}\hypertarget{index_autotoc_md13}{}\doxysubsection{Key Features}\label{index_autotoc_md13}
 
 \begin{DoxyItemize}
 \item {\bfseries{Payment Queue}}\+: Handles concurrent payment requests with proper timeout management
@@ -102,32 +105,33 @@ The application uses a clean modular architecture\+:\hypertarget{index_autotoc_m
 \item {\bfseries{Modular Payment System}}\+: Easy to swap payment providers (LNbits → other Lightning services)
 \item {\bfseries{DVM Protocol}}\+: Complete implementation of Nostr Data Vending Machine specification
 \item {\bfseries{Event-\/\+Driven Architecture}}\+: Clean separation between protocol handling and business logic
-\end{DoxyItemize}\hypertarget{index_autotoc_md13}{}\doxysection{Configuration}\label{index_autotoc_md13}
-Key configuration options in {\ttfamily \mbox{\hyperlink{config_8h}{src/config.\+h}}}\+:
+\end{DoxyItemize}\hypertarget{index_autotoc_md14}{}\doxysection{Configuration}\label{index_autotoc_md14}
+Configuration options in {\ttfamily \mbox{\hyperlink{config_8h}{src/config.\+h}}}\+:
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{comment}{//\ Nostr\ Configuration}}
-\DoxyCodeLine{\textcolor{preprocessor}{\#define\ NOSTR\_RELAY\_URI\ "{}wss://relay.example.com"{}}}
-\DoxyCodeLine{\textcolor{preprocessor}{\#define\ NOSTR\_PRIVATE\_KEY\ "{}your\_device\_private\_key\_hex"{}}}
+\DoxyCodeLine{\textcolor{comment}{//\ WiFi}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ WIFI\_SSID\ \ \ \ \ \ \ "{}[YOUR\ WIFI\ SSID]"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ WIFI\_PASSWORD\ \ \ "{}[YOUR\ WIFI\ PASSWORD]"{}}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{comment}{//\ LNbits\ Configuration\ \ }}
-\DoxyCodeLine{\textcolor{preprocessor}{\#define\ LNBITS\_HOST\_URL\ "{}lnbits.example.com"{}}}
-\DoxyCodeLine{\textcolor{preprocessor}{\#define\ LNBITS\_INVOICE\_KEY\ "{}your\_invoice\_key"{}}}
-\DoxyCodeLine{\textcolor{preprocessor}{\#define\ LNBITS\_PAYMENTS\_ENDPOINT\ "{}/api/v1/payments"{}}}
+\DoxyCodeLine{\textcolor{comment}{//\ Nostr\ relay.\ relay.nostriot.com\ is\ a\ public\ relay\ run\ by\ the\ Nostriot\ project}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ NOSTR\_RELAY\_URI\ "{}wss://relay.nostriot.com"{}}}
 \DoxyCodeLine{}
-\DoxyCodeLine{\textcolor{comment}{//\ Device\ Configuration}}
-\DoxyCodeLine{\textcolor{preprocessor}{\#define\ DEVICE\_NAME\ "{}Nostriot\ Device"{}}}
+\DoxyCodeLine{\textcolor{comment}{//\ Nostr\ private\ key\ in\ hex\ format\ (32\ bytes,\ 64\ hex\ characters).}}
+\DoxyCodeLine{\textcolor{comment}{//\ You\ can\ use\ https://nostrtool.com/\ to\ generate\ a\ new\ key\ pair}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ NOSTR\_PRIVATE\_KEY\ "{}[YOUR\ NOSTR\ PRIVATE\ KEY\ IN\ HEX\ FORMAT]"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ This\ is\ the\ d\ tag\ value\ that\ is\ added\ to\ the\ replacable\ DVM\ advert}}
+\DoxyCodeLine{\textcolor{comment}{//\ You\ probably\ don't\ need\ to\ change\ this\ unless\ you\ run\ multiple\ devices\ with\ the\ same\ private\ key}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ DVM\_ADVERTISEMENT\_EVENT\_D\_TAG\_VALUE\ "{}dvm-\/advert-\/1"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ LNbits\ configuration\ for\ Lightning\ payments}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ LNBITS\_HOST\_URL\ "{}[YOUR\ LNBITS\ HOST\ URL\ WITHOUT\ https://\ e.g.\ demo.lnbits.com]"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ LNBITS\_INVOICE\_KEY\ "{}[YOUR\ LNBITS\ INVOICE\ KEY]"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#define\ LNBITS\_PAYMENTS\_ENDPOINT\ "{}/api/v1/payments"{}}\ \textcolor{comment}{//\ usually\ don't\ change\ this}}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md14}{}\doxysubsection{Adding New Io\+T Services}\label{index_autotoc_md14}
-
-\begin{DoxyEnumerate}
-\item {\bfseries{Add capability}} to {\ttfamily Nostriot\+Provider\+::capabilities\mbox{[}\mbox{]}}
-\item {\bfseries{Implement service logic}} in {\ttfamily \mbox{\hyperlink{namespace_nostriot_provider_ad39f1348c9806f82b067fd5e6aa9b893}{Nostriot\+Provider\+::run()}}}
-\item {\bfseries{Set pricing}} in {\ttfamily Nostriot\+Provider\+::get\+Price\+Per\+Request()}
-\item {\bfseries{Test with DVM requests}} via Nostr clients
-\end{DoxyEnumerate}\hypertarget{index_autotoc_md15}{}\doxysubsection{Code Quality}\label{index_autotoc_md15}
+\hypertarget{index_autotoc_md15}{}\doxysubsection{Code Quality}\label{index_autotoc_md15}
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\#\ Run\ code\ quality\ checks}
@@ -136,24 +140,9 @@ Key configuration options in {\ttfamily \mbox{\hyperlink{config_8h}{src/config.\
 \DoxyCodeLine{\#\ Find\ unused\ functions}
 \DoxyCodeLine{cppcheck\ -\/-\/enable=unusedFunction\ src/}
 \DoxyCodeLine{}
-\DoxyCodeLine{\#\ Full\ analysis}
-\DoxyCodeLine{cppcheck\ -\/-\/enable=all\ -\/-\/inconclusive\ src/}
+\DoxyCodeLine{\#\ Wider\ analysis}
+\DoxyCodeLine{cppcheck\ -\/-\/enable=unusedFunction,style\ -\/-\/inconclusive\ src/}
 
 \end{DoxyCode}
-\hypertarget{index_autotoc_md16}{}\doxysection{Protocol Implementation}\label{index_autotoc_md16}
-\hypertarget{index_autotoc_md17}{}\doxysubsection{DVM (\+Data Vending Machine)}\label{index_autotoc_md17}
-
-\begin{DoxyItemize}
-\item {\bfseries{Request Format}}\+: NIP-\/89 compatible job requests (kind 5107)
-\item {\bfseries{Response Format}}\+: Job results (kind 6107) with proper tagging
-\item {\bfseries{Payment Integration}}\+: Payment requests (kind 9735) with Lightning invoices
-\item {\bfseries{Error Handling}}\+: Comprehensive error responses and status codes
-\end{DoxyItemize}\hypertarget{index_autotoc_md18}{}\doxysubsection{Lightning Integration}\label{index_autotoc_md18}
-
-\begin{DoxyItemize}
-\item {\bfseries{Invoice Generation}}\+: Automatic BOLT11 invoice creation
-\item {\bfseries{Payment Monitoring}}\+: Real-\/time Web\+Socket payment confirmations
-\item {\bfseries{Queue Management}}\+: Concurrent payment handling with timeouts
-\item {\bfseries{Zap Support}}\+: Ready for future Nostr zap payment integration
-\end{DoxyItemize}\hypertarget{index_autotoc_md19}{}\doxysection{License}\label{index_autotoc_md19}
+\hypertarget{index_autotoc_md16}{}\doxysection{License}\label{index_autotoc_md16}
 MIT License 
