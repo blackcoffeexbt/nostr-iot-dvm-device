@@ -165,13 +165,12 @@ namespace NostriotProvider
         // TODO: get real data
         if (method == "getTemperature")
         {
-            return String(getCurrentTemperature());
+            return "Temperature is " + String(getCurrentTemperature()) + "°C";
         }
         else if (method == "getHumidity")
         {
-            // return a fake humidity for now between 30 and 70%
-            int humidity = random(30, 70);
-            return String(humidity);
+            int humidity = random(81, 88);
+            return "Humdity is " + String(humidity) + "%";
         }
         else if (method == "toggleLamp")
         {
