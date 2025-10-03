@@ -101,7 +101,9 @@ namespace NostriotProvider
         {
             if (cap.name == method)
             {
-                return cap.price;
+                int price = cap.price;
+                Display::displayManager.showMessage("Price is " + String(price) + " sats");
+                return price;
             }
         }
         return 0; 
@@ -182,8 +184,9 @@ namespace NostriotProvider
         // TODO: get real data
         if (method == "zapBen")
         {
-            // TODO: Zap Ben!
-            return getFunZapResponseText();
+            String response = getFunZapResponseText();
+            Display::displayManager.showMessage(response);
+            return response;
         }
         else
         {

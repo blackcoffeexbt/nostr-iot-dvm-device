@@ -10,7 +10,7 @@
 #include <Arduino.h>
 #include "driver/gpio.h"
 #include "settings.h"
-#include "display.h"
+#include "display_manager.h"
 #include "wifi_manager.h"
 #include "nostr_manager.h"
 

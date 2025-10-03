@@ -5,6 +5,8 @@
 
 namespace App
 {
+    using namespace Display;
+
     // Application state
     static app_state_t current_state = APP_STATE_INITIALIZING;
     static String last_error = "";
@@ -25,9 +27,19 @@ namespace App
 
         try
         {
+            // Initialize display
+            if (displayManager.initialize())
+            {
+                Serial.println("[MAIN] Display initialized successfully");
+            }
+            else
+            {
+                Serial.println("[MAIN] Display initialization failed");
+            }
+            displayManager.showUptime();
+
             // Initialize modules in dependency order
             Serial.println("Initializing Display module...");
-            Display::init();
 
             Serial.println("Initializing Settings module...");
             Settings::init();
@@ -37,7 +49,7 @@ namespace App
 
             // Set up WiFi status callback
             NiotWiFiManager::setStatusCallback([](bool connected, const char *status)
-                                                 { App::notifyWiFiStatusChanged(connected); });
+                                               { App::notifyWiFiStatusChanged(connected); });
 
             Serial.println("Initializing Nostr Manager module...");
             NostrManager::init();
@@ -72,7 +84,6 @@ namespace App
         NostrManager::cleanup();
         NiotWiFiManager::cleanup();
         Settings::cleanup();
-        Display::cleanup();
 
         setState(APP_STATE_INITIALIZING);
         Serial.println("=== Application cleanup completed ===");
@@ -88,6 +99,8 @@ namespace App
             Serial.println("=== App::run() started ===");
             first_run = false;
         }
+
+        displayManager.update();
 
         unsigned long current_time = millis();
 
