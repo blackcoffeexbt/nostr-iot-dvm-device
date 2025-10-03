@@ -33,11 +33,11 @@ namespace App
             Settings::init();
 
             Serial.println("Initializing WiFi Manager module...");
-            WiFiManager::init();
+            NiotWiFiManager::init();
 
             // Set up WiFi status callback
-            WiFiManager::setStatusCallback([](bool connected, const char *status)
-                                           { App::notifyWiFiStatusChanged(connected); });
+            NiotWiFiManager::setStatusCallback([](bool connected, const char *status)
+                                                 { App::notifyWiFiStatusChanged(connected); });
 
             Serial.println("Initializing Nostr Manager module...");
             NostrManager::init();
@@ -47,7 +47,7 @@ namespace App
                                             { App::notifyDeviceStatusChanged(connected); });
 
             // Check if WiFi is already connected and trigger signer connection if needed
-            if (WiFiManager::isConnected())
+            if (NiotWiFiManager::isConnected())
             {
                 Serial.println("WiFi already connected during initialization - connecting to relay");
                 notifyWiFiStatusChanged(true);
@@ -70,7 +70,7 @@ namespace App
 
         // Cleanup modules in reverse dependency order
         NostrManager::cleanup();
-        WiFiManager::cleanup();
+        NiotWiFiManager::cleanup();
         Settings::cleanup();
         Display::cleanup();
 
@@ -94,11 +94,11 @@ namespace App
         // Process WiFi AP mode events (with error handling)
         try
         {
-            WiFiManager::processLoop();
+            NiotWiFiManager::processLoop();
         }
         catch (...)
         {
-            Serial.println("ERROR: WiFiManager::processLoop() threw exception");
+            Serial.println("ERROR: NiotWiFiManager::processLoop() threw exception");
         }
 
         // Process WebSocket events (with error handling)
@@ -207,7 +207,7 @@ namespace App
         bool health_ok = true;
 
         // Check WiFi module health
-        if (!WiFiManager::isConnected() && WiFiManager::getStatus() != WL_IDLE_STATUS)
+        if (!NiotWiFiManager::isConnected() && NiotWiFiManager::getStatus() != WL_IDLE_STATUS)
         {
             Serial.println("WiFi module health check failed");
             health_ok = false;
@@ -226,11 +226,11 @@ namespace App
     void reportModuleStatus()
     {
         Serial.println("=== Module Status Report ===");
-        Serial.println("WiFi: " + String(WiFiManager::isConnected() ? "Connected" : "Disconnected"));
-        if (WiFiManager::isConnected())
+        Serial.println("WiFi: " + String(NiotWiFiManager::isConnected() ? "Connected" : "Disconnected"));
+        if (NiotWiFiManager::isConnected())
         {
-            Serial.println("  SSID: " + WiFiManager::getSSID());
-            Serial.println("  IP: " + WiFiManager::getLocalIP());
+            Serial.println("  SSID: " + NiotWiFiManager::getSSID());
+            Serial.println("  IP: " + NiotWiFiManager::getLocalIP());
         }
         Serial.println("Nostr Manager: " + String(NostrManager::isConnected() ? "Connected" : "Disconnected"));
         if (NostrManager::isConnected())

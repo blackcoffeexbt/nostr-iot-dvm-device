@@ -9,6 +9,8 @@
 
 #include <stdint.h>
 
+#define NOSTRIOT_DEVICE_VERSION (1)
+
 // hardcode wifi and nostr relay URI for now
 #define WIFI_SSID       "[YOUR WIFI SSID]"
 #define WIFI_PASSWORD   "[YOUR WIFI PASSWORD]"

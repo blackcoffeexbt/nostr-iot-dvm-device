@@ -15,7 +15,7 @@
 
 namespace NostriotProvider
 {
-    const static String SERVICE_NAME = "BC's Nostriot IoT Device";
+    const static String SERVICE_NAME = "A demo Nostriot Device";
     const static String SERVICE_DESCRIPTION = "An example IoT device using Nostr IoT services";
     
     // Hardware configuration
