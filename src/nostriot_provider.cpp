@@ -90,13 +90,17 @@ namespace NostriotProvider
     {
         if(method == "setTemperature") {
             // variable pricing based on target temperature
-            return getSetTemperaturePrice(value.toFloat());
+            int price = getSetTemperaturePrice(value.toFloat());
+            Display::displayManager.showMessage("Price is " + String(price) + " sats");
+            return price;
         }
         for (const auto &cap : capabilities_with_pricing)
         {
             if (cap.name == method)
             {
-                return cap.price;
+                int price = cap.price;
+                Display::displayManager.showMessage("Price is " + String(price) + " sats");
+                return price;
             }
         }
         return 0; 
