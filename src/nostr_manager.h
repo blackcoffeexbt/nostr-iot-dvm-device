@@ -11,7 +11,6 @@
 
 #include "settings.h"
 #include "app.h"
-#include "display.h"
 #include "config.h"
 #include "nostriot_provider.h"
 

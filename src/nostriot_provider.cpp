@@ -165,11 +165,14 @@ namespace NostriotProvider
         // TODO: get real data
         if (method == "getTemperature")
         {
-            return "Temperature is " + String(getCurrentTemperature()) + "°C";
+            float temp = getCurrentTemperature();
+            Display::displayManager.showMessage("Temperature is " + String(temp) + "°C");
+            return "Temperature is " + String(temp) + "°C";
         }
         else if (method == "getHumidity")
         {
             int humidity = random(81, 88);
+            Display::displayManager.showMessage("Humidity is " + String(humidity) + "%");
             return "Humdity is " + String(humidity) + "%";
         }
         else if (method == "toggleLamp")
@@ -180,12 +183,14 @@ namespace NostriotProvider
             
             String state = ledState ? "ON" : "OFF";
             Serial.println("NostriotProvider::toggleLamp() - LED turned " + state);
+            Display::displayManager.showMessage("Lamp turned " + state);
             return "Lamp turned " + state;
         }
         else if (method == "setTemperature")
         {
             // pretend to set a temperature
             Serial.println("NostriotProvider::setTemperature() - Setting temperature to " + value + " degrees C");
+            Display::displayManager.showMessage("Temperature set to " + value + " degrees C");
             return "Temperature set to " + value + " degrees C";
         }
         else

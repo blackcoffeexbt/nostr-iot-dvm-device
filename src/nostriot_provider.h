@@ -4,6 +4,7 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
+#include "display_manager.h"
 #include "config.h"
 
 namespace NostriotProvider {
