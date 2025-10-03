@@ -1,19 +1,18 @@
 var searchData=
 [
   ['websocketevent_0',['websocketEvent',['../namespace_nostr_manager.html#a767c53b47c6f4dffc13522fe0cba9544',1,'NostrManager']]],
-  ['wifi_5fcommand_5ft_1',['wifi_command_t',['../structwifi__command__t.html',1,'wifi_command_t'],['../struct_wi_fi_manager_1_1wifi__command__t.html',1,'WiFiManager::wifi_command_t']]],
-  ['wifi_5fcommand_5ftype_5ft_2',['wifi_command_type_t',['../main_8cpp.html#a39e9cd7b432e4f3e6b935985bddf2a0c',1,'wifi_command_type_t():&#160;main.cpp'],['../namespace_wi_fi_manager.html#a13aca7b0f742cd4e341fd9f564554c1e',1,'WiFiManager::wifi_command_type_t()']]],
-  ['wifi_5fconnect_3',['WIFI_CONNECT',['../main_8cpp.html#a39e9cd7b432e4f3e6b935985bddf2a0caf14ac08f8d7b221cd1e510207f041224',1,'WIFI_CONNECT():&#160;main.cpp'],['../namespace_wi_fi_manager.html#a13aca7b0f742cd4e341fd9f564554c1eaeb72173a3739edb98cc2214d65dcda40',1,'WiFiManager::WIFI_CONNECT()']]],
-  ['wifi_5fdisconnect_4',['WIFI_DISCONNECT',['../main_8cpp.html#a39e9cd7b432e4f3e6b935985bddf2a0cae98478e31cd6b9f5453c009e650afd62',1,'WIFI_DISCONNECT():&#160;main.cpp'],['../namespace_wi_fi_manager.html#a13aca7b0f742cd4e341fd9f564554c1ea986429df4b2cff5795ed0cd17bb13c58',1,'WiFiManager::WIFI_DISCONNECT()']]],
+  ['wifi_5fcommand_5ft_1',['wifi_command_t',['../struct_niot_wi_fi_manager_1_1wifi__command__t.html',1,'NiotWiFiManager::wifi_command_t'],['../structwifi__command__t.html',1,'wifi_command_t']]],
+  ['wifi_5fcommand_5ftype_5ft_2',['wifi_command_type_t',['../main_8cpp.html#a39e9cd7b432e4f3e6b935985bddf2a0c',1,'wifi_command_type_t():&#160;main.cpp'],['../namespace_niot_wi_fi_manager.html#abe0c5562708e9303b8cfbe5fd80db69d',1,'NiotWiFiManager::wifi_command_type_t()']]],
+  ['wifi_5fconnect_3',['WIFI_CONNECT',['../main_8cpp.html#a39e9cd7b432e4f3e6b935985bddf2a0caf14ac08f8d7b221cd1e510207f041224',1,'WIFI_CONNECT():&#160;main.cpp'],['../namespace_niot_wi_fi_manager.html#abe0c5562708e9303b8cfbe5fd80db69da71d6198c9d278bc03c400ef8e522d4c5',1,'NiotWiFiManager::WIFI_CONNECT()']]],
+  ['wifi_5fdisconnect_4',['WIFI_DISCONNECT',['../main_8cpp.html#a39e9cd7b432e4f3e6b935985bddf2a0cae98478e31cd6b9f5453c009e650afd62',1,'WIFI_DISCONNECT():&#160;main.cpp'],['../namespace_niot_wi_fi_manager.html#abe0c5562708e9303b8cfbe5fd80db69da4af90e8fe4a82828b2970ac7f0befbe0',1,'NiotWiFiManager::WIFI_DISCONNECT()']]],
   ['wifi_5fmanager_2ecpp_5',['wifi_manager.cpp',['../wifi__manager_8cpp.html',1,'']]],
   ['wifi_5fmanager_2eh_6',['wifi_manager.h',['../wifi__manager_8h.html',1,'']]],
   ['wifi_5fpassword_7',['WIFI_PASSWORD',['../config_8h.html#a8685d8aff7e570048090a3a51afceb07',1,'config.h']]],
-  ['wifi_5fscan_8',['WIFI_SCAN',['../main_8cpp.html#a39e9cd7b432e4f3e6b935985bddf2a0cabc79e21d660ad53ddb48f80412b26363',1,'WIFI_SCAN():&#160;main.cpp'],['../namespace_wi_fi_manager.html#a13aca7b0f742cd4e341fd9f564554c1ea2a49dc40ced1f1c8878d9af409ab7dfc',1,'WiFiManager::WIFI_SCAN()']]],
+  ['wifi_5fscan_8',['WIFI_SCAN',['../main_8cpp.html#a39e9cd7b432e4f3e6b935985bddf2a0cabc79e21d660ad53ddb48f80412b26363',1,'WIFI_SCAN():&#160;main.cpp'],['../namespace_niot_wi_fi_manager.html#abe0c5562708e9303b8cfbe5fd80db69dacdee393893942be624a5e82dcea4ab9e',1,'NiotWiFiManager::WIFI_SCAN()']]],
   ['wifi_5fssid_9',['WIFI_SSID',['../config_8h.html#a586542b79d00e4db7e1d5a667ae83a2b',1,'config.h']]],
-  ['wifi_5fstatus_5fcallback_5ft_10',['wifi_status_callback_t',['../namespace_wi_fi_manager.html#a839fecd4b9065c1e1e4b79953d5f2c63',1,'WiFiManager']]],
-  ['wifi_5fstop_5fscan_11',['WIFI_STOP_SCAN',['../main_8cpp.html#a39e9cd7b432e4f3e6b935985bddf2a0ca830823a0d1d8d9b5d7fcf516f10a396c',1,'WIFI_STOP_SCAN():&#160;main.cpp'],['../namespace_wi_fi_manager.html#a13aca7b0f742cd4e341fd9f564554c1eadb99ea8f650c95db02a6722a91a21873',1,'WiFiManager::WIFI_STOP_SCAN()']]],
-  ['wifimanager_12',['WiFiManager',['../namespace_wi_fi_manager.html',1,'']]],
-  ['ws_5ffragment_5ftimeout_13',['WS_FRAGMENT_TIMEOUT',['../namespace_nostr_manager_1_1_config.html#a61dddaeb9ed982a061154bff37c842eb',1,'NostrManager::Config']]],
-  ['ws_5fmax_5ffragment_5fsize_14',['WS_MAX_FRAGMENT_SIZE',['../namespace_nostr_manager_1_1_config.html#a7c986721811f73df5ca3060f27c3932f',1,'NostrManager::Config']]],
-  ['ws_5fping_5finterval_15',['WS_PING_INTERVAL',['../namespace_nostr_manager_1_1_config.html#ac51254b526ba802244d674257e79c0ef',1,'NostrManager::Config']]]
+  ['wifi_5fstatus_5fcallback_5ft_10',['wifi_status_callback_t',['../namespace_niot_wi_fi_manager.html#aabfa00eb794a5a82e6673b3626170871',1,'NiotWiFiManager']]],
+  ['wifi_5fstop_5fscan_11',['WIFI_STOP_SCAN',['../main_8cpp.html#a39e9cd7b432e4f3e6b935985bddf2a0ca830823a0d1d8d9b5d7fcf516f10a396c',1,'WIFI_STOP_SCAN():&#160;main.cpp'],['../namespace_niot_wi_fi_manager.html#abe0c5562708e9303b8cfbe5fd80db69da03fc402277e0978cb0943ead91d0b4e8',1,'NiotWiFiManager::WIFI_STOP_SCAN()']]],
+  ['ws_5ffragment_5ftimeout_12',['WS_FRAGMENT_TIMEOUT',['../namespace_nostr_manager_1_1_config.html#a61dddaeb9ed982a061154bff37c842eb',1,'NostrManager::Config']]],
+  ['ws_5fmax_5ffragment_5fsize_13',['WS_MAX_FRAGMENT_SIZE',['../namespace_nostr_manager_1_1_config.html#a7c986721811f73df5ca3060f27c3932f',1,'NostrManager::Config']]],
+  ['ws_5fping_5finterval_14',['WS_PING_INTERVAL',['../namespace_nostr_manager_1_1_config.html#ac51254b526ba802244d674257e79c0ef',1,'NostrManager::Config']]]
 ];

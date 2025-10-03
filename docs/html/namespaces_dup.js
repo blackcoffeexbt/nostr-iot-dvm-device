@@ -6,6 +6,7 @@ var namespaces_dup =
       [ "init", "namespace_display.html#aacbf91b9f8c57fc2cb892c45fd44e655", null ],
       [ "processLoop", "namespace_display.html#a077b4ac2d8375b813decec27db962e2b", null ]
     ] ],
+    [ "NiotWiFiManager", "namespace_niot_wi_fi_manager.html", "namespace_niot_wi_fi_manager" ],
     [ "nip19", "namespacenip19.html", [
       [ "byteArrayToHexString", "namespacenip19.html#a994f1d8ff64403b04fee8bb38893244c", null ],
       [ "convert5bitArrayToByteArray", "namespacenip19.html#a62479c62a5dcefbb9d19ac28eba449fe", null ],
@@ -46,8 +47,6 @@ var namespaces_dup =
     [ "Settings", "namespace_settings.html", [
       [ "cleanup", "namespace_settings.html#adfd716c322069bdb999ecb9e6fb06635", null ],
       [ "init", "namespace_settings.html#ad47a8d3f696dcb0d38c1dc5088008885", null ],
-      [ "loadFromPreferences", "namespace_settings.html#ac225d9073ae68e129255f0dfabbe6a19", null ],
-      [ "saveToPreferences", "namespace_settings.html#af6a6f662bd9c9624532ac98521fdfd97", null ]
-    ] ],
-    [ "WiFiManager", "namespace_wi_fi_manager.html", "namespace_wi_fi_manager" ]
+      [ "loadFromPreferences", "namespace_settings.html#ac225d9073ae68e129255f0dfabbe6a19", null ]
+    ] ]
 ];

@@ -36,8 +36,6 @@ void \mbox{\hyperlink{namespace_app_afb037eba2d5bcaebddb20eee584dc210}{notify\+W
 \item 
 void \mbox{\hyperlink{namespace_app_aedcfb979465a625d14af855e643c3051}{notify\+Device\+Status\+Changed}} (bool connected)
 \item 
-String \mbox{\hyperlink{namespace_app_adc6346b4d03b67d61ede883d3c44cd64}{get\+Version}} ()
-\item 
 bool \mbox{\hyperlink{namespace_app_a8c902b97afa2062bbd08efa469419324}{check\+Module\+Health}} ()
 \item 
 void \mbox{\hyperlink{namespace_app_a683e7e9d5f87752ba306ae8d4b3043c8}{report\+Module\+Status}} ()
@@ -60,7 +58,7 @@ This header provides a unified interface to all application modules and coordina
 
 Event System 
 
-Definition at line \mbox{\hyperlink{app_8h_source_l00061}{61}} of file \mbox{\hyperlink{app_8h_source}{app.\+h}}.
+Definition at line \mbox{\hyperlink{app_8h_source_l00056}{56}} of file \mbox{\hyperlink{app_8h_source}{app.\+h}}.
 
 
 
@@ -114,29 +112,29 @@ Definition at line \mbox{\hyperlink{app_8h_source_l00021}{21}} of file \mbox{\hy
 
 Module Health Monitoring 
 
-Definition at line \mbox{\hyperlink{app_8cpp_source_l00210}{210}} of file \mbox{\hyperlink{app_8cpp_source}{app.\+cpp}}.
+Definition at line \mbox{\hyperlink{app_8cpp_source_l00205}{205}} of file \mbox{\hyperlink{app_8cpp_source}{app.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00211\ \ \ \ \ \{}
-\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ health\_ok\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00213\ }
-\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ WiFi\ module\ health}}
-\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{namespace_wi_fi_manager_aa6406a18b4523ef158247b902e770052}{WiFiManager::isConnected}}()\ \&\&\ \mbox{\hyperlink{namespace_wi_fi_manager_a1afb041d5ffe5293106eb38c9eb37690}{WiFiManager::getStatus}}()\ !=\ WL\_IDLE\_STATUS)}
-\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}WiFi\ module\ health\ check\ failed"{}});}
-\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ health\_ok\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00220\ }
-\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ Nostr\ Manager\ module\ health}}
-\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespace_nostr_manager_a121cfa7d4a629523377058c1990a49a8}{NostrManager::isInitialized}}()\ \&\&\ !\mbox{\hyperlink{namespace_nostr_manager_a541abb91896da4ae8ba476a7c39e95f8}{NostrManager::isConnected}}())}
-\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Nostr\ Manager\ module\ health\ check\ warning\ -\/\ not\ connected"{}});}
-\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ is\ a\ warning,\ not\ a\ failure}}
-\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00227\ }
-\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ health\_ok;}
-\DoxyCodeLine{00229\ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \ \ \ \ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ health\_ok\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ WiFi\ module\ health}}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{namespace_niot_wi_fi_manager_a55d923f23185cb93bdf9ba3a87af3c77}{NiotWiFiManager::isConnected}}()\ \&\&\ \mbox{\hyperlink{namespace_niot_wi_fi_manager_a6bc9002aa19a16ca6e08641ffc4a3b00}{NiotWiFiManager::getStatus}}()\ !=\ WL\_IDLE\_STATUS)}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}WiFi\ module\ health\ check\ failed"{}});}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ health\_ok\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ Nostr\ Manager\ module\ health}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespace_nostr_manager_a121cfa7d4a629523377058c1990a49a8}{NostrManager::isInitialized}}()\ \&\&\ !\mbox{\hyperlink{namespace_nostr_manager_a541abb91896da4ae8ba476a7c39e95f8}{NostrManager::isConnected}}())}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Nostr\ Manager\ module\ health\ check\ warning\ -\/\ not\ connected"{}});}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ is\ a\ warning,\ not\ a\ failure}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ health\_ok;}
+\DoxyCodeLine{00224\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespace_app_aa172d6e06d067c1653591cb381a666e9}\label{namespace_app_aa172d6e06d067c1653591cb381a666e9}} 
@@ -156,7 +154,7 @@ Definition at line \mbox{\hyperlink{app_8cpp_source_l00067}{67}} of file \mbox{\
 \DoxyCodeLine{00070\ }
 \DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Cleanup\ modules\ in\ reverse\ dependency\ order}}
 \DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_nostr_manager_a779aa13687f2b870a7c1c1d665f375ef}{NostrManager::cleanup}}();}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_wi_fi_manager_a65dac49e1bcceabd910231b2755d254d}{WiFiManager::cleanup}}();}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_niot_wi_fi_manager_a2c8178e28b845f8b705a61767b751741}{NiotWiFiManager::cleanup}}();}
 \DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_settings_adfd716c322069bdb999ecb9e6fb06635}{Settings::cleanup}}();}
 \DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_display_a74136dce435d7a569c5fb00d5f7afbe6}{Display::cleanup}}();}
 \DoxyCodeLine{00076\ }
@@ -175,16 +173,16 @@ Definition at line \mbox{\hyperlink{app_8cpp_source_l00067}{67}} of file \mbox{\
 
 
 
-Definition at line \mbox{\hyperlink{app_8cpp_source_l00249}{249}} of file \mbox{\hyperlink{app_8cpp_source}{app.\+cpp}}.
+Definition at line \mbox{\hyperlink{app_8cpp_source_l00244}{244}} of file \mbox{\hyperlink{app_8cpp_source}{app.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00250\ \ \ \ \ \{}
-\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (event\_callback)}
-\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ event\_callback(event,\ data);}
-\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00255\ \ \ \ \ \}}
+\DoxyCodeLine{00245\ \ \ \ \ \{}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (event\_callback)}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ event\_callback(event,\ data);}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00250\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespace_app_a22c8042a43eb38e54720382fedf1c31b}\label{namespace_app_a22c8042a43eb38e54720382fedf1c31b}} 
@@ -216,23 +214,6 @@ Definition at line \mbox{\hyperlink{app_8cpp_source_l00141}{141}} of file \mbox{
 \DoxyCodeLine{00156\ \ \ \ \ \}}
 
 \end{DoxyCode}
-\mbox{\Hypertarget{namespace_app_adc6346b4d03b67d61ede883d3c44cd64}\label{namespace_app_adc6346b4d03b67d61ede883d3c44cd64}} 
-\index{App@{App}!getVersion@{getVersion}}
-\index{getVersion@{getVersion}!App@{App}}
-\doxysubsubsection{\texorpdfstring{getVersion()}{getVersion()}}
-{\footnotesize\ttfamily String App\+::get\+Version (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-System Information 
-
-Definition at line \mbox{\hyperlink{app_8cpp_source_l00205}{205}} of file \mbox{\hyperlink{app_8cpp_source}{app.\+cpp}}.
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00206\ \ \ \ \ \{}
-\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Config::VERSION;}
-\DoxyCodeLine{00208\ \ \ \ \ \}}
-
-\end{DoxyCode}
 \mbox{\Hypertarget{namespace_app_a36c71ca6134247ab51d1a7a2d0a02cd4}\label{namespace_app_a36c71ca6134247ab51d1a7a2d0a02cd4}} 
 \index{App@{App}!init@{init}}
 \index{init@{init}!App@{App}}
@@ -262,11 +243,11 @@ Definition at line \mbox{\hyperlink{app_8cpp_source_l00018}{18}} of file \mbox{\
 \DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_settings_ad47a8d3f696dcb0d38c1dc5088008885}{Settings::init}}();}
 \DoxyCodeLine{00034\ }
 \DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Initializing\ WiFi\ Manager\ module..."{}});}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_wi_fi_manager_a307a74b2278e5f1c3ac148944034ca75}{WiFiManager::init}}();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_niot_wi_fi_manager_a9ac6a8751745653215218765f1dd233a}{NiotWiFiManager::init}}();}
 \DoxyCodeLine{00037\ }
 \DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ up\ WiFi\ status\ callback}}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_wi_fi_manager_afbd1520be38dcf8df79b62059bc70113}{WiFiManager::setStatusCallback}}([](\textcolor{keywordtype}{bool}\ connected,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *status)}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \mbox{\hyperlink{namespace_app_afb037eba2d5bcaebddb20eee584dc210}{App::notifyWiFiStatusChanged}}(connected);\ \});}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_niot_wi_fi_manager_a2ba31973d9dcd26197a1ed41814b1422}{NiotWiFiManager::setStatusCallback}}([](\textcolor{keywordtype}{bool}\ connected,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *status)}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \mbox{\hyperlink{namespace_app_afb037eba2d5bcaebddb20eee584dc210}{App::notifyWiFiStatusChanged}}(connected);\ \});}
 \DoxyCodeLine{00041\ }
 \DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Initializing\ Nostr\ Manager\ module..."{}});}
 \DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_nostr_manager_a7af93aac0b3a0ce6400c0e76f6207346}{NostrManager::init}}();}
@@ -276,7 +257,7 @@ Definition at line \mbox{\hyperlink{app_8cpp_source_l00018}{18}} of file \mbox{\
 \DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \mbox{\hyperlink{namespace_app_aedcfb979465a625d14af855e643c3051}{App::notifyDeviceStatusChanged}}(connected);\ \});}
 \DoxyCodeLine{00048\ }
 \DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ WiFi\ is\ already\ connected\ and\ trigger\ signer\ connection\ if\ needed}}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespace_wi_fi_manager_aa6406a18b4523ef158247b902e770052}{WiFiManager::isConnected}}())}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespace_niot_wi_fi_manager_a55d923f23185cb93bdf9ba3a87af3c77}{NiotWiFiManager::isConnected}}())}
 \DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}WiFi\ already\ connected\ during\ initialization\ -\/\ connecting\ to\ relay"{}});}
 \DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_app_afb037eba2d5bcaebddb20eee584dc210}{notifyWiFiStatusChanged}}(\textcolor{keyword}{true});}
@@ -373,26 +354,26 @@ Definition at line \mbox{\hyperlink{app_8cpp_source_l00158}{158}} of file \mbox{
 
 
 
-Definition at line \mbox{\hyperlink{app_8cpp_source_l00231}{231}} of file \mbox{\hyperlink{app_8cpp_source}{app.\+cpp}}.
+Definition at line \mbox{\hyperlink{app_8cpp_source_l00226}{226}} of file \mbox{\hyperlink{app_8cpp_source}{app.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00232\ \ \ \ \ \{}
-\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}===\ Module\ Status\ Report\ ==="{}});}
-\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}WiFi:\ "{}}\ +\ String(\mbox{\hyperlink{namespace_wi_fi_manager_aa6406a18b4523ef158247b902e770052}{WiFiManager::isConnected}}()\ ?\ \textcolor{stringliteral}{"{}Connected"{}}\ :\ \textcolor{stringliteral}{"{}Disconnected"{}}));}
-\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespace_wi_fi_manager_aa6406a18b4523ef158247b902e770052}{WiFiManager::isConnected}}())}
-\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}\ \ SSID:\ "{}}\ +\ \mbox{\hyperlink{namespace_wi_fi_manager_a0d7909fe5946dfd8e7024a61b0a9e048}{WiFiManager::getSSID}}());}
-\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}\ \ IP:\ "{}}\ +\ \mbox{\hyperlink{namespace_wi_fi_manager_a87f19df53f67ea0a4cb59ef57c184524}{WiFiManager::getLocalIP}}());}
+\DoxyCodeLine{00227\ \ \ \ \ \{}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}===\ Module\ Status\ Report\ ==="{}});}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}WiFi:\ "{}}\ +\ String(\mbox{\hyperlink{namespace_niot_wi_fi_manager_a55d923f23185cb93bdf9ba3a87af3c77}{NiotWiFiManager::isConnected}}()\ ?\ \textcolor{stringliteral}{"{}Connected"{}}\ :\ \textcolor{stringliteral}{"{}Disconnected"{}}));}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespace_niot_wi_fi_manager_a55d923f23185cb93bdf9ba3a87af3c77}{NiotWiFiManager::isConnected}}())}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}\ \ SSID:\ "{}}\ +\ \mbox{\hyperlink{namespace_niot_wi_fi_manager_ab9539ce2e0a98a4a2f1f88155162b628}{NiotWiFiManager::getSSID}}());}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}\ \ IP:\ "{}}\ +\ \mbox{\hyperlink{namespace_niot_wi_fi_manager_a4954bf84a94fb31ee51c6b44e8466a5b}{NiotWiFiManager::getLocalIP}}());}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Nostr\ Manager:\ "{}}\ +\ String(\mbox{\hyperlink{namespace_nostr_manager_a541abb91896da4ae8ba476a7c39e95f8}{NostrManager::isConnected}}()\ ?\ \textcolor{stringliteral}{"{}Connected"{}}\ :\ \textcolor{stringliteral}{"{}Disconnected"{}}));}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespace_nostr_manager_a541abb91896da4ae8ba476a7c39e95f8}{NostrManager::isConnected}}())}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}\ \ Relay:\ "{}}\ +\ \mbox{\hyperlink{namespace_nostr_manager_af9b1178df0383f8342a7d2cef95feaa4}{NostrManager::getRelayUrl}}());}
 \DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Nostr\ Manager:\ "{}}\ +\ String(\mbox{\hyperlink{namespace_nostr_manager_a541abb91896da4ae8ba476a7c39e95f8}{NostrManager::isConnected}}()\ ?\ \textcolor{stringliteral}{"{}Connected"{}}\ :\ \textcolor{stringliteral}{"{}Disconnected"{}}));}
-\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespace_nostr_manager_a541abb91896da4ae8ba476a7c39e95f8}{NostrManager::isConnected}}())}
-\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}\ \ Relay:\ "{}}\ +\ \mbox{\hyperlink{namespace_nostr_manager_af9b1178df0383f8342a7d2cef95feaa4}{NostrManager::getRelayUrl}}());}
-\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Free\ Heap:\ "{}}\ +\ String(ESP.getFreeHeap()));}
-\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}============================"{}});}
-\DoxyCodeLine{00247\ \ \ \ \ \}}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Free\ Heap:\ "{}}\ +\ String(ESP.getFreeHeap()));}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}============================"{}});}
+\DoxyCodeLine{00242\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespace_app_ae09dc71078b64c56c673b1ad1d25b5d1}\label{namespace_app_ae09dc71078b64c56c673b1ad1d25b5d1}} 
@@ -420,11 +401,11 @@ Definition at line \mbox{\hyperlink{app_8cpp_source_l00083}{83}} of file \mbox{\
 \DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Process\ WiFi\ AP\ mode\ events\ (with\ error\ handling)}}
 \DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
 \DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_wi_fi_manager_a4600374afc464e50c6516ed52df26b81}{WiFiManager::processLoop}}();}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_niot_wi_fi_manager_a75d2c095cab9e733f9bdd64722438f21}{NiotWiFiManager::processLoop}}();}
 \DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (...)}
 \DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}ERROR:\ WiFiManager::processLoop()\ threw\ exception"{}});}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}ERROR:\ NiotWiFiManager::processLoop()\ threw\ exception"{}});}
 \DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00103\ }
 \DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Process\ WebSocket\ events\ (with\ error\ handling)}}
