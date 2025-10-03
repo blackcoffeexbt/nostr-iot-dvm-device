@@ -9,11 +9,13 @@
 
 #include <stdint.h>
 
+#define NOSTRIOT_DEVICE_VERSION (1)
+
 // hardcode wifi and nostr relay URI for now
 #define WIFI_SSID       "[YOUR WIFI SSID]"
 #define WIFI_PASSWORD   "[YOUR WIFI PASSWORD]"
 #define NOSTR_RELAY_URI "wss://relay.nostriot.com"
-#define NOSTR_PRIVATE_KEY "[YOUR NOSTR PRIVATE KEY IN HEX FORMAT]"
+#define NOSTR_PRIVATE_KEY "[YOUR NOSTR PRIVATE KEY IN HEX FORMAT]" // You can use https://nostrtool.com/ to generate a new key pair
 
 // This is the d tag value that is added to the replacable DVM advert
 #define DVM_ADVERTISEMENT_EVENT_D_TAG_VALUE "dvm-advert-1"

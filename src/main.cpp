@@ -31,8 +31,6 @@ static unsigned long wifi_connect_start_time = 0;
 static const unsigned long WIFI_CONNECT_TIMEOUT = 10000; // 10 seconds
 static bool wifi_connection_attempted = false;
 
-// Legacy AP mode variables removed - now handled by WiFiManager module
-
 // Queue definitions for task communication
 typedef enum
 {
