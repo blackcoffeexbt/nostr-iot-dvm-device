@@ -8,7 +8,7 @@ digraph "src/wifi_manager.h"
   Node1 -> Node2 [color="steelblue1",style="solid"];
   Node2 [label="Arduino.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node1 -> Node3 [color="steelblue1",style="solid"];
-  Node3 [label="WiFiUdp.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
+  Node3 [label="WiFiManager.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node1 -> Node4 [color="steelblue1",style="solid"];
   Node4 [label="WebServer.h",height=0.2,width=0.4,color="grey60", fillcolor="#E0E0E0", style="filled",tooltip=" "];
   Node1 -> Node5 [color="steelblue1",style="solid"];

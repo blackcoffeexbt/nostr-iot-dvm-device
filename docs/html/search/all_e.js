@@ -1,7 +1,7 @@
 var searchData=
 [
   ['padmessage_0',['padMessage',['../nip44_8cpp.html#ac24379517e65e887cbbdc17891ab8e9a',1,'padMessage(const String &amp;plaintext):&#160;nip44.cpp'],['../nip44_8h.html#ac24379517e65e887cbbdc17891ab8e9a',1,'padMessage(const String &amp;plaintext):&#160;nip44.cpp']]],
-  ['password_1',['password',['../structwifi__command__t.html#a71ed610e3de30aeb8a1b14dd5e80fd46',1,'wifi_command_t::password()'],['../struct_wi_fi_manager_1_1wifi__command__t.html#a4fbe846ebf82e5205cf47a4d3ec212a3',1,'WiFiManager::wifi_command_t::password()']]],
+  ['password_1',['password',['../structwifi__command__t.html#a71ed610e3de30aeb8a1b14dd5e80fd46',1,'wifi_command_t::password()'],['../struct_niot_wi_fi_manager_1_1wifi__command__t.html#a289e3aaea0f4879a770964e397b0343a',1,'NiotWiFiManager::wifi_command_t::password()']]],
   ['payment_5fcallback_5ft_2',['payment_callback_t',['../namespace_payment_provider.html#a20286743fe36331f3582a417bcc99527',1,'PaymentProvider']]],
   ['payment_5fhash_3',['payment_hash',['../struct_payment_provider_1_1_pending_payment_request.html#ae47d383329c1b520f2a568f7407f365d',1,'PaymentProvider::PendingPaymentRequest']]],
   ['payment_5fprovider_2ecpp_4',['payment_provider.cpp',['../payment__provider_8cpp.html',1,'']]],
@@ -18,5 +18,5 @@ var searchData=
   ['pins_5fconfig_2eh_15',['pins_config.h',['../pins__config_8h.html',1,'']]],
   ['price_16',['price',['../struct_nostriot_provider_1_1_capability.html#a62234b02455b16b73f97b5e2890d1ef1',1,'NostriotProvider::Capability']]],
   ['processconfirmedpayment_17',['processConfirmedPayment',['../namespace_payment_provider.html#adf93defa67b1c9773b73cf42e8576fb7',1,'PaymentProvider']]],
-  ['processloop_18',['processLoop',['../namespace_display.html#a077b4ac2d8375b813decec27db962e2b',1,'Display::processLoop()'],['../namespace_nostr_manager.html#a302d8b408a59431c1a826e9a1b2aad74',1,'NostrManager::processLoop()'],['../namespace_payment_provider.html#a05b956a694bbea48897c02aa5f10d03d',1,'PaymentProvider::processLoop()'],['../namespace_wi_fi_manager.html#a4600374afc464e50c6516ed52df26b81',1,'WiFiManager::processLoop()']]]
+  ['processloop_18',['processLoop',['../namespace_display.html#a077b4ac2d8375b813decec27db962e2b',1,'Display::processLoop()'],['../namespace_nostr_manager.html#a302d8b408a59431c1a826e9a1b2aad74',1,'NostrManager::processLoop()'],['../namespace_payment_provider.html#a05b956a694bbea48897c02aa5f10d03d',1,'PaymentProvider::processLoop()'],['../namespace_niot_wi_fi_manager.html#a75d2c095cab9e733f9bdd64722438f21',1,'NiotWiFiManager::processLoop()']]]
 ];

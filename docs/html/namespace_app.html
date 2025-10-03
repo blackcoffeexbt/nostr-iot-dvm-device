@@ -134,8 +134,6 @@ Functions</h2></td></tr>
 <tr class="separator:afb037eba2d5bcaebddb20eee584dc210"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedcfb979465a625d14af855e643c3051"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_app.html#aedcfb979465a625d14af855e643c3051">notifyDeviceStatusChanged</a> (bool connected)</td></tr>
 <tr class="separator:aedcfb979465a625d14af855e643c3051"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc6346b4d03b67d61ede883d3c44cd64"><td class="memItemLeft" align="right" valign="top">String&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_app.html#adc6346b4d03b67d61ede883d3c44cd64">getVersion</a> ()</td></tr>
-<tr class="separator:adc6346b4d03b67d61ede883d3c44cd64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c902b97afa2062bbd08efa469419324"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_app.html#a8c902b97afa2062bbd08efa469419324">checkModuleHealth</a> ()</td></tr>
 <tr class="separator:a8c902b97afa2062bbd08efa469419324"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a683e7e9d5f87752ba306ae8d4b3043c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_app.html#a683e7e9d5f87752ba306ae8d4b3043c8">reportModuleStatus</a> ()</td></tr>
@@ -160,7 +158,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Event System </p>
 
-<p class="definition">Definition at line <a class="el" href="app_8h_source.html#l00061">61</a> of file <a class="el" href="app_8h_source.html">app.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="app_8h_source.html#l00056">56</a> of file <a class="el" href="app_8h_source.html">app.h</a>.</p>
 
 </div>
 </div>
@@ -215,30 +213,30 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Module Health Monitoring </p>
 
-<p class="definition">Definition at line <a class="el" href="app_8cpp_source.html#l00210">210</a> of file <a class="el" href="app_8cpp_source.html">app.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  211</span>    {</div>
-<div class="line"><span class="lineno">  212</span>        <span class="keywordtype">bool</span> health_ok = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">  213</span> </div>
-<div class="line"><span class="lineno">  214</span>        <span class="comment">// Check WiFi module health</span></div>
-<div class="line"><span class="lineno">  215</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespace_wi_fi_manager.html#aa6406a18b4523ef158247b902e770052">WiFiManager::isConnected</a>() &amp;&amp; <a class="code hl_function" href="namespace_wi_fi_manager.html#a1afb041d5ffe5293106eb38c9eb37690">WiFiManager::getStatus</a>() != WL_IDLE_STATUS)</div>
-<div class="line"><span class="lineno">  216</span>        {</div>
-<div class="line"><span class="lineno">  217</span>            Serial.println(<span class="stringliteral">&quot;WiFi module health check failed&quot;</span>);</div>
-<div class="line"><span class="lineno">  218</span>            health_ok = <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  219</span>        }</div>
-<div class="line"><span class="lineno">  220</span> </div>
-<div class="line"><span class="lineno">  221</span>        <span class="comment">// Check Nostr Manager module health</span></div>
-<div class="line"><span class="lineno">  222</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespace_nostr_manager.html#a121cfa7d4a629523377058c1990a49a8">NostrManager::isInitialized</a>() &amp;&amp; !<a class="code hl_function" href="namespace_nostr_manager.html#a541abb91896da4ae8ba476a7c39e95f8">NostrManager::isConnected</a>())</div>
-<div class="line"><span class="lineno">  223</span>        {</div>
-<div class="line"><span class="lineno">  224</span>            Serial.println(<span class="stringliteral">&quot;Nostr Manager module health check warning - not connected&quot;</span>);</div>
-<div class="line"><span class="lineno">  225</span>            <span class="comment">// This is a warning, not a failure</span></div>
-<div class="line"><span class="lineno">  226</span>        }</div>
-<div class="line"><span class="lineno">  227</span> </div>
-<div class="line"><span class="lineno">  228</span>        <span class="keywordflow">return</span> health_ok;</div>
-<div class="line"><span class="lineno">  229</span>    }</div>
-<div class="ttc" id="anamespace_nostr_manager_html_a121cfa7d4a629523377058c1990a49a8"><div class="ttname"><a href="namespace_nostr_manager.html#a121cfa7d4a629523377058c1990a49a8">NostrManager::isInitialized</a></div><div class="ttdeci">bool isInitialized()</div><div class="ttdef"><b>Definition:</b> <a href="nostr__manager_8cpp_source.html#l00988">nostr_manager.cpp:988</a></div></div>
-<div class="ttc" id="anamespace_nostr_manager_html_a541abb91896da4ae8ba476a7c39e95f8"><div class="ttname"><a href="namespace_nostr_manager.html#a541abb91896da4ae8ba476a7c39e95f8">NostrManager::isConnected</a></div><div class="ttdeci">bool isConnected()</div><div class="ttdef"><b>Definition:</b> <a href="nostr__manager_8cpp_source.html#l00993">nostr_manager.cpp:993</a></div></div>
-<div class="ttc" id="anamespace_wi_fi_manager_html_a1afb041d5ffe5293106eb38c9eb37690"><div class="ttname"><a href="namespace_wi_fi_manager.html#a1afb041d5ffe5293106eb38c9eb37690">WiFiManager::getStatus</a></div><div class="ttdeci">wl_status_t getStatus()</div><div class="ttdef"><b>Definition:</b> <a href="wifi__manager_8cpp_source.html#l00279">wifi_manager.cpp:279</a></div></div>
-<div class="ttc" id="anamespace_wi_fi_manager_html_aa6406a18b4523ef158247b902e770052"><div class="ttname"><a href="namespace_wi_fi_manager.html#aa6406a18b4523ef158247b902e770052">WiFiManager::isConnected</a></div><div class="ttdeci">bool isConnected()</div><div class="ttdef"><b>Definition:</b> <a href="wifi__manager_8cpp_source.html#l00262">wifi_manager.cpp:262</a></div></div>
+<p class="definition">Definition at line <a class="el" href="app_8cpp_source.html#l00205">205</a> of file <a class="el" href="app_8cpp_source.html">app.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  206</span>    {</div>
+<div class="line"><span class="lineno">  207</span>        <span class="keywordtype">bool</span> health_ok = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  208</span> </div>
+<div class="line"><span class="lineno">  209</span>        <span class="comment">// Check WiFi module health</span></div>
+<div class="line"><span class="lineno">  210</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="namespace_niot_wi_fi_manager.html#a55d923f23185cb93bdf9ba3a87af3c77">NiotWiFiManager::isConnected</a>() &amp;&amp; <a class="code hl_function" href="namespace_niot_wi_fi_manager.html#a6bc9002aa19a16ca6e08641ffc4a3b00">NiotWiFiManager::getStatus</a>() != WL_IDLE_STATUS)</div>
+<div class="line"><span class="lineno">  211</span>        {</div>
+<div class="line"><span class="lineno">  212</span>            Serial.println(<span class="stringliteral">&quot;WiFi module health check failed&quot;</span>);</div>
+<div class="line"><span class="lineno">  213</span>            health_ok = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  214</span>        }</div>
+<div class="line"><span class="lineno">  215</span> </div>
+<div class="line"><span class="lineno">  216</span>        <span class="comment">// Check Nostr Manager module health</span></div>
+<div class="line"><span class="lineno">  217</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespace_nostr_manager.html#a121cfa7d4a629523377058c1990a49a8">NostrManager::isInitialized</a>() &amp;&amp; !<a class="code hl_function" href="namespace_nostr_manager.html#a541abb91896da4ae8ba476a7c39e95f8">NostrManager::isConnected</a>())</div>
+<div class="line"><span class="lineno">  218</span>        {</div>
+<div class="line"><span class="lineno">  219</span>            Serial.println(<span class="stringliteral">&quot;Nostr Manager module health check warning - not connected&quot;</span>);</div>
+<div class="line"><span class="lineno">  220</span>            <span class="comment">// This is a warning, not a failure</span></div>
+<div class="line"><span class="lineno">  221</span>        }</div>
+<div class="line"><span class="lineno">  222</span> </div>
+<div class="line"><span class="lineno">  223</span>        <span class="keywordflow">return</span> health_ok;</div>
+<div class="line"><span class="lineno">  224</span>    }</div>
+<div class="ttc" id="anamespace_niot_wi_fi_manager_html_a55d923f23185cb93bdf9ba3a87af3c77"><div class="ttname"><a href="namespace_niot_wi_fi_manager.html#a55d923f23185cb93bdf9ba3a87af3c77">NiotWiFiManager::isConnected</a></div><div class="ttdeci">bool isConnected()</div><div class="ttdef"><b>Definition:</b> <a href="wifi__manager_8cpp_source.html#l00285">wifi_manager.cpp:285</a></div></div>
+<div class="ttc" id="anamespace_niot_wi_fi_manager_html_a6bc9002aa19a16ca6e08641ffc4a3b00"><div class="ttname"><a href="namespace_niot_wi_fi_manager.html#a6bc9002aa19a16ca6e08641ffc4a3b00">NiotWiFiManager::getStatus</a></div><div class="ttdeci">wl_status_t getStatus()</div><div class="ttdef"><b>Definition:</b> <a href="wifi__manager_8cpp_source.html#l00302">wifi_manager.cpp:302</a></div></div>
+<div class="ttc" id="anamespace_nostr_manager_html_a121cfa7d4a629523377058c1990a49a8"><div class="ttname"><a href="namespace_nostr_manager.html#a121cfa7d4a629523377058c1990a49a8">NostrManager::isInitialized</a></div><div class="ttdeci">bool isInitialized()</div><div class="ttdef"><b>Definition:</b> <a href="nostr__manager_8cpp_source.html#l00844">nostr_manager.cpp:844</a></div></div>
+<div class="ttc" id="anamespace_nostr_manager_html_a541abb91896da4ae8ba476a7c39e95f8"><div class="ttname"><a href="namespace_nostr_manager.html#a541abb91896da4ae8ba476a7c39e95f8">NostrManager::isConnected</a></div><div class="ttdeci">bool isConnected()</div><div class="ttdef"><b>Definition:</b> <a href="nostr__manager_8cpp_source.html#l00849">nostr_manager.cpp:849</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -263,7 +261,7 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   70</span> </div>
 <div class="line"><span class="lineno">   71</span>        <span class="comment">// Cleanup modules in reverse dependency order</span></div>
 <div class="line"><span class="lineno">   72</span>        <a class="code hl_function" href="namespace_nostr_manager.html#a779aa13687f2b870a7c1c1d665f375ef">NostrManager::cleanup</a>();</div>
-<div class="line"><span class="lineno">   73</span>        <a class="code hl_function" href="namespace_wi_fi_manager.html#a65dac49e1bcceabd910231b2755d254d">WiFiManager::cleanup</a>();</div>
+<div class="line"><span class="lineno">   73</span>        <a class="code hl_function" href="namespace_niot_wi_fi_manager.html#a2c8178e28b845f8b705a61767b751741">NiotWiFiManager::cleanup</a>();</div>
 <div class="line"><span class="lineno">   74</span>        <a class="code hl_function" href="namespace_settings.html#adfd716c322069bdb999ecb9e6fb06635">Settings::cleanup</a>();</div>
 <div class="line"><span class="lineno">   75</span>        <a class="code hl_function" href="namespace_display.html#a74136dce435d7a569c5fb00d5f7afbe6">Display::cleanup</a>();</div>
 <div class="line"><span class="lineno">   76</span> </div>
@@ -273,11 +271,11 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   80</span>        <a class="code hl_function" href="namespace_app.html#aefca72a9059055affbcbf62e10eb9cc6">fireEvent</a>(<span class="stringliteral">&quot;app_cleanup&quot;</span>, <span class="stringliteral">&quot;completed&quot;</span>);</div>
 <div class="line"><span class="lineno">   81</span>    }</div>
 <div class="ttc" id="anamespace_app_html_ac12729d606c8030bbeb7e32b51810f1a"><div class="ttname"><a href="namespace_app.html#ac12729d606c8030bbeb7e32b51810f1a">App::setState</a></div><div class="ttdeci">void setState(app_state_t state)</div><div class="ttdef"><b>Definition:</b> <a href="app_8cpp_source.html#l00131">app.cpp:131</a></div></div>
-<div class="ttc" id="anamespace_app_html_aefca72a9059055affbcbf62e10eb9cc6"><div class="ttname"><a href="namespace_app.html#aefca72a9059055affbcbf62e10eb9cc6">App::fireEvent</a></div><div class="ttdeci">void fireEvent(const String &amp;event, const String &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="app_8cpp_source.html#l00249">app.cpp:249</a></div></div>
+<div class="ttc" id="anamespace_app_html_aefca72a9059055affbcbf62e10eb9cc6"><div class="ttname"><a href="namespace_app.html#aefca72a9059055affbcbf62e10eb9cc6">App::fireEvent</a></div><div class="ttdeci">void fireEvent(const String &amp;event, const String &amp;data)</div><div class="ttdef"><b>Definition:</b> <a href="app_8cpp_source.html#l00244">app.cpp:244</a></div></div>
 <div class="ttc" id="anamespace_display_html_a74136dce435d7a569c5fb00d5f7afbe6"><div class="ttname"><a href="namespace_display.html#a74136dce435d7a569c5fb00d5f7afbe6">Display::cleanup</a></div><div class="ttdeci">void cleanup()</div><div class="ttdef"><b>Definition:</b> <a href="display_8cpp_source.html#l00013">display.cpp:13</a></div></div>
+<div class="ttc" id="anamespace_niot_wi_fi_manager_html_a2c8178e28b845f8b705a61767b751741"><div class="ttname"><a href="namespace_niot_wi_fi_manager.html#a2c8178e28b845f8b705a61767b751741">NiotWiFiManager::cleanup</a></div><div class="ttdeci">void cleanup()</div><div class="ttdef"><b>Definition:</b> <a href="wifi__manager_8cpp_source.html#l00238">wifi_manager.cpp:238</a></div></div>
 <div class="ttc" id="anamespace_nostr_manager_html_a779aa13687f2b870a7c1c1d665f375ef"><div class="ttname"><a href="namespace_nostr_manager.html#a779aa13687f2b870a7c1c1d665f375ef">NostrManager::cleanup</a></div><div class="ttdeci">void cleanup()</div><div class="ttdef"><b>Definition:</b> <a href="nostr__manager_8cpp_source.html#l00113">nostr_manager.cpp:113</a></div></div>
 <div class="ttc" id="anamespace_settings_html_adfd716c322069bdb999ecb9e6fb06635"><div class="ttname"><a href="namespace_settings.html#adfd716c322069bdb999ecb9e6fb06635">Settings::cleanup</a></div><div class="ttdeci">void cleanup()</div><div class="ttdef"><b>Definition:</b> <a href="settings_8cpp_source.html#l00017">settings.cpp:17</a></div></div>
-<div class="ttc" id="anamespace_wi_fi_manager_html_a65dac49e1bcceabd910231b2755d254d"><div class="ttname"><a href="namespace_wi_fi_manager.html#a65dac49e1bcceabd910231b2755d254d">WiFiManager::cleanup</a></div><div class="ttdeci">void cleanup()</div><div class="ttdef"><b>Definition:</b> <a href="wifi__manager_8cpp_source.html#l00215">wifi_manager.cpp:215</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -307,13 +305,13 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="app_8cpp_source.html#l00249">249</a> of file <a class="el" href="app_8cpp_source.html">app.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  250</span>    {</div>
-<div class="line"><span class="lineno">  251</span>        <span class="keywordflow">if</span> (event_callback)</div>
-<div class="line"><span class="lineno">  252</span>        {</div>
-<div class="line"><span class="lineno">  253</span>            event_callback(event, data);</div>
-<div class="line"><span class="lineno">  254</span>        }</div>
-<div class="line"><span class="lineno">  255</span>    }</div>
+<p class="definition">Definition at line <a class="el" href="app_8cpp_source.html#l00244">244</a> of file <a class="el" href="app_8cpp_source.html">app.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  245</span>    {</div>
+<div class="line"><span class="lineno">  246</span>        <span class="keywordflow">if</span> (event_callback)</div>
+<div class="line"><span class="lineno">  247</span>        {</div>
+<div class="line"><span class="lineno">  248</span>            event_callback(event, data);</div>
+<div class="line"><span class="lineno">  249</span>        }</div>
+<div class="line"><span class="lineno">  250</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -351,29 +349,6 @@ Functions</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a id="adc6346b4d03b67d61ede883d3c44cd64" name="adc6346b4d03b67d61ede883d3c44cd64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc6346b4d03b67d61ede883d3c44cd64">&#9670;&#160;</a></span>getVersion()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">String App::getVersion </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>System Information </p>
-
-<p class="definition">Definition at line <a class="el" href="app_8cpp_source.html#l00205">205</a> of file <a class="el" href="app_8cpp_source.html">app.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  206</span>    {</div>
-<div class="line"><span class="lineno">  207</span>        <span class="keywordflow">return</span> Config::VERSION;</div>
-<div class="line"><span class="lineno">  208</span>    }</div>
-</div><!-- fragment -->
-</div>
-</div>
 <a id="a36c71ca6134247ab51d1a7a2d0a02cd4" name="a36c71ca6134247ab51d1a7a2d0a02cd4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a36c71ca6134247ab51d1a7a2d0a02cd4">&#9670;&#160;</a></span>init()</h2>
 
@@ -408,11 +383,11 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   33</span>            <a class="code hl_function" href="namespace_settings.html#ad47a8d3f696dcb0d38c1dc5088008885">Settings::init</a>();</div>
 <div class="line"><span class="lineno">   34</span> </div>
 <div class="line"><span class="lineno">   35</span>            Serial.println(<span class="stringliteral">&quot;Initializing WiFi Manager module...&quot;</span>);</div>
-<div class="line"><span class="lineno">   36</span>            <a class="code hl_function" href="namespace_wi_fi_manager.html#a307a74b2278e5f1c3ac148944034ca75">WiFiManager::init</a>();</div>
+<div class="line"><span class="lineno">   36</span>            <a class="code hl_function" href="namespace_niot_wi_fi_manager.html#a9ac6a8751745653215218765f1dd233a">NiotWiFiManager::init</a>();</div>
 <div class="line"><span class="lineno">   37</span> </div>
 <div class="line"><span class="lineno">   38</span>            <span class="comment">// Set up WiFi status callback</span></div>
-<div class="line"><span class="lineno">   39</span>            <a class="code hl_function" href="namespace_wi_fi_manager.html#afbd1520be38dcf8df79b62059bc70113">WiFiManager::setStatusCallback</a>([](<span class="keywordtype">bool</span> connected, <span class="keyword">const</span> <span class="keywordtype">char</span> *status)</div>
-<div class="line"><span class="lineno">   40</span>                                           { <a class="code hl_function" href="namespace_app.html#afb037eba2d5bcaebddb20eee584dc210">App::notifyWiFiStatusChanged</a>(connected); });</div>
+<div class="line"><span class="lineno">   39</span>            <a class="code hl_function" href="namespace_niot_wi_fi_manager.html#a2ba31973d9dcd26197a1ed41814b1422">NiotWiFiManager::setStatusCallback</a>([](<span class="keywordtype">bool</span> connected, <span class="keyword">const</span> <span class="keywordtype">char</span> *status)</div>
+<div class="line"><span class="lineno">   40</span>                                                 { <a class="code hl_function" href="namespace_app.html#afb037eba2d5bcaebddb20eee584dc210">App::notifyWiFiStatusChanged</a>(connected); });</div>
 <div class="line"><span class="lineno">   41</span> </div>
 <div class="line"><span class="lineno">   42</span>            Serial.println(<span class="stringliteral">&quot;Initializing Nostr Manager module...&quot;</span>);</div>
 <div class="line"><span class="lineno">   43</span>            <a class="code hl_function" href="namespace_nostr_manager.html#a7af93aac0b3a0ce6400c0e76f6207346">NostrManager::init</a>();</div>
@@ -422,7 +397,7 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   47</span>                                            { <a class="code hl_function" href="namespace_app.html#aedcfb979465a625d14af855e643c3051">App::notifyDeviceStatusChanged</a>(connected); });</div>
 <div class="line"><span class="lineno">   48</span> </div>
 <div class="line"><span class="lineno">   49</span>            <span class="comment">// Check if WiFi is already connected and trigger signer connection if needed</span></div>
-<div class="line"><span class="lineno">   50</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespace_wi_fi_manager.html#aa6406a18b4523ef158247b902e770052">WiFiManager::isConnected</a>())</div>
+<div class="line"><span class="lineno">   50</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="namespace_niot_wi_fi_manager.html#a55d923f23185cb93bdf9ba3a87af3c77">NiotWiFiManager::isConnected</a>())</div>
 <div class="line"><span class="lineno">   51</span>            {</div>
 <div class="line"><span class="lineno">   52</span>                Serial.println(<span class="stringliteral">&quot;WiFi already connected during initialization - connecting to relay&quot;</span>);</div>
 <div class="line"><span class="lineno">   53</span>                <a class="code hl_function" href="namespace_app.html#afb037eba2d5bcaebddb20eee584dc210">notifyWiFiStatusChanged</a>(<span class="keyword">true</span>);</div>
@@ -441,11 +416,11 @@ Functions</h2></td></tr>
 <div class="ttc" id="anamespace_app_html_aedcfb979465a625d14af855e643c3051"><div class="ttname"><a href="namespace_app.html#aedcfb979465a625d14af855e643c3051">App::notifyDeviceStatusChanged</a></div><div class="ttdeci">void notifyDeviceStatusChanged(bool connected)</div><div class="ttdef"><b>Definition:</b> <a href="app_8cpp_source.html#l00190">app.cpp:190</a></div></div>
 <div class="ttc" id="anamespace_app_html_afb037eba2d5bcaebddb20eee584dc210"><div class="ttname"><a href="namespace_app.html#afb037eba2d5bcaebddb20eee584dc210">App::notifyWiFiStatusChanged</a></div><div class="ttdeci">void notifyWiFiStatusChanged(bool connected)</div><div class="ttdef"><b>Definition:</b> <a href="app_8cpp_source.html#l00158">app.cpp:158</a></div></div>
 <div class="ttc" id="anamespace_display_html_aacbf91b9f8c57fc2cb892c45fd44e655"><div class="ttname"><a href="namespace_display.html#aacbf91b9f8c57fc2cb892c45fd44e655">Display::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> <a href="display_8cpp_source.html#l00005">display.cpp:5</a></div></div>
-<div class="ttc" id="anamespace_nostr_manager_html_a7137faa6f3bc86c8181072b7423e6d34"><div class="ttname"><a href="namespace_nostr_manager.html#a7137faa6f3bc86c8181072b7423e6d34">NostrManager::setStatusCallback</a></div><div class="ttdeci">void setStatusCallback(signer_status_callback_t callback)</div><div class="ttdef"><b>Definition:</b> <a href="nostr__manager_8cpp_source.html#l01033">nostr_manager.cpp:1033</a></div></div>
+<div class="ttc" id="anamespace_niot_wi_fi_manager_html_a2ba31973d9dcd26197a1ed41814b1422"><div class="ttname"><a href="namespace_niot_wi_fi_manager.html#a2ba31973d9dcd26197a1ed41814b1422">NiotWiFiManager::setStatusCallback</a></div><div class="ttdeci">void setStatusCallback(wifi_status_callback_t callback)</div><div class="ttdef"><b>Definition:</b> <a href="wifi__manager_8cpp_source.html#l00328">wifi_manager.cpp:328</a></div></div>
+<div class="ttc" id="anamespace_niot_wi_fi_manager_html_a9ac6a8751745653215218765f1dd233a"><div class="ttname"><a href="namespace_niot_wi_fi_manager.html#a9ac6a8751745653215218765f1dd233a">NiotWiFiManager::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> <a href="wifi__manager_8cpp_source.html#l00175">wifi_manager.cpp:175</a></div></div>
+<div class="ttc" id="anamespace_nostr_manager_html_a7137faa6f3bc86c8181072b7423e6d34"><div class="ttname"><a href="namespace_nostr_manager.html#a7137faa6f3bc86c8181072b7423e6d34">NostrManager::setStatusCallback</a></div><div class="ttdeci">void setStatusCallback(signer_status_callback_t callback)</div><div class="ttdef"><b>Definition:</b> <a href="nostr__manager_8cpp_source.html#l00862">nostr_manager.cpp:862</a></div></div>
 <div class="ttc" id="anamespace_nostr_manager_html_a7af93aac0b3a0ce6400c0e76f6207346"><div class="ttname"><a href="namespace_nostr_manager.html#a7af93aac0b3a0ce6400c0e76f6207346">NostrManager::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> <a href="nostr__manager_8cpp_source.html#l00081">nostr_manager.cpp:81</a></div></div>
 <div class="ttc" id="anamespace_settings_html_ad47a8d3f696dcb0d38c1dc5088008885"><div class="ttname"><a href="namespace_settings.html#ad47a8d3f696dcb0d38c1dc5088008885">Settings::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> <a href="settings_8cpp_source.html#l00012">settings.cpp:12</a></div></div>
-<div class="ttc" id="anamespace_wi_fi_manager_html_a307a74b2278e5f1c3ac148944034ca75"><div class="ttname"><a href="namespace_wi_fi_manager.html#a307a74b2278e5f1c3ac148944034ca75">WiFiManager::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> <a href="wifi__manager_8cpp_source.html#l00152">wifi_manager.cpp:152</a></div></div>
-<div class="ttc" id="anamespace_wi_fi_manager_html_afbd1520be38dcf8df79b62059bc70113"><div class="ttname"><a href="namespace_wi_fi_manager.html#afbd1520be38dcf8df79b62059bc70113">WiFiManager::setStatusCallback</a></div><div class="ttdeci">void setStatusCallback(wifi_status_callback_t callback)</div><div class="ttdef"><b>Definition:</b> <a href="wifi__manager_8cpp_source.html#l00305">wifi_manager.cpp:305</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -530,8 +505,8 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">  186</span> </div>
 <div class="line"><span class="lineno">  187</span>        <a class="code hl_function" href="namespace_app.html#aefca72a9059055affbcbf62e10eb9cc6">fireEvent</a>(<span class="stringliteral">&quot;wifi_status&quot;</span>, connected ? <span class="stringliteral">&quot;connected&quot;</span> : <span class="stringliteral">&quot;disconnected&quot;</span>);</div>
 <div class="line"><span class="lineno">  188</span>    }</div>
-<div class="ttc" id="anamespace_nostr_manager_html_ac3f2bf74a21ffdffd5f750a40c8f481b"><div class="ttname"><a href="namespace_nostr_manager.html#ac3f2bf74a21ffdffd5f750a40c8f481b">NostrManager::connectToRelay</a></div><div class="ttdeci">void connectToRelay()</div><div class="ttdef"><b>Definition:</b> <a href="nostr__manager_8cpp_source.html#l00177">nostr_manager.cpp:177</a></div></div>
-<div class="ttc" id="anamespace_nostr_manager_html_adb47b0435f23de89ffe234bbb8832990"><div class="ttname"><a href="namespace_nostr_manager.html#adb47b0435f23de89ffe234bbb8832990">NostrManager::disconnect</a></div><div class="ttdeci">void disconnect()</div><div class="ttdef"><b>Definition:</b> <a href="nostr__manager_8cpp_source.html#l00212">nostr_manager.cpp:212</a></div></div>
+<div class="ttc" id="anamespace_nostr_manager_html_ac3f2bf74a21ffdffd5f750a40c8f481b"><div class="ttname"><a href="namespace_nostr_manager.html#ac3f2bf74a21ffdffd5f750a40c8f481b">NostrManager::connectToRelay</a></div><div class="ttdeci">void connectToRelay()</div><div class="ttdef"><b>Definition:</b> <a href="nostr__manager_8cpp_source.html#l00162">nostr_manager.cpp:162</a></div></div>
+<div class="ttc" id="anamespace_nostr_manager_html_adb47b0435f23de89ffe234bbb8832990"><div class="ttname"><a href="namespace_nostr_manager.html#adb47b0435f23de89ffe234bbb8832990">NostrManager::disconnect</a></div><div class="ttdeci">void disconnect()</div><div class="ttdef"><b>Definition:</b> <a href="nostr__manager_8cpp_source.html#l00197">nostr_manager.cpp:197</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -550,26 +525,26 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="app_8cpp_source.html#l00231">231</a> of file <a class="el" href="app_8cpp_source.html">app.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  232</span>    {</div>
-<div class="line"><span class="lineno">  233</span>        Serial.println(<span class="stringliteral">&quot;=== Module Status Report ===&quot;</span>);</div>
-<div class="line"><span class="lineno">  234</span>        Serial.println(<span class="stringliteral">&quot;WiFi: &quot;</span> + String(<a class="code hl_function" href="namespace_wi_fi_manager.html#aa6406a18b4523ef158247b902e770052">WiFiManager::isConnected</a>() ? <span class="stringliteral">&quot;Connected&quot;</span> : <span class="stringliteral">&quot;Disconnected&quot;</span>));</div>
-<div class="line"><span class="lineno">  235</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespace_wi_fi_manager.html#aa6406a18b4523ef158247b902e770052">WiFiManager::isConnected</a>())</div>
-<div class="line"><span class="lineno">  236</span>        {</div>
-<div class="line"><span class="lineno">  237</span>            Serial.println(<span class="stringliteral">&quot;  SSID: &quot;</span> + <a class="code hl_function" href="namespace_wi_fi_manager.html#a0d7909fe5946dfd8e7024a61b0a9e048">WiFiManager::getSSID</a>());</div>
-<div class="line"><span class="lineno">  238</span>            Serial.println(<span class="stringliteral">&quot;  IP: &quot;</span> + <a class="code hl_function" href="namespace_wi_fi_manager.html#a87f19df53f67ea0a4cb59ef57c184524">WiFiManager::getLocalIP</a>());</div>
+<p class="definition">Definition at line <a class="el" href="app_8cpp_source.html#l00226">226</a> of file <a class="el" href="app_8cpp_source.html">app.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  227</span>    {</div>
+<div class="line"><span class="lineno">  228</span>        Serial.println(<span class="stringliteral">&quot;=== Module Status Report ===&quot;</span>);</div>
+<div class="line"><span class="lineno">  229</span>        Serial.println(<span class="stringliteral">&quot;WiFi: &quot;</span> + String(<a class="code hl_function" href="namespace_niot_wi_fi_manager.html#a55d923f23185cb93bdf9ba3a87af3c77">NiotWiFiManager::isConnected</a>() ? <span class="stringliteral">&quot;Connected&quot;</span> : <span class="stringliteral">&quot;Disconnected&quot;</span>));</div>
+<div class="line"><span class="lineno">  230</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespace_niot_wi_fi_manager.html#a55d923f23185cb93bdf9ba3a87af3c77">NiotWiFiManager::isConnected</a>())</div>
+<div class="line"><span class="lineno">  231</span>        {</div>
+<div class="line"><span class="lineno">  232</span>            Serial.println(<span class="stringliteral">&quot;  SSID: &quot;</span> + <a class="code hl_function" href="namespace_niot_wi_fi_manager.html#ab9539ce2e0a98a4a2f1f88155162b628">NiotWiFiManager::getSSID</a>());</div>
+<div class="line"><span class="lineno">  233</span>            Serial.println(<span class="stringliteral">&quot;  IP: &quot;</span> + <a class="code hl_function" href="namespace_niot_wi_fi_manager.html#a4954bf84a94fb31ee51c6b44e8466a5b">NiotWiFiManager::getLocalIP</a>());</div>
+<div class="line"><span class="lineno">  234</span>        }</div>
+<div class="line"><span class="lineno">  235</span>        Serial.println(<span class="stringliteral">&quot;Nostr Manager: &quot;</span> + String(<a class="code hl_function" href="namespace_nostr_manager.html#a541abb91896da4ae8ba476a7c39e95f8">NostrManager::isConnected</a>() ? <span class="stringliteral">&quot;Connected&quot;</span> : <span class="stringliteral">&quot;Disconnected&quot;</span>));</div>
+<div class="line"><span class="lineno">  236</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespace_nostr_manager.html#a541abb91896da4ae8ba476a7c39e95f8">NostrManager::isConnected</a>())</div>
+<div class="line"><span class="lineno">  237</span>        {</div>
+<div class="line"><span class="lineno">  238</span>            Serial.println(<span class="stringliteral">&quot;  Relay: &quot;</span> + <a class="code hl_function" href="namespace_nostr_manager.html#af9b1178df0383f8342a7d2cef95feaa4">NostrManager::getRelayUrl</a>());</div>
 <div class="line"><span class="lineno">  239</span>        }</div>
-<div class="line"><span class="lineno">  240</span>        Serial.println(<span class="stringliteral">&quot;Nostr Manager: &quot;</span> + String(<a class="code hl_function" href="namespace_nostr_manager.html#a541abb91896da4ae8ba476a7c39e95f8">NostrManager::isConnected</a>() ? <span class="stringliteral">&quot;Connected&quot;</span> : <span class="stringliteral">&quot;Disconnected&quot;</span>));</div>
-<div class="line"><span class="lineno">  241</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="namespace_nostr_manager.html#a541abb91896da4ae8ba476a7c39e95f8">NostrManager::isConnected</a>())</div>
-<div class="line"><span class="lineno">  242</span>        {</div>
-<div class="line"><span class="lineno">  243</span>            Serial.println(<span class="stringliteral">&quot;  Relay: &quot;</span> + <a class="code hl_function" href="namespace_nostr_manager.html#af9b1178df0383f8342a7d2cef95feaa4">NostrManager::getRelayUrl</a>());</div>
-<div class="line"><span class="lineno">  244</span>        }</div>
-<div class="line"><span class="lineno">  245</span>        Serial.println(<span class="stringliteral">&quot;Free Heap: &quot;</span> + String(ESP.getFreeHeap()));</div>
-<div class="line"><span class="lineno">  246</span>        Serial.println(<span class="stringliteral">&quot;============================&quot;</span>);</div>
-<div class="line"><span class="lineno">  247</span>    }</div>
-<div class="ttc" id="anamespace_nostr_manager_html_af9b1178df0383f8342a7d2cef95feaa4"><div class="ttname"><a href="namespace_nostr_manager.html#af9b1178df0383f8342a7d2cef95feaa4">NostrManager::getRelayUrl</a></div><div class="ttdeci">String getRelayUrl()</div><div class="ttdef"><b>Definition:</b> <a href="nostr__manager_8cpp_source.html#l01004">nostr_manager.cpp:1004</a></div></div>
-<div class="ttc" id="anamespace_wi_fi_manager_html_a0d7909fe5946dfd8e7024a61b0a9e048"><div class="ttname"><a href="namespace_wi_fi_manager.html#a0d7909fe5946dfd8e7024a61b0a9e048">WiFiManager::getSSID</a></div><div class="ttdeci">String getSSID()</div><div class="ttdef"><b>Definition:</b> <a href="wifi__manager_8cpp_source.html#l00269">wifi_manager.cpp:269</a></div></div>
-<div class="ttc" id="anamespace_wi_fi_manager_html_a87f19df53f67ea0a4cb59ef57c184524"><div class="ttname"><a href="namespace_wi_fi_manager.html#a87f19df53f67ea0a4cb59ef57c184524">WiFiManager::getLocalIP</a></div><div class="ttdeci">String getLocalIP()</div><div class="ttdef"><b>Definition:</b> <a href="wifi__manager_8cpp_source.html#l00274">wifi_manager.cpp:274</a></div></div>
+<div class="line"><span class="lineno">  240</span>        Serial.println(<span class="stringliteral">&quot;Free Heap: &quot;</span> + String(ESP.getFreeHeap()));</div>
+<div class="line"><span class="lineno">  241</span>        Serial.println(<span class="stringliteral">&quot;============================&quot;</span>);</div>
+<div class="line"><span class="lineno">  242</span>    }</div>
+<div class="ttc" id="anamespace_niot_wi_fi_manager_html_a4954bf84a94fb31ee51c6b44e8466a5b"><div class="ttname"><a href="namespace_niot_wi_fi_manager.html#a4954bf84a94fb31ee51c6b44e8466a5b">NiotWiFiManager::getLocalIP</a></div><div class="ttdeci">String getLocalIP()</div><div class="ttdef"><b>Definition:</b> <a href="wifi__manager_8cpp_source.html#l00297">wifi_manager.cpp:297</a></div></div>
+<div class="ttc" id="anamespace_niot_wi_fi_manager_html_ab9539ce2e0a98a4a2f1f88155162b628"><div class="ttname"><a href="namespace_niot_wi_fi_manager.html#ab9539ce2e0a98a4a2f1f88155162b628">NiotWiFiManager::getSSID</a></div><div class="ttdeci">String getSSID()</div><div class="ttdef"><b>Definition:</b> <a href="wifi__manager_8cpp_source.html#l00292">wifi_manager.cpp:292</a></div></div>
+<div class="ttc" id="anamespace_nostr_manager_html_af9b1178df0383f8342a7d2cef95feaa4"><div class="ttname"><a href="namespace_nostr_manager.html#af9b1178df0383f8342a7d2cef95feaa4">NostrManager::getRelayUrl</a></div><div class="ttdeci">String getRelayUrl()</div><div class="ttdef"><b>Definition:</b> <a href="nostr__manager_8cpp_source.html#l00860">nostr_manager.cpp:860</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -602,11 +577,11 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   94</span>        <span class="comment">// Process WiFi AP mode events (with error handling)</span></div>
 <div class="line"><span class="lineno">   95</span>        <span class="keywordflow">try</span></div>
 <div class="line"><span class="lineno">   96</span>        {</div>
-<div class="line"><span class="lineno">   97</span>            <a class="code hl_function" href="namespace_wi_fi_manager.html#a4600374afc464e50c6516ed52df26b81">WiFiManager::processLoop</a>();</div>
+<div class="line"><span class="lineno">   97</span>            <a class="code hl_function" href="namespace_niot_wi_fi_manager.html#a75d2c095cab9e733f9bdd64722438f21">NiotWiFiManager::processLoop</a>();</div>
 <div class="line"><span class="lineno">   98</span>        }</div>
 <div class="line"><span class="lineno">   99</span>        <span class="keywordflow">catch</span> (...)</div>
 <div class="line"><span class="lineno">  100</span>        {</div>
-<div class="line"><span class="lineno">  101</span>            Serial.println(<span class="stringliteral">&quot;ERROR: WiFiManager::processLoop() threw exception&quot;</span>);</div>
+<div class="line"><span class="lineno">  101</span>            Serial.println(<span class="stringliteral">&quot;ERROR: NiotWiFiManager::processLoop() threw exception&quot;</span>);</div>
 <div class="line"><span class="lineno">  102</span>        }</div>
 <div class="line"><span class="lineno">  103</span> </div>
 <div class="line"><span class="lineno">  104</span>        <span class="comment">// Process WebSocket events (with error handling)</span></div>
@@ -635,10 +610,10 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">  127</span> </div>
 <div class="line"><span class="lineno">  128</span>        delay(1);</div>
 <div class="line"><span class="lineno">  129</span>    }</div>
-<div class="ttc" id="anamespace_app_html_a683e7e9d5f87752ba306ae8d4b3043c8"><div class="ttname"><a href="namespace_app.html#a683e7e9d5f87752ba306ae8d4b3043c8">App::reportModuleStatus</a></div><div class="ttdeci">void reportModuleStatus()</div><div class="ttdef"><b>Definition:</b> <a href="app_8cpp_source.html#l00231">app.cpp:231</a></div></div>
-<div class="ttc" id="anamespace_app_html_a8c902b97afa2062bbd08efa469419324"><div class="ttname"><a href="namespace_app.html#a8c902b97afa2062bbd08efa469419324">App::checkModuleHealth</a></div><div class="ttdeci">bool checkModuleHealth()</div><div class="ttdef"><b>Definition:</b> <a href="app_8cpp_source.html#l00210">app.cpp:210</a></div></div>
-<div class="ttc" id="anamespace_nostr_manager_html_a302d8b408a59431c1a826e9a1b2aad74"><div class="ttname"><a href="namespace_nostr_manager.html#a302d8b408a59431c1a826e9a1b2aad74">NostrManager::processLoop</a></div><div class="ttdeci">void processLoop()</div><div class="ttdef"><b>Definition:</b> <a href="nostr__manager_8cpp_source.html#l00808">nostr_manager.cpp:808</a></div></div>
-<div class="ttc" id="anamespace_wi_fi_manager_html_a4600374afc464e50c6516ed52df26b81"><div class="ttname"><a href="namespace_wi_fi_manager.html#a4600374afc464e50c6516ed52df26b81">WiFiManager::processLoop</a></div><div class="ttdeci">void processLoop()</div><div class="ttdef"><b>Definition:</b> <a href="wifi__manager_8cpp_source.html#l00226">wifi_manager.cpp:226</a></div></div>
+<div class="ttc" id="anamespace_app_html_a683e7e9d5f87752ba306ae8d4b3043c8"><div class="ttname"><a href="namespace_app.html#a683e7e9d5f87752ba306ae8d4b3043c8">App::reportModuleStatus</a></div><div class="ttdeci">void reportModuleStatus()</div><div class="ttdef"><b>Definition:</b> <a href="app_8cpp_source.html#l00226">app.cpp:226</a></div></div>
+<div class="ttc" id="anamespace_app_html_a8c902b97afa2062bbd08efa469419324"><div class="ttname"><a href="namespace_app.html#a8c902b97afa2062bbd08efa469419324">App::checkModuleHealth</a></div><div class="ttdeci">bool checkModuleHealth()</div><div class="ttdef"><b>Definition:</b> <a href="app_8cpp_source.html#l00205">app.cpp:205</a></div></div>
+<div class="ttc" id="anamespace_niot_wi_fi_manager_html_a75d2c095cab9e733f9bdd64722438f21"><div class="ttname"><a href="namespace_niot_wi_fi_manager.html#a75d2c095cab9e733f9bdd64722438f21">NiotWiFiManager::processLoop</a></div><div class="ttdeci">void processLoop()</div><div class="ttdef"><b>Definition:</b> <a href="wifi__manager_8cpp_source.html#l00249">wifi_manager.cpp:249</a></div></div>
+<div class="ttc" id="anamespace_nostr_manager_html_a302d8b408a59431c1a826e9a1b2aad74"><div class="ttname"><a href="namespace_nostr_manager.html#a302d8b408a59431c1a826e9a1b2aad74">NostrManager::processLoop</a></div><div class="ttdeci">void processLoop()</div><div class="ttdef"><b>Definition:</b> <a href="nostr__manager_8cpp_source.html#l00664">nostr_manager.cpp:664</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

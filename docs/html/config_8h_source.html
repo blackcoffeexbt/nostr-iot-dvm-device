@@ -99,24 +99,26 @@ $(document).ready(function(){initNavTree('config_8h_source.html',''); initResiza
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stdint.h&gt;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">// hardcode wifi, nostr relay URI and lnbits stuff for now.</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// TODO: Move this to a web configurator interface</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="config_8h.html#a586542b79d00e4db7e1d5a667ae83a2b">   13</a></span><span class="preprocessor">#define WIFI_SSID       &quot;Pixel_9355&quot;</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="config_8h.html#a8685d8aff7e570048090a3a51afceb07">   14</a></span><span class="preprocessor">#define WIFI_PASSWORD   &quot;nivarmmm&quot;</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="config_8h.html#a9f3e81dce299d3eb5ff743c95de5b1dd">   15</a></span><span class="preprocessor">#define NOSTR_RELAY_URI &quot;wss://relay.nostriot.com&quot;</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">// nostriot key</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">// #define NOSTR_PRIVATE_KEY  &quot;aaf7aa50a8bcf160140268edbbb02e6280ddcd94270f74d44d69f7b97ef7edcd&quot;</span></div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">// ben zapper key</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="config_8h.html#a7769521db3e8d0ff8c74cc17792d628e">   19</a></span><span class="preprocessor">#define NOSTR_PRIVATE_KEY &quot;9834afeb28e8a1eb820106e029517a07cc37308cf9eacf4de86f4133111d5c02&quot;</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">// This is the d tag value that is added to the replacable DVM advert</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="config_8h.html#aadb16ed6fe31679ea6ba7336e9ea48cf">   22</a></span><span class="preprocessor">#define DVM_ADVERTISEMENT_EVENT_D_TAG_VALUE &quot;dvm-advert-1&quot;</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="config_8h.html#a906a15b2c71a375b6ae8612ae22e8fab">   24</a></span><span class="preprocessor">#define LNBITS_HOST_URL &quot;sats.pw&quot;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="config_8h.html#a2fe867fceef9adb33fa1b5fcc98e4b35">   25</a></span><span class="preprocessor">#define LNBITS_PAYMENTS_ENDPOINT &quot;/api/v1/payments&quot;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="config_8h.html#a40d25672d35975997f70a20277f0d424">   26</a></span><span class="preprocessor">#define LNBITS_INVOICE_KEY &quot;68891f4d346a4136ba24a443f4ba8d12&quot;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif </span><span class="comment">// CONFIG_H </span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="config_8h.html#a0a5a432b575d715e8d6e95500c47176b">   11</a></span><span class="preprocessor">#define NOSTRIOT_DEVICE_VERSION (1)</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">// hardcode wifi, nostr relay URI and lnbits stuff for now.</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">// TODO: Move this to a web configurator interface</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="config_8h.html#a586542b79d00e4db7e1d5a667ae83a2b">   15</a></span><span class="preprocessor">#define WIFI_SSID       &quot;Flexible Office&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="config_8h.html#a8685d8aff7e570048090a3a51afceb07">   16</a></span><span class="preprocessor">#define WIFI_PASSWORD   &quot;D52043923D&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="config_8h.html#a9f3e81dce299d3eb5ff743c95de5b1dd">   17</a></span><span class="preprocessor">#define NOSTR_RELAY_URI &quot;wss://relay.nostriot.com&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">// nostriot key</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="config_8h.html#a7769521db3e8d0ff8c74cc17792d628e">   19</a></span><span class="preprocessor">#define NOSTR_PRIVATE_KEY  &quot;882f70e02dfedea404b0ebab799587da824fb6fe036452bee9fc7c0618477030&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">// ben zapper key</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">// #define NOSTR_PRIVATE_KEY &quot;9834afeb28e8a1eb820106e029517a07cc37308cf9eacf4de86f4133111d5c02&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">// This is the d tag value that is added to the replacable DVM advert</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="config_8h.html#aadb16ed6fe31679ea6ba7336e9ea48cf">   24</a></span><span class="preprocessor">#define DVM_ADVERTISEMENT_EVENT_D_TAG_VALUE &quot;dvm-advert-1&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="config_8h.html#a906a15b2c71a375b6ae8612ae22e8fab">   26</a></span><span class="preprocessor">#define LNBITS_HOST_URL &quot;sats.pw&quot;</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="config_8h.html#a2fe867fceef9adb33fa1b5fcc98e4b35">   27</a></span><span class="preprocessor">#define LNBITS_PAYMENTS_ENDPOINT &quot;/api/v1/payments&quot;</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="config_8h.html#a40d25672d35975997f70a20277f0d424">   28</a></span><span class="preprocessor">#define LNBITS_INVOICE_KEY &quot;68891f4d346a4136ba24a443f4ba8d12&quot;</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#endif </span><span class="comment">// CONFIG_H </span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

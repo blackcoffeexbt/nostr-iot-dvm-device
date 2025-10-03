@@ -18,7 +18,6 @@ var namespace_app =
     [ "cleanup", "namespace_app.html#aa172d6e06d067c1653591cb381a666e9", null ],
     [ "fireEvent", "namespace_app.html#aefca72a9059055affbcbf62e10eb9cc6", null ],
     [ "getStateString", "namespace_app.html#a22c8042a43eb38e54720382fedf1c31b", null ],
-    [ "getVersion", "namespace_app.html#adc6346b4d03b67d61ede883d3c44cd64", null ],
     [ "init", "namespace_app.html#a36c71ca6134247ab51d1a7a2d0a02cd4", null ],
     [ "notifyDeviceStatusChanged", "namespace_app.html#aedcfb979465a625d14af855e643c3051", null ],
     [ "notifyWiFiStatusChanged", "namespace_app.html#afb037eba2d5bcaebddb20eee584dc210", null ],

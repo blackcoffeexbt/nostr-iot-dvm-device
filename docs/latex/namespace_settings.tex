@@ -8,8 +8,6 @@ void \mbox{\hyperlink{namespace_settings_ad47a8d3f696dcb0d38c1dc5088008885}{init
 void \mbox{\hyperlink{namespace_settings_adfd716c322069bdb999ecb9e6fb06635}{cleanup}} ()
 \item 
 void \mbox{\hyperlink{namespace_settings_ac225d9073ae68e129255f0dfabbe6a19}{load\+From\+Preferences}} ()
-\item 
-void \mbox{\hyperlink{namespace_settings_af6a6f662bd9c9624532ac98521fdfd97}{save\+To\+Preferences}} ()
 \end{DoxyCompactItemize}
 
 
@@ -70,25 +68,5 @@ Definition at line \mbox{\hyperlink{settings_8cpp_source_l00025}{25}} of file \m
 \DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ preferences.end();}}
 \DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Loaded\ preferences"{}});}
 \DoxyCodeLine{00033\ \ \ \ \ \}}
-
-\end{DoxyCode}
-\mbox{\Hypertarget{namespace_settings_af6a6f662bd9c9624532ac98521fdfd97}\label{namespace_settings_af6a6f662bd9c9624532ac98521fdfd97}} 
-\index{Settings@{Settings}!saveToPreferences@{saveToPreferences}}
-\index{saveToPreferences@{saveToPreferences}!Settings@{Settings}}
-\doxysubsubsection{\texorpdfstring{saveToPreferences()}{saveToPreferences()}}
-{\footnotesize\ttfamily void Settings\+::save\+To\+Preferences (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Definition at line \mbox{\hyperlink{settings_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{settings_8cpp_source}{settings.\+cpp}}.
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00036\ \ \ \ \ \{}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ preferences.begin(\textcolor{stringliteral}{"{}config"{}},\ \textcolor{keyword}{false});}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ preferences.putString("{}wifi\_password"{},\ wifi\_password);}}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ preferences.end();}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ Serial.println(\textcolor{stringliteral}{"{}Saved\ settings"{}});}
-\DoxyCodeLine{00041\ \ \ \ \ \}}
 
 \end{DoxyCode}

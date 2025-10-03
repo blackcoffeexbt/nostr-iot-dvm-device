@@ -72,6 +72,7 @@ pio check
 1. **Configure** Wifi, Nostr, and LNbits settings in `src/config.h`
 2. **Flash** the firmware to the ESP32-S3 device using PlatformIO either using VSCode or command line
 1. **Power on the device**
+1. **Connect** to the device's access point (if no saved WiFi) and configure WiFi using the web interface
 
 ### Usage
 
@@ -115,10 +116,6 @@ The application uses a clean modular architecture:
 Configuration options in `src/config.h`:
 
 ```cpp
-// WiFi
-#define WIFI_SSID       "[YOUR WIFI SSID]"
-#define WIFI_PASSWORD   "[YOUR WIFI PASSWORD]"
-
 // Nostr relay. relay.nostriot.com is a public relay run by the Nostriot project
 #define NOSTR_RELAY_URI "wss://relay.nostriot.com"
 

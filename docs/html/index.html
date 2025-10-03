@@ -96,13 +96,14 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="textblock"><p><a class="anchor" id="md_README"></a> A Nostr IoT device implementing Data Vending Machine (DVM) services with Lightning Network payment integration.</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Overview</h1>
-<p>This is a hardware-based Nostr IoT device built for the ESP32-S3. The device implements the Nostr DVM (Data Vending Machine) protocol to provide IoT services through the Nostr network, with optional Lightning Network payments for paid services.</p>
+<p>This is a hardware-based Nostr IoT device built for the ESP32-S3 Guition JC3248W535 touch screen display. The device implements the Nostr DVM (Data Vending Machine) protocol to provide IoT services like temperature readings and device control through the Nostr network, with optional Lightning Network payments for premium services.</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Features</h1>
 <ul>
 <li><b>Nostr DVM Protocol</b>: Complete implementation of Data Vending Machine services</li>
-<li><b>IoT Services</b>: Temperature monitoring, LED control, and extensible sensor integration via <a class="el" href="nostriot__provider_8cpp.html">nostriot_provider.cpp</a></li>
+<li><b>IoT Services</b>: Temperature monitoring, LED control, and extensible sensor integration</li>
 <li><b>Lightning Payments</b>: LNbits integration for paid services with automatic payment processing</li>
+<li><b>Touch Screen Interface</b>: 320x480 color touchscreen for device management</li>
 <li><b>WiFi Connectivity</b>: Connect to Nostr relays and payment providers via WiFi</li>
 <li><b>Payment Queue</b>: Robust payment processing with timeout management</li>
 <li><b>Real-time Monitoring</b>: WebSocket-based payment confirmation and status updates</li>
@@ -111,8 +112,9 @@ Features</h1>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Hardware Requirements</h1>
 <ul>
-<li>ESP32-S3 dev board - I like the LilyGo T-Display S3</li>
-<li>Something connected to the GPIOs (e.g., LED, sensor, screen, rude things etc.)</li>
+<li>ESP32-S3 dev board</li>
+<li>Compatible sensors (temperature, etc.)</li>
+<li>Power supply (USB or battery)</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md4"></a>
 Getting Started</h1>
@@ -120,10 +122,14 @@ Getting Started</h1>
 Prerequisites</h2>
 <ul>
 <li><a href="https://platformio.org/">PlatformIO</a> installed</li>
-<li>ESP32-S3 development board as described above</li>
+<li>ESP32-S3 development board</li>
 <li>LNbits instance for Lightning payments</li>
 </ul>
 <h2><a class="anchor" id="autotoc_md6"></a>
+Customising the IoT device for your hardware</h2>
+<p>The <code><a class="el" href="nostriot__provider_8cpp.html">src/nostriot_provider.cpp</a></code> module lets you customise your Nostr IoT device to match your own hardware and pricing model. In <code><a class="el" href="nostriot__provider_8cpp.html">src/nostriot_provider.cpp</a></code> you define what the device can do (capabilities), and how much each action costs (in sats). The example includes an number of example methods with different pricing. This demonstrates how to set up free and variable paid services.</p>
+<p>To adapt it, change the hardware configuration for your pins and sensors in the <code>init()</code> function, then add or edit entries in capabilities_with_pricing. Each capability’s behaviour is defined in the <code>run()</code> function, where you decide what happens when it’s called.</p>
+<h2><a class="anchor" id="autotoc_md7"></a>
 Building and Flashing</h2>
 <div class="fragment"><div class="line"># Clone the repository</div>
 <div class="line">git clone &lt;repository-url&gt;</div>
@@ -140,28 +146,27 @@ Building and Flashing</h2>
 <div class="line"> </div>
 <div class="line"># Build and upload with monitoring</div>
 <div class="line">pio run --target upload --target monitor</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
 Documentation</h2>
 <div class="fragment"><div class="line"># Generate documentation</div>
 <div class="line">pio run -t docs</div>
 <div class="line"> </div>
 <div class="line"># Run code quality checks</div>
 <div class="line">pio check</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md9"></a>
 Initial Setup</h2>
 <ol type="1">
-<li><b>Configure</b> Copy <code>src/config.h.example</code> to <code><a class="el" href="config_8h.html" title="System Configuration Constants and Definitions.">src/config.h</a></code> and update Wifi, Nostr, and LNbits settings</li>
-<li><b>Flash</b> the firmware to the ESP32-S3 device using PlatformIO either using VSCode or pio command line</li>
+<li><b>Configure</b> Wifi, Nostr, and LNbits settings in <code><a class="el" href="config_8h.html" title="System Configuration Constants and Definitions.">src/config.h</a></code></li>
+<li><b>Flash</b> the firmware to the ESP32-S3 device using PlatformIO either using VSCode or command line</li>
 </ol>
 <ol type="1">
 <li><b>Power on the device</b></li>
 </ol>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Usage</h2>
-<p>You can use the <a href="https://github.com/blackcoffeexbt/nostriotdashboard">LNbits Nostr IoT Dashboard</a>or another Nostr client that supports DVM requests to interact with IoT Devices on Nostr.</p>
 <p><b>IoT Service Requests:</b></p><ol type="1">
 <li>Send DVM job requests (kind 5107) to the device's public key</li>
-<li>Free services execute immediately and return results as kind 6107</li>
+<li>Free services execute immediately</li>
 <li>Paid services return payment requests with Lightning invoices</li>
 <li>Pay the invoice to receive service response</li>
 </ol>
@@ -174,21 +179,21 @@ Usage</h2>
 <li>Payment queue with timeout management</li>
 <li>Support for both BOLT11 invoices and Nostr zaps</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md11"></a>
 Architecture</h1>
 <p>The application uses a clean modular architecture:</p>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md12"></a>
 Core Modules</h2>
 <ul>
 <li><b><a class="el" href="namespace_app.html">App</a></b>: Central coordinator managing all modules and inter-module communication</li>
 <li><b><a class="el" href="namespace_nostr_manager.html">NostrManager</a></b>: Nostr protocol implementation, DVM message handling, and relay communication</li>
 <li><b><a class="el" href="namespace_payment_provider.html">PaymentProvider</a></b>: Lightning payment integration, invoice generation, and payment monitoring</li>
 <li><b><a class="el" href="namespace_nostriot_provider.html">NostriotProvider</a></b>: IoT device capabilities, sensor reading, and device control</li>
-<li><b><a class="el" href="namespace_wi_fi_manager.html">WiFiManager</a></b>: Network connectivity and configuration management</li>
+<li><b>WiFiManager</b>: Network connectivity and configuration management</li>
 <li><b><a class="el" href="namespace_display.html">Display</a></b>: Touch screen interface and status display</li>
 <li><b><a class="el" href="namespace_settings.html">Settings</a></b>: Persistent configuration storage and management</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md12"></a>
+<h2><a class="anchor" id="autotoc_md13"></a>
 Key Features</h2>
 <ul>
 <li><b>Payment Queue</b>: Handles concurrent payment requests with proper timeout management</li>
@@ -197,29 +202,29 @@ Key Features</h2>
 <li><b>DVM Protocol</b>: Complete implementation of Nostr Data Vending Machine specification</li>
 <li><b>Event-Driven Architecture</b>: Clean separation between protocol handling and business logic</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md13"></a>
+<h1><a class="anchor" id="autotoc_md14"></a>
 Configuration</h1>
-<p>Key configuration options in <code><a class="el" href="config_8h.html" title="System Configuration Constants and Definitions.">src/config.h</a></code>:</p>
-<div class="fragment"><div class="line"><span class="comment">// Nostr Configuration</span></div>
-<div class="line"><span class="preprocessor">#define NOSTR_RELAY_URI &quot;wss://relay.example.com&quot;</span></div>
-<div class="line"><span class="preprocessor">#define NOSTR_PRIVATE_KEY &quot;your_device_private_key_hex&quot;</span></div>
+<p>Configuration options in <code><a class="el" href="config_8h.html" title="System Configuration Constants and Definitions.">src/config.h</a></code>:</p>
+<div class="fragment"><div class="line"><span class="comment">// WiFi</span></div>
+<div class="line"><span class="preprocessor">#define WIFI_SSID       &quot;[YOUR WIFI SSID]&quot;</span></div>
+<div class="line"><span class="preprocessor">#define WIFI_PASSWORD   &quot;[YOUR WIFI PASSWORD]&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="comment">// LNbits Configuration  </span></div>
-<div class="line"><span class="preprocessor">#define LNBITS_HOST_URL &quot;lnbits.example.com&quot;</span></div>
-<div class="line"><span class="preprocessor">#define LNBITS_INVOICE_KEY &quot;your_invoice_key&quot;</span></div>
-<div class="line"><span class="preprocessor">#define LNBITS_PAYMENTS_ENDPOINT &quot;/api/v1/payments&quot;</span></div>
+<div class="line"><span class="comment">// Nostr relay. relay.nostriot.com is a public relay run by the Nostriot project</span></div>
+<div class="line"><span class="preprocessor">#define NOSTR_RELAY_URI &quot;wss://relay.nostriot.com&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="comment">// Device Configuration</span></div>
-<div class="line"><span class="preprocessor">#define DEVICE_NAME &quot;Nostriot Device&quot;</span></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md14"></a>
-Adding New IoT Services</h2>
-<ol type="1">
-<li><b>Add capability</b> to <code>NostriotProvider::capabilities[]</code></li>
-<li><b>Implement service logic</b> in <code><a class="el" href="namespace_nostriot_provider.html#ad39f1348c9806f82b067fd5e6aa9b893">NostriotProvider::run()</a></code></li>
-<li><b>Set pricing</b> in <code>NostriotProvider::getPricePerRequest()</code></li>
-<li><b>Test with DVM requests</b> via Nostr clients</li>
-</ol>
-<h2><a class="anchor" id="autotoc_md15"></a>
+<div class="line"><span class="comment">// Nostr private key in hex format (32 bytes, 64 hex characters).</span></div>
+<div class="line"><span class="comment">// You can use https://nostrtool.com/ to generate a new key pair</span></div>
+<div class="line"><span class="preprocessor">#define NOSTR_PRIVATE_KEY &quot;[YOUR NOSTR PRIVATE KEY IN HEX FORMAT]&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// This is the d tag value that is added to the replacable DVM advert</span></div>
+<div class="line"><span class="comment">// You probably don&#39;t need to change this unless you run multiple devices with the same private key</span></div>
+<div class="line"><span class="preprocessor">#define DVM_ADVERTISEMENT_EVENT_D_TAG_VALUE &quot;dvm-advert-1&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// LNbits configuration for Lightning payments</span></div>
+<div class="line"><span class="preprocessor">#define LNBITS_HOST_URL &quot;[YOUR LNBITS HOST URL WITHOUT https:// e.g. demo.lnbits.com]&quot;</span></div>
+<div class="line"><span class="preprocessor">#define LNBITS_INVOICE_KEY &quot;[YOUR LNBITS INVOICE KEY]&quot;</span></div>
+<div class="line"><span class="preprocessor">#define LNBITS_PAYMENTS_ENDPOINT &quot;/api/v1/payments&quot;</span> <span class="comment">// usually don&#39;t change this</span></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md15"></a>
 Code Quality</h2>
 <div class="fragment"><div class="line"># Run code quality checks</div>
 <div class="line">pio check</div>
@@ -227,27 +232,9 @@ Code Quality</h2>
 <div class="line"># Find unused functions</div>
 <div class="line">cppcheck --enable=unusedFunction src/</div>
 <div class="line"> </div>
-<div class="line"># Full analysis</div>
-<div class="line">cppcheck --enable=all --inconclusive src/</div>
+<div class="line"># Wider analysis</div>
+<div class="line">cppcheck --enable=unusedFunction,style --inconclusive src/</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md16"></a>
-Protocol Implementation</h1>
-<h2><a class="anchor" id="autotoc_md17"></a>
-DVM (Data Vending Machine)</h2>
-<ul>
-<li><b>Request Format</b>: NIP-89 compatible job requests (kind 5107)</li>
-<li><b>Response Format</b>: Job results (kind 6107) with proper tagging</li>
-<li><b>Payment Integration</b>: Payment requests (kind 9735) with Lightning invoices</li>
-<li><b>Error Handling</b>: Comprehensive error responses and status codes</li>
-</ul>
-<h2><a class="anchor" id="autotoc_md18"></a>
-Lightning Integration</h2>
-<ul>
-<li><b>Invoice Generation</b>: Automatic BOLT11 invoice creation</li>
-<li><b>Payment Monitoring</b>: Real-time WebSocket payment confirmations</li>
-<li><b>Queue Management</b>: Concurrent payment handling with timeouts</li>
-<li><b>Zap Support</b>: Ready for future Nostr zap payment integration</li>
-</ul>
-<h1><a class="anchor" id="autotoc_md19"></a>
 License</h1>
 <p>MIT License </p>
 </div></div><!-- PageDoc -->

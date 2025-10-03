@@ -104,8 +104,6 @@ Functions</h2></td></tr>
 <tr class="separator:adfd716c322069bdb999ecb9e6fb06635"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac225d9073ae68e129255f0dfabbe6a19"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_settings.html#ac225d9073ae68e129255f0dfabbe6a19">loadFromPreferences</a> ()</td></tr>
 <tr class="separator:ac225d9073ae68e129255f0dfabbe6a19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6a6f662bd9c9624532ac98521fdfd97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespace_settings.html#af6a6f662bd9c9624532ac98521fdfd97">saveToPreferences</a> ()</td></tr>
-<tr class="separator:af6a6f662bd9c9624532ac98521fdfd97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="adfd716c322069bdb999ecb9e6fb06635" name="adfd716c322069bdb999ecb9e6fb06635"></a>
@@ -179,31 +177,6 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   31</span>        <span class="comment">// preferences.end();</span></div>
 <div class="line"><span class="lineno">   32</span>        Serial.println(<span class="stringliteral">&quot;Loaded preferences&quot;</span>);</div>
 <div class="line"><span class="lineno">   33</span>    }</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="af6a6f662bd9c9624532ac98521fdfd97" name="af6a6f662bd9c9624532ac98521fdfd97"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af6a6f662bd9c9624532ac98521fdfd97">&#9670;&#160;</a></span>saveToPreferences()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Settings::saveToPreferences </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="settings_8cpp_source.html#l00035">35</a> of file <a class="el" href="settings_8cpp_source.html">settings.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   36</span>    {</div>
-<div class="line"><span class="lineno">   37</span>        preferences.begin(<span class="stringliteral">&quot;config&quot;</span>, <span class="keyword">false</span>);</div>
-<div class="line"><span class="lineno">   38</span>        <span class="comment">// preferences.putString(&quot;wifi_password&quot;, wifi_password);</span></div>
-<div class="line"><span class="lineno">   39</span>        preferences.end();</div>
-<div class="line"><span class="lineno">   40</span>        Serial.println(<span class="stringliteral">&quot;Saved settings&quot;</span>);</div>
-<div class="line"><span class="lineno">   41</span>    }</div>
 </div><!-- fragment -->
 </div>
 </div>
