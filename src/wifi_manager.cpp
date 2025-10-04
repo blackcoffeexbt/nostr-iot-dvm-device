@@ -277,28 +277,8 @@ namespace NiotWiFiManager
 
         createTask();
 
-        // preferences.begin("wifi-creds", true);
-        // String saved_ssid = preferences.getString("ssid", "");
-        // String saved_pass = preferences.getString("password", "");
-        // preferences.end();
-
-        // get wifi from config.h for now
-        String saved_ssid = WIFI_SSID;
-        String saved_pass = WIFI_PASSWORD;
-
         Serial.println("WiFiManager initialized");
-        Serial.print("Saved SSID: ");
-        Serial.println(saved_ssid);
-        Serial.print("Saved Password: ");
-        Serial.println(saved_pass);
 
-        if (saved_ssid.length() > 0)
-        {
-            Serial.println("Found saved WiFi credentials.");
-            Serial.print("Connecting to ");
-            Serial.println(saved_ssid);
-            startConnection(saved_ssid.c_str(), saved_pass.c_str());
-        }
     }
 
     void cleanup()

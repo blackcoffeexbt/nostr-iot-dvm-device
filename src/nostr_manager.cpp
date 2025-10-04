@@ -778,7 +778,8 @@ namespace NostrManager
         }
 
         String nostrIotDvmJobRequestIds = "[5107,9735]";
-        String subscription = "[\"REQ\", \"" + current_subscription_id + "\", {\"kinds\":" + nostrIotDvmJobRequestIds + ", \"#p\":[\"" + publicKeyHex + "\"], \"limit\":0}]";
+        String authorsRestriction = "\"authors\":[\"" + String(REMOTE_CONTROL_PK) + "\"]";
+        String subscription = "[\"REQ\",\"" + current_subscription_id + "\",{\"kinds\":" + nostrIotDvmJobRequestIds + ", \"#p\":[\"" + publicKeyHex + "\"],\"limit\":0," + authorsRestriction + "}]";
         webSocket.sendTXT(subscription);
         last_subscription_renewal = millis();
         Serial.println("NostrManager::sendSubscription() - Sent subscription: " + subscription);

@@ -15,12 +15,12 @@
 
 namespace NostriotProvider
 {
-    const static String SERVICE_NAME = "A demo Nostriot Device";
-    const static String SERVICE_DESCRIPTION = "An example IoT device using Nostr IoT services";
+    const static String SERVICE_NAME = "BC's Coffee Machine";
+    const static String SERVICE_DESCRIPTION = "I make coffee but only for BC";
     
     // Hardware configuration
-    const int LED_PIN = 2;
-    static bool ledState = false;
+    #define RELAY_PIN 25
+    static bool coffeeMachineState = false;
     
     // Device capabilities and pricing
     struct Capability
@@ -30,18 +30,16 @@ namespace NostriotProvider
     };
 
     static const std::vector<Capability> capabilities_with_pricing = {
-        {"getTemperature", 0},
-        {"toggleLamp", 5},
-        {"getHumidity", 1},
-        {"setTemperature", 5}
+        {"makeCoffee", 5}
     };
 
     void init()
     {
-        pinMode(LED_PIN, OUTPUT);
-        digitalWrite(LED_PIN, LOW);   // LED off
-        ledState = false;
-        Serial.println("NostriotProvider::init() - LED pin " + String(LED_PIN) + " initialized");
+        pinMode(RELAY_PIN, OUTPUT);
+        digitalWrite(RELAY_PIN, LOW); // assuming HIGH is the default "off" state for the relay
+        Serial.println("Relay OFF");
+        coffeeMachineState = false;
+        Serial.println("NostriotProvider::init() - Relay pin " + String(RELAY_PIN) + " initialized");
     }
 
     /**
@@ -88,12 +86,6 @@ namespace NostriotProvider
      */
     int getPrice(const String &method, const String &value)
     {
-        if(method == "setTemperature") {
-            // variable pricing based on target temperature
-            int price = getSetTemperaturePrice(value.toFloat());
-            Display::displayManager.showMessage("Price is " + String(price) + " sats");
-            return price;
-        }
         for (const auto &cap : capabilities_with_pricing)
         {
             if (cap.name == method)
@@ -104,27 +96,6 @@ namespace NostriotProvider
             }
         }
         return 0; 
-    }
-
-    /**
-     * @brief This is an example of variable method pricing 
-     * 
-     * @return int 
-     */
-    int getSetTemperaturePrice(float targetTemp) {
-        // we determine the cost based on a temperature difference between current and requested temperature
-        float currentTemp = getCurrentTemperature();
-        float diff = fabs(targetTemp - currentTemp);
-        // calc based on price of 1 sat per degree C difference, rounded up
-        int price = (int)ceil(diff * 1.0);
-        Serial.println("NostriotProvider::getSetTemperaturePrice() - Current temp: " + String(currentTemp) + "C, Target temp: " + String(targetTemp) + ", Diff: " + String(diff) + "C, Price: " + String(price) + " sats");
-        return price;
-        
-    }
-
-    float getCurrentTemperature() {
-        // return a fake temperature for now between 5 and 15 degrees C
-        return random(50, 150) / 10.0;
     }
 
     /**
@@ -166,36 +137,22 @@ namespace NostriotProvider
 
     String run(String &method, String &value)
     {
-        // TODO: get real data
-        if (method == "getTemperature")
-        {
-            float temp = getCurrentTemperature();
-            Display::displayManager.showMessage("Temperature is " + String(temp) + "°C");
-            return "Temperature is " + String(temp) + "°C";
-        }
-        else if (method == "getHumidity")
-        {
-            int humidity = random(81, 88);
-            Display::displayManager.showMessage("Humidity is " + String(humidity) + "%");
-            return "Humdity is " + String(humidity) + "%";
-        }
-        else if (method == "toggleLamp")
+        if (method == "makeCoffee")
         {
             // Toggle the LED state
-            ledState = !ledState;
-            digitalWrite(LED_PIN, ledState ? HIGH : LOW);
+            coffeeMachineState = !coffeeMachineState;
             
-            String state = ledState ? "ON" : "OFF";
-            Serial.println("NostriotProvider::toggleLamp() - LED turned " + state);
-            Display::displayManager.showMessage("Lamp turned " + state);
-            return "Lamp turned " + state;
-        }
-        else if (method == "setTemperature")
-        {
-            // pretend to set a temperature
-            Serial.println("NostriotProvider::setTemperature() - Setting temperature to " + value + " degrees C");
-            Display::displayManager.showMessage("Temperature set to " + value + " degrees C");
-            return "Temperature set to " + value + " degrees C";
+            digitalWrite(RELAY_PIN, HIGH); // Trigger relay
+            Serial.println("Relay ON");
+
+            delay(500);
+            digitalWrite(RELAY_PIN, LOW); // Trigger relay
+            Serial.println("Relay OFF");
+            
+            String state = coffeeMachineState ? "ON" : "OFF";
+            Serial.println("NostriotProvider::makeCoffee() - Coffee machine turned " + state);
+            Display::displayManager.showMessage("Coffee machine button triggered");
+            return "Coffee machine turned " + state;
         }
         else
         {
