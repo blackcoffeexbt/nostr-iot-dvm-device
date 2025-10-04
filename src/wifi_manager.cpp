@@ -19,8 +19,6 @@ namespace NiotWiFiManager
     static unsigned long wifi_connect_start_time = 0;
     static const unsigned long WIFI_CONNECT_TIMEOUT = 10000; // 10 seconds
     static bool wifi_connection_attempted = false;
-    static char current_ssid[33];
-    static char current_password[65];
 
     // Task and queue management
     static TaskHandle_t wifi_task_handle = NULL;
@@ -54,7 +52,6 @@ namespace NiotWiFiManager
 
                     WiFi.setAutoReconnect(true);
                     WiFi.persistent(true);
-                    // WiFi.begin(command.ssid, command.password);
                     WiFi.setSleep(false);
 
                     WiFiManager wm;
@@ -77,6 +74,72 @@ namespace NiotWiFiManager
                            status != WL_NO_SSID_AVAIL && status != WL_CONNECTION_LOST &&
                            (millis() - start_time) < WIFI_CONNECT_TIMEOUT)
                     {
+                        Serial.println("Connecting to WiFi...");
+                        Serial.print("SSID: ");
+                        Serial.println(command.ssid);
+
+                        WiFi.setAutoReconnect(true);
+                        WiFi.persistent(true);
+                        WiFi.begin();
+                        
+                        // Monitor connection status with timeout
+                        unsigned long start_time = millis();
+                        wl_status_t status = WiFi.status();
+                        
+                        Serial.println("Monitoring connection status...");
+                        while (status != WL_CONNECTED && status != WL_CONNECT_FAILED && 
+                               status != WL_NO_SSID_AVAIL && status != WL_CONNECTION_LOST &&
+                               (millis() - start_time) < WIFI_CONNECT_TIMEOUT)
+                        {
+                            vTaskDelay(pdMS_TO_TICKS(500));
+                            status = WiFi.status();
+                            Serial.print("WiFi status: ");
+                            Serial.println(status);
+                        }
+                        
+                        // Report final status
+                        bool connected = (status == WL_CONNECTED);
+                        if (connected) {
+                            Serial.println("WiFi connected successfully!");
+                            Serial.print("IP Address: ");
+                            Serial.println(WiFi.localIP());
+                            Serial.print("RSSI: ");
+                            Serial.println(WiFi.RSSI());
+                        } else {
+                            Serial.print("WiFi connection failed. Status: ");
+                            Serial.println(status);
+                            const char* error_msg = "Connection failed";
+                            switch(status) {
+                                case WL_NO_SSID_AVAIL:
+                                    error_msg = "SSID not found";
+                                    break;
+                                case WL_CONNECT_FAILED:
+                                    error_msg = "Wrong password";
+                                    break;
+                                case WL_CONNECTION_LOST:
+                                    error_msg = "Connection lost";
+                                    break;
+                                default:
+                                    if ((millis() - start_time) >= WIFI_CONNECT_TIMEOUT) {
+                                        error_msg = "Connection timeout";
+                                    }
+                                    break;
+                            }
+                            Serial.println(error_msg);
+                        }
+                        
+                        // Trigger status callback if set
+                        if (status_callback) {
+                            const char* status_msg = connected ? "Connected" : "Failed";
+                            Serial.print("Calling status callback with connected=");
+                            Serial.print(connected);
+                            Serial.print(", status=");
+                            Serial.println(status_msg);
+                            status_callback(connected, status_msg);
+                        } else {
+                            Serial.println("Warning: No status callback set");
+                        }
+                        break;
                         vTaskDelay(pdMS_TO_TICKS(500));
                         status = WiFi.status();
                         Serial.print("WiFi status: ");
@@ -211,28 +274,9 @@ namespace NiotWiFiManager
 
         createTask();
 
-        // preferences.begin("wifi-creds", true);
-        // String saved_ssid = preferences.getString("ssid", "");
-        // String saved_pass = preferences.getString("password", "");
-        // preferences.end();
-
-        // get wifi from config.h for now
-        String saved_ssid = WIFI_SSID;
-        String saved_pass = WIFI_PASSWORD;
-
         Serial.println("WiFiManager initialized");
-        Serial.print("Saved SSID: ");
-        Serial.println(saved_ssid);
-        Serial.print("Saved Password: ");
-        Serial.println(saved_pass);
 
-        if (saved_ssid.length() > 0)
-        {
-            Serial.println("Found saved WiFi credentials.");
-            Serial.print("Connecting to ");
-            Serial.println(saved_ssid);
-            startConnection(saved_ssid.c_str(), saved_pass.c_str());
-        }
+        startConnection();
     }
 
     void cleanup()
@@ -250,21 +294,12 @@ namespace NiotWiFiManager
     {
     }
 
-    void startConnection(const char *ssid, const char *password)
+    void startConnection()
     {
-        strncpy(current_ssid, ssid, sizeof(current_ssid) - 1);
-        current_ssid[sizeof(current_ssid) - 1] = '\0';
-        strncpy(current_password, password, sizeof(current_password) - 1);
-        current_password[sizeof(current_password) - 1] = '\0';
-
         if (wifi_command_queue != NULL)
         {
             wifi_command_t command;
             command.type = WIFI_CONNECT;
-            strncpy(command.ssid, ssid, sizeof(command.ssid) - 1);
-            command.ssid[sizeof(command.ssid) - 1] = '\0';
-            strncpy(command.password, password, sizeof(command.password) - 1);
-            command.password[sizeof(command.password) - 1] = '\0';
             xQueueSend(wifi_command_queue, &command, 0);
         }
 

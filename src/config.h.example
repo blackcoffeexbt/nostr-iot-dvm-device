@@ -9,9 +9,8 @@
 
 #include <stdint.h>
 
-// hardcode wifi and nostr relay URI for now
-#define WIFI_SSID       "[YOUR WIFI SSID]"
-#define WIFI_PASSWORD   "[YOUR WIFI PASSWORD]"
+// nostr things for now
+// TODO: Move this to the WiFiManager web configurator interface
 #define NOSTR_RELAY_URI "wss://relay.nostriot.com"
 #define NOSTR_PRIVATE_KEY "[YOUR NOSTR PRIVATE KEY IN HEX FORMAT]" // You can use https://nostrtool.com/ to generate a new key pair
 

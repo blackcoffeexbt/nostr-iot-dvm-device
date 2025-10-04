@@ -37,7 +37,7 @@ namespace NiotWiFiManager
     void processLoop();
 
     // Connection management
-    void startConnection(const char *ssid, const char *password);
+    void startConnection();
     void disconnect();
     bool isConnected();
     String getSSID();
