@@ -9,6 +9,7 @@
 
 #include <stdint.h>
 
+#define NOSTRIOT_DEVICE_VERSION (1)
 // nostr things for now
 // TODO: Move this to the WiFiManager web configurator interface
 #define NOSTR_RELAY_URI "wss://relay.nostriot.com"
