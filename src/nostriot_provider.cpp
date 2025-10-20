@@ -15,8 +15,8 @@
 
 namespace NostriotProvider
 {
-    const static String SERVICE_NAME = "Nostriot IoT Service";
-    const static String SERVICE_DESCRIPTION = "Provides IoT device functionalities via Nostr protocol";
+    const static String SERVICE_NAME = "ESP32C3 Supermini IoT Device";
+    const static String SERVICE_DESCRIPTION = "A test device for Nostriot IoT functionality";
     // Device capabilities and pricing
     struct Capability
     {
@@ -25,10 +25,7 @@ namespace NostriotProvider
     };
 
     static const std::vector<Capability> capabilities_with_pricing = {
-        {"getTemperature", 0},
-        {"toggleLamp", 2},
-        {"getHumidity", 1},
-        {"setTemperature", 5}
+        {"runVacuum", 10},
     };
 
     void init()
@@ -152,12 +149,20 @@ namespace NostriotProvider
         // Do any necessary cleanup here
     }
 
+    boolean vacuumIsRunning = false;
+
     String run(String &method, String &value)
     {
         // TODO: get real data
         if (method == "getTemperature")
         {
             return String(getCurrentTemperature());
+        }
+        else if (method == "runVacuum")
+        {
+            vacuumIsRunning = !vacuumIsRunning;
+            Serial.println("NostriotProvider::runVacuum() - Vacuum is now " + String(vacuumIsRunning ? "running" : "stopped"));
+            return String(vacuumIsRunning ? "Vacuum started" : "Vacuum stopped");
         }
         else if (method == "getHumidity")
         {
