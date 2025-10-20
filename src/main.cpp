@@ -23,8 +23,8 @@ static const String SOFTWARE_VERSION = "v0.0.1";
 // Memory space definitions for Nostr operations to prevent heap fragmentation
 // #define EVENT_NOTE_SIZE 2000000
 // #define ENCRYPTED_MESSAGE_BIN_SIZE 100000
-#define EVENT_NOTE_SIZE 2048 // declare very small to allow use on devices without PSRAM
-#define ENCRYPTED_MESSAGE_BIN_SIZE 2048 // declare very small to allow use on devices without PSRAM
+#define EVENT_NOTE_SIZE 1024 // declare very small to allow use on devices without PSRAM
+#define ENCRYPTED_MESSAGE_BIN_SIZE 1024 // declare very small to allow use on devices without PSRAM
 
 // Remaining global variables that main.cpp still needs
 static unsigned long wifi_connect_start_time = 0;
